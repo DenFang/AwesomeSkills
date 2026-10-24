@@ -20,6 +20,7 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | INT-11 | `w-4 h-4`, `w-5 h-5`, `size-4`, `width:\s*(16\|20\|24)px` on clickable icons | Hit area padded to 44 px on touch |
 | INT-12 | `:hover`, `hover:`, `onMouseEnter`, `group-hover:opacity` | Not the only way to reach an action; `@media (hover: hover)` gating |
 | INT-7 | `title=`, `Tooltip` | Icon-only buttons also have `aria-label`; no essential content in tooltips |
+| INT-9 | `delete`, `destroy`, `remove` handlers; `confirm(` | Undo or a named confirmation; destructive styling only on destructive actions |
 | INT-28 | `breadcrumb` | Last crumb is plain text with `aria-current="page"`; the first level never folds; one back link on phones |
 | FRM-2 | `placeholder=` | A real `<label>` is associated |
 | FRM-4 | `disabled=\{!`, `:disabled="!` | Submit greyed until valid |
@@ -70,6 +71,7 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | VIS-1 | `#[0-9a-fA-F]{3,8}\b`, `rgb\(`, `hsl\(` inside components | Raw colours instead of tokens |
 | VIS-1, VIS-2 | `-\[[0-9]+px\]` (Tailwind arbitrary values), `margin:\s*[0-9]+px`, `padding:\s*[0-9]+px` | Off-scale spacing |
 | VIS-4 | `font-size:`, `text-\[`, `fontSize` | Count distinct sizes; leading per size; measure on paragraphs |
+| VIS-8 | `text-red`, `text-green`, `color: red`, `color: green`, status dots without text | Meaning also carried by text, an icon or a shape |
 | VIS-9 | `invert(`, `#000\b`, `#fff\b` in dark styles, `dark:` | Real dark surfaces, not inversion |
 | VIS-10 | `border-radius:`, `rounded-` | Scale, nested radius (`R − b − p`), flush images and control thumbs, full radius on multi-line boxes |
 | VIS-11 | `box-shadow:`, `shadow-` | Only floating layers; x offset 0 everywhere; contact plus soft layer; negative spread on the soft layer |
@@ -80,6 +82,7 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | VIS-2 | `:last-child\s*\{\s*margin` | Sibling spacing moved to `gap` on the parent |
 | VIS-4 | `<h[1-6][^>]*>[^<]*<br`, `clamp\([^,]+,\s*[0-9.]+vw\s*,` | `text-wrap: balance` instead of hard breaks; a rem term in fluid sizes |
 | VIS-21 | `addEventListener\(['"]scroll`, `100vh`, `height:\s*100%`, `translate\(-50%,\s*-50%\)`, `!important`, `innerWidth`, `scroll-snap-type:[^;]*mandatory` | Sticky, `dvh`, grid centring, container queries or `@layer` would state it directly |
+| DAT-13 | `beginAtZero`, `min:` on value axes, `domain=` | Bar charts start at zero; deltas computed; series not told apart by colour alone |
 | DAT-14 | `delta`, `trend`, `change`, `KpiCard`, `StatCard`, `progressbar` near goal or target | A period on every delta, colour by metric direction, at most 4 cards, `<meter>` for goals |
 | VIS-20 | Nested `Card` components, `<a` wrapping a whole card with buttons inside | One entity, one target, no nested cards |
 

@@ -23,10 +23,10 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/SKILL.md` and `references/repor
 | A severity (`P0`, `P0 P1`) | Fix the open findings of that severity from `UX-AUDIT.md`. |
 | Audit IDs (`F-001 F-004`) | Fix those findings from `UX-AUDIT.md`. |
 | Review IDs (`R-001 R-003`) | Fix those findings from the most recent review in this conversation; if there is none, ask the user to run `/ux-review` first. |
-| A path or glob | Inventory that scope and check the rules that apply (same method as the audit, no report file). Fix the P0 and P1 problems; list the P2 problems and ask before applying them. |
+| A path or glob | Inventory that scope and check the rules that apply (same method as the audit, no report file). List the findings first. Fix the P0 and P1 problems that are local and leave the look unchanged (labels, focus, states, semantics); ask before applying any that change visible design, and before any P2. |
 | Empty | If `UX-AUDIT.md` exists, ask whether to work through it or a specific path; otherwise ask which path to refactor. |
 
-Look for `UX-AUDIT.md` in the target path first, then at the repository root. If the target needs it and it does not exist, say so and suggest `/ux-audit`, or offer to refactor a path directly.
+Look for `UX-AUDIT.md` and `.ux-ignore.md` in the target path when it is a path, otherwise in the current directory, then at the repository root. If the target needs it and it does not exist, say so and suggest `/ux-audit`, or offer to refactor a path directly.
 
 Before editing, check that each finding still applies to the current code. Mark findings that no longer apply as `fixed (already resolved)`.
 
@@ -43,7 +43,9 @@ Make local fixes directly. Do not make the change yourself when a fix would:
 - introduce a token system, a new dependency or a new shared component library;
 - change behaviour users rely on (navigation structure, what a button does, apply-on-change vs explicit save);
 - touch more than about 15 files for one finding;
-- change copy that looks product- or legally-owned (pricing, consent text, claims that need real numbers).
+- change copy that looks product- or legally-owned (pricing, consent text, claims that need real numbers);
+- change the value of an existing shared token (a colour, radius or type step) that other screens use, rather than adding a new one;
+- replace a confirmation with undo, or otherwise need server changes (soft delete, idempotency keys, a new pagination model).
 
 Mark such findings `needs decision (question)`, carry on with the rest, and ask all the questions together at the end, each with your recommendation.
 

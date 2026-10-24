@@ -7,7 +7,7 @@ description: Use when building, changing or reviewing user-interface code (compo
 
 Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 137 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
 
-The rules describe relationships, not a palette: "one accent, only on the primary action", "inner radius = outer − padding", "exits about 40% shorter than entrances". Always use the project's own colours, fonts and tokens. Never copy the colours shown in the videos.
+The rules describe relationships, not a palette: "one accent, only on the primary action", "inner radius = outer − border − padding", "exits about 40% shorter than entrances". Always use the project's own colours, fonts and tokens. Never copy the colours shown in the videos.
 
 ## Core beliefs
 
@@ -68,7 +68,7 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Typing or "thinking" indicators | `states-feedback.md` | STA-18 |
 | Any animation or transition | `motion.md` | MOT-0…16 |
 | Styles, theming, dark mode, tokens, typography, icons, layering | `visual-system.md` | VIS-1…20 |
-| Page shells, sticky headers, full-height or centred layout, container-responsive components | `visual-system.md` | VIS-21, VIS-2 |
+| Page shells, sticky headers, full-height or centred layout, container-responsive components | `visual-system.md` | VIS-21, VIS-13, VIS-18 |
 | Landing page, hero, pricing, onboarding | `content-persuasion.md`, `visual-system.md` | CON-2…5, CON-8, CON-9, CON-11, CON-13, VIS-12 |
 | Success screens, completion states | `content-persuasion.md`, `motion.md` | CON-5, MOT-15 |
 | Progress bars, uploads, long-running jobs | `states-feedback.md`, `forms.md` | STA-17, FRM-16 |
@@ -101,7 +101,7 @@ All files are in `references/`. `sources.md` maps every video to the file that h
 | Touch target | at least 44 × 44 px on touch, never below 24 × 24 px |
 | Text contrast | 4.5:1 body, 3:1 large text and UI parts |
 | Focus ring | 2 px, 2 px offset, 3:1 contrast, `:focus-visible` |
-| Nested radius | inner = outer − padding |
+| Nested radius | inner = outer − border − padding |
 | Colour roles | about 60% dominant neutral, 30% secondary surface, 10% one accent |
 | Type | about 5 sizes on one ratio, 2 to 3 weights, measure 45 to 75 characters |
 | Table rows | about 40 / 48 / 56 px density token |
@@ -123,7 +123,7 @@ All files are in `references/`. `sources.md` maps every video to the file that h
 
 - Motion: the crisp profile caps every duration at 150 ms and turns springs off; the lively profile uses the 200 to 300 ms entrances and small springs (MOT-0).
 - Shadows: floating layers get shadows; page panels and rows use surface steps and hairlines (VIS-11). Dark mode uses lightness for elevation (VIS-9).
-- Zebra stripes: only for very wide tables; otherwise a hairline and hover tint (DAT-2).
+- Zebra stripes: only at comfortable density or on very wide tables; otherwise a hairline and hover tint (DAT-2).
 - Validation: on blur by default, live after the first error, live checklists for rule-based fields like passwords (FRM-3, FRM-5).
 - Disabled buttons: keep submit active and explain blockers; while a request runs the button is busy, not disabled (FRM-4, FRM-10).
 - The project's established design system wins over a generic number here, unless it causes a P0 problem (accessibility, data loss, deception). Then say so.

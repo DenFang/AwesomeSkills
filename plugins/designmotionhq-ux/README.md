@@ -11,8 +11,6 @@ The rules describe relationships, not a palette, so they work with any brand col
 /plugin install designmotionhq-ux@awesome-skills
 ```
 
-Or in one step (Claude Code 2.1.275+): `/plugin install designmotionhq-ux --marketplace DenFang/AwesomeSkills`.
-
 ## What you get
 
 | Part | How it runs | What it does |

@@ -17,7 +17,6 @@ Use the severity written on the rule. When a rule gives a range (for example "P0
 Every finding uses this block. Audit findings are numbered `F-001`, `F-002`, … and review findings `R-001`, `R-002`, …, in report order, so the refactor command can target them.
 
 ```markdown
-
 ### F-007 · P1 · STA-7 · Errors say what happened and offer a way out
 - **Where:** `src/features/invoices/InvoiceList.tsx:84`
 - **Evidence:** `catch (e) { setError("Something went wrong") }` shows a generic message with no retry.
@@ -53,7 +52,7 @@ Score each area that exists in the scope from 0 to 4. Mark an area `n/a` when th
 ```markdown
 # UX audit · <project name> · <YYYY-MM-DD>
 
-Scope: <paths audited> · Stack: <framework, styling, platform> · Product type: <tool | consumer app | marketing site | mixed, and why> · Motion profile: <crisp | lively>
+Scope: <paths audited> · Stack: <framework, styling, platform> · Product type: <tool | brand | both, and why> · Motion profile: <crisp | lively>
 Design system: <where tokens live, or "none found">
 
 ## Summary

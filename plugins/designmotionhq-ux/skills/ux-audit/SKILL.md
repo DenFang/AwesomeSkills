@@ -37,8 +37,8 @@ Keep these notes separate from the rule findings until step 5, so the systematic
 ## 4. Systematic pass
 
 1. **Fast sweep.** Run the searches in `references/detection.md` for the rules that apply. Treat every match as a lead and open the code to confirm. Count how often each pattern appears.
-2. **P0 rules first**, wherever they apply: INT-1, INT-2, INT-4, INT-9, INT-11, INT-12, FRM-2, FRM-10, FRM-11, STA-1, STA-7, DAT-13, VIS-7, VIS-8, MOT-13, CON-8, CON-9, CON-10 (single-key shortcuts while typing), CON-12 (false urgency, loss threats).
-3. **Then the module rules** from the routing table for each element in the inventory: states (STA-1…16), forms (FRM-1…18), data (DAT-1…18), interaction (INT-1…22), motion (MOT-0…14), visual system (VIS-1…18), content (CON-1…9). Read the code; do not report from a regex match alone.
+2. **Rules that can be P0 first**, wherever they apply: INT-1, INT-2, INT-4, INT-9, INT-11, INT-12, FRM-2, FRM-10, FRM-11, STA-1, STA-7, DAT-13, VIS-7, VIS-8, MOT-3, MOT-12, MOT-13, CON-8, CON-9, CON-10, CON-12. Several are P0 only in the case their heading names (for example CON-10 only when single-key shortcuts fire while typing); report the severity the evidence supports.
+3. **Then the module rules** from the routing table for each element in the inventory, plus the always-on rules. For reference, the modules span states (STA-1…18), forms (FRM-1…21), data (DAT-1…19), interaction (INT-1…28), motion (MOT-0…16), visual system (VIS-1…21) and content (CON-1…13); a rule is checked only when its element is in the inventory. Read the code; do not report from a regex match alone.
 4. **Verify** each candidate finding: the element is really there, the rule really applies to it, and the evidence shows the problem. Drop anything you cannot point at.
 
 Static code cannot prove everything (contrast over images, the real feel of an animation, layout at a given width). If the app can be run without installing or configuring anything and a browser tool is available, you may check a few key screens; otherwise list such items under "Not checked" instead of guessing.

@@ -1,6 +1,6 @@
 # Sources
 
-Every rule in this skill is distilled from the public posts of [@designmotionhq](https://www.instagram.com/designmotionhq/) (reels and image carousels) and their free written breakdowns at [designmotionhq.com/patterns](https://www.designmotionhq.com/patterns). The wording here is our own; the ideas are theirs. Their videos, slides and frames are not included. Their paid plugin, UX Engine, is a separate product and was not used; where a post promoted it, only its general design advice was kept.
+Every rule in this skill is distilled from the public posts of [@designmotionhq](https://www.instagram.com/designmotionhq/) (reels and image carousels) and their free written breakdowns at [designmotionhq.com/patterns](https://www.designmotionhq.com/patterns). The wording is original; the ideas are theirs. Their videos, slides and frames are not included. Their paid plugin, UX Engine, is a separate product and was not used; where a post promoted it, only its general design advice was kept.
 
 Colours shown in the posts are deliberately left out: the rules describe relationships (contrast, roles, steps), so they apply to any palette.
 
