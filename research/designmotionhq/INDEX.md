@@ -98,7 +98,7 @@ Posts with a breakdown: 129 of 129. Extra breakdowns of videos not on the profil
 | 2026-08-13 | [Db78b8stxa6](https://www.instagram.com/reel/Db78b8stxa6/) | reel | Pull-to-refresh: six decisions | ui | [20260813_Db78b8stxa6.md](20260813_Db78b8stxa6.md) |
 | 2026-08-15 | [DcGQMxYNjxh](https://www.instagram.com/reel/DcGQMxYNjxh/) | reel | Resizable panels: six rules for one drag | ui | [20260815_DcGQMxYNjxh.md](20260815_DcGQMxYNjxh.md) |
 | 2026-08-17 | [DcLaVaGNfoy](https://www.instagram.com/reel/DcLaVaGNfoy/) | reel | Scroll is state: restore position on back | ui | [20260817_DcLaVaGNfoy.md](20260817_DcLaVaGNfoy.md) |
-| 2026-08-19 | [DcN-inqir1F](https://www.instagram.com/p/DcN-inqir1F/) | carousel | UX Engine plugin promo | off-topic | [20260819_DcN-inqir1F.md](20260819_DcN-inqir1F.md) |
+| 2026-08-19 | [DcN-inqir1F](https://www.instagram.com/p/DcN-inqir1F/) | carousel | UX checklists from the UX Engine promo: design before code, audit, review, restyle | ui | [20260819_DcN-inqir1F.md](20260819_DcN-inqir1F.md) |
 | 2026-08-20 | [DcS6-2ltaLc](https://www.instagram.com/reel/DcS6-2ltaLc/) | reel | Copy-to-clipboard done right | ui | [20260820_DcS6-2ltaLc.md](20260820_DcS6-2ltaLc.md) |
 | 2026-08-23 | [DcYUpuzthq-](https://www.instagram.com/reel/DcYUpuzthq-/) | reel | Double-submit prevention: one tap, one charge | ui | [20260823_DcYUpuzthq-.md](20260823_DcYUpuzthq-.md) |
 | 2026-08-25 | [DcYX_cxNfOA](https://www.instagram.com/reel/DcYX_cxNfOA/) | reel | Numbers that line up: five formatting rules | ui | [20260825_DcYX_cxNfOA.md](20260825_DcYX_cxNfOA.md) |
