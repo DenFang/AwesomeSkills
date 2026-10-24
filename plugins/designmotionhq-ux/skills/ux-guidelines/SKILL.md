@@ -1,11 +1,11 @@
 ---
 name: ux-guidelines
-description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions designmotionhq. 122 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
+description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions designmotionhq. 133 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
 ---
 
 # UX guidelines (designmotionhq)
 
-Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 122 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
+Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 133 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
 
 The rules describe relationships, not a palette: "one accent, only on the primary action", "inner radius = outer − padding", "exits about 40% shorter than entrances". Always use the project's own colours, fonts and tokens. Never copy the colours shown in the videos.
 
@@ -42,21 +42,29 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 |---|---|---|
 | Fetches, submits or waits (any data component) | `states-feedback.md` | STA-1…10 |
 | Form, sign-up, login, checkout | `forms.md`, `states-feedback.md` | FRM-1…11, FRM-18, STA-7, STA-10 |
+| Checkboxes, radios, switches, segmented controls, selects | `forms.md` | FRM-13, FRM-19 |
+| Chat or AI prompt composer | `forms.md`, `states-feedback.md`, `data-display.md` | FRM-20, STA-18, DAT-16 |
 | Password, OTP, masked input | `forms.md` | FRM-5, FRM-6, FRM-7 |
 | Date picker, slider, toggle, inline edit, upload | `forms.md` | FRM-13…17 |
 | Settings page | `forms.md`, `interaction.md` | FRM-12, FRM-13, INT-9 |
-| Table, records list | `data-display.md` | DAT-1…9 |
+| Table, records list, admin screen | `data-display.md` | DAT-1…9, DAT-19 |
 | Search, filters, command palette | `data-display.md` | DAT-10…12 |
 | Dashboard, charts, metric tiles | `data-display.md`, `content-persuasion.md` | DAT-1, DAT-13, DAT-14, CON-6 |
 | Avatars, chat, ratings, calendar | `data-display.md` | DAT-15…18 |
 | Modal, sheet, drawer, popover, tooltip, menu, dropdown | `interaction.md`, `motion.md` | INT-3…8, MOT-1, MOT-2, MOT-10 |
-| Navigation, tabs, app shell | `interaction.md` | INT-16, INT-17 |
+| Navigation, tabs, app shell | `interaction.md`, `data-display.md` | INT-16, INT-17, DAT-8 |
+| Tree view, folder tree | `interaction.md` | INT-24 |
+| Kanban or column board | `interaction.md` | INT-13, INT-26 |
+| Mobile layout, responsive version of a desktop screen | `interaction.md`, `data-display.md` | INT-27, INT-11, DAT-6 |
+| Permission requests (notifications, camera, location) | `interaction.md` | INT-23 |
+| Hold-to-record, voice messages | `interaction.md` | INT-25 |
 | Buttons, cards, any clickable element | `interaction.md`, `motion.md`, `visual-system.md` | INT-10, MOT-3, MOT-9, VIS-19, VIS-20 |
 | Destructive or bulk actions | `interaction.md`, `states-feedback.md`, `data-display.md` | INT-9, STA-14, DAT-4, DAT-5 |
 | Drag and drop, swipe, pull to refresh | `interaction.md`, `motion.md` | INT-13…15, MOT-14 |
 | Accordion, resizable panel, colour picker, custom widget | `interaction.md`, `motion.md` | INT-18…22, MOT-7, MOT-8 |
 | Toasts, banners, badges, copy buttons, offline support | `states-feedback.md` | STA-11…16 |
-| Any animation or transition | `motion.md` | MOT-0…15 |
+| Typing or "thinking" indicators | `states-feedback.md` | STA-18 |
+| Any animation or transition | `motion.md` | MOT-0…16 |
 | Styles, theming, dark mode, tokens, typography, icons, layering | `visual-system.md` | VIS-1…20 |
 | Landing page, hero, pricing, onboarding | `content-persuasion.md`, `visual-system.md` | CON-2…5, CON-8, CON-9, CON-11, VIS-12 |
 | Success screens, completion states | `content-persuasion.md`, `motion.md` | CON-5, MOT-15 |
@@ -65,6 +73,7 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Interface copy (labels, errors, CTAs) | `content-persuasion.md` | CON-1, FRM-18 |
 | "It looks AI-made" | `content-persuasion.md`, `visual-system.md` | CON-3, CON-6, CON-7, VIS-5, VIS-12 |
 | Pricing, checkout, sign-up, cancellation, consent, feeds | `content-persuasion.md` | CON-8, CON-9 |
+| Streaks, feeds, autoplay, notifications | `content-persuasion.md` | CON-12 |
 | Collaboration, presence | `interaction.md` | INT-20 |
 
 All files are in `references/`. `sources.md` maps every video to the file that holds its rules. Load only the files the inventory needs.

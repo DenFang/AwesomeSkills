@@ -25,6 +25,11 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | FRM-5 | `onPaste`, `type="password"` | Paste not blocked; reveal toggle; `autocomplete` set |
 | VIS-7 | Muted text tokens and classes (`text-gray-400`, `text-slate-400`, `opacity-50` on text, `#999`, `#aaa`) | Contrast against the real background |
 | MOT-13 | `prefers-reduced-motion`, `motion-reduce:` | Exists at all; JS animation libraries honour it |
+| FRM-1 | `:autofill`, `-webkit-autofill` | Autofill styled on themed or dark forms |
+| FRM-6 | `type="number"` | Only on real quantities, never codes, postal codes or card numbers |
+| FRM-19 | `role="switch"`, `Switch`, `Toggle` near a Save button; `indeterminate` | Commit model matches the control; parent checkbox has a mixed state |
+| INT-23 | `requestPermission`, `getUserMedia`, `geolocation.getCurrentPosition`, `requestAuthorization`, `POST_NOTIFICATIONS` | Asked from a user action with a benefit card first; denied state links to settings |
+| INT-27 | `user-scalable=no`, `maximum-scale=1`, `position:\s*fixed;?\s*bottom:\s*0`, `text-sm` or `font-size:\s*1[0-5]px` on inputs | No zoom lock; safe-area padding; 16 px inputs on phones |
 
 ## States and feedback
 
@@ -39,6 +44,8 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | STA-11 | `toast(`, `enqueueSnackbar`, `notify(` | Duration by severity, errors persistent, dismissible, announced |
 | STA-14 | *(literal)* `confirm(`, `Are you sure` | Undo instead, or named verbs on the buttons |
 | STA-15 | `clipboard.writeText` | try/catch, raw value, reset, `aria-live` |
+| STA-18 | `typing`, `isTyping`, `showTypingIndicator`, `delay(`, `sleep(` near message sending | Indicator bound to real activity; no artificial delay |
+| STA-17 | `upload`, `onUploadProgress`, `progress` events with `animate-spin` | Determinate bar when `loaded`/`total` exist |
 | FRM-10 | `onSubmit`, `handleSubmit`, `mutate(`, payment and create handlers | In-flight guard, busy state, idempotency where money is involved |
 | FRM-11 | `autosave`, `onChange=\{[^}]*save`, `debounce` | Debounced, honest status, conflict handling |
 
@@ -51,6 +58,8 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | MOT-6 | `linear` in transitions | Only on continuous motion |
 | MOT-8 | `transition:.*(height\|width\|top\|left\|margin)`, `transition: all`, `transition-all`, `hover:scale` on grid items | Layout animation, `height: auto`, footprint changes |
 | MOT-12 | `addEventListener\(['"]scroll` | Could be a CSS scroll timeline |
+| MOT-15 | `confetti`, `canvas-confetti`, `party` | Only on rare milestones; reduced motion |
+| MOT-16 | `startViewTransition`, `view-transition-name` | Feature check, unique names, reduced motion |
 
 ## Visual system
 
@@ -65,6 +74,8 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | VIS-18 | `z-index:\s*[0-9]{3,}`, `z-\[` | z-index wars, missing stacking contexts |
 | DAT-1 | `tabular-nums`, numeric table cells, `text-center` on numbers | Tabular figures and right alignment |
 | DAT-9 | `truncate`, `text-overflow: ellipsis` inside flex | `min-width: 0` present |
+| DAT-8 | `scrollTo\(0,\s*0\)`, `scrollRestoration` | Position restored on back; sticky headers cleared with `scroll-padding-top` |
+| VIS-20 | Nested `Card` components, `<a` wrapping a whole card with buttons inside | One entity, one target, no nested cards |
 
 ## Content
 
@@ -75,3 +86,5 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | CON-6 | *(literal)* `Welcome back` | Greeting as page title |
 | CON-8 | Hard-coded counts near "chose", "users", "customers", strike-through prices | Claims backed by real data |
 | CON-9 | `defaultChecked` on consent or upsell, fees added only in final checkout step, countdown timers | Dark patterns |
+| CON-10 | `keydown` handlers matching single letters | Ignored while typing in a field |
+| CON-12 | `streak`, `autoplay`, `IntersectionObserver` for infinite loading | Forgiving streaks, cancellable autoplay, an end state or Load more |
