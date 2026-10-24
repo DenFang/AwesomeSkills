@@ -1,11 +1,11 @@
 ---
 name: ux-guidelines
-description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions designmotionhq. 116 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
+description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions designmotionhq. 122 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
 ---
 
 # UX guidelines (designmotionhq)
 
-Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 116 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
+Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 122 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
 
 The rules describe relationships, not a palette: "one accent, only on the primary action", "inner radius = outer − padding", "exits about 40% shorter than entrances". Always use the project's own colours, fonts and tokens. Never copy the colours shown in the videos.
 
@@ -51,14 +51,17 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Avatars, chat, ratings, calendar | `data-display.md` | DAT-15…18 |
 | Modal, sheet, drawer, popover, tooltip, menu, dropdown | `interaction.md`, `motion.md` | INT-3…8, MOT-1, MOT-2, MOT-10 |
 | Navigation, tabs, app shell | `interaction.md` | INT-16, INT-17 |
-| Buttons, cards, any clickable element | `interaction.md`, `motion.md` | INT-10, MOT-3, MOT-9 |
+| Buttons, cards, any clickable element | `interaction.md`, `motion.md`, `visual-system.md` | INT-10, MOT-3, MOT-9, VIS-19, VIS-20 |
 | Destructive or bulk actions | `interaction.md`, `states-feedback.md`, `data-display.md` | INT-9, STA-14, DAT-4, DAT-5 |
 | Drag and drop, swipe, pull to refresh | `interaction.md`, `motion.md` | INT-13…15, MOT-14 |
 | Accordion, resizable panel, colour picker, custom widget | `interaction.md`, `motion.md` | INT-18…22, MOT-7, MOT-8 |
 | Toasts, banners, badges, copy buttons, offline support | `states-feedback.md` | STA-11…16 |
-| Any animation or transition | `motion.md` | MOT-0…14 |
-| Styles, theming, dark mode, tokens, typography, icons, layering | `visual-system.md` | VIS-1…18 |
-| Landing page, hero, pricing, onboarding | `content-persuasion.md`, `visual-system.md` | CON-2…5, CON-8, CON-9, VIS-12 |
+| Any animation or transition | `motion.md` | MOT-0…15 |
+| Styles, theming, dark mode, tokens, typography, icons, layering | `visual-system.md` | VIS-1…20 |
+| Landing page, hero, pricing, onboarding | `content-persuasion.md`, `visual-system.md` | CON-2…5, CON-8, CON-9, CON-11, VIS-12 |
+| Success screens, completion states | `content-persuasion.md`, `motion.md` | CON-5, MOT-15 |
+| Progress bars, uploads, long-running jobs | `states-feedback.md`, `forms.md` | STA-17, FRM-16 |
+| Keyboard shortcuts | `content-persuasion.md`, `data-display.md` | CON-10, DAT-12 |
 | Interface copy (labels, errors, CTAs) | `content-persuasion.md` | CON-1, FRM-18 |
 | "It looks AI-made" | `content-persuasion.md`, `visual-system.md` | CON-3, CON-6, CON-7, VIS-5, VIS-12 |
 | Pricing, checkout, sign-up, cancellation, consent, feeds | `content-persuasion.md` | CON-8, CON-9 |

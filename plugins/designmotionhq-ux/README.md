@@ -17,7 +17,7 @@ Or in one step (Claude Code 2.1.275+): `/plugin install designmotionhq-ux --mark
 
 | Part | How it runs | What it does |
 |---|---|---|
-| `ux-guidelines` skill | Automatically, whenever Claude builds or changes UI | 116 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
+| `ux-guidelines` skill | Automatically, whenever Claude builds or changes UI | 122 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
 | `/ux-audit [path]` | You run it | Checks the whole codebase (or a path) in two passes (designer's read, then rule by rule), scores each area 0 to 4 and writes a prioritised `UX-AUDIT.md`; changes no code |
 | `/ux-review [ref \| range \| branch \| PR]` | You run it | Checks only the changes on your branch, in the working tree, or in a range or PR, and gives a verdict |
 | `/ux-refactor [audit \| P0 \| F-001 … \| R-001 … \| path]` | You run it | Fixes problems from the audit, from the last review, or on a path; runs your checks and records what was fixed |
