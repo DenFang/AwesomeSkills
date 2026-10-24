@@ -40,7 +40,7 @@ None of this is a bug, so tests won't catch it. A good designer would catch it i
 
 137 UI/UX rules that Claude follows while it builds, and checks when you ask. It reviews your code the way a senior product designer would, and only for the elements you actually have.
 
-`/uichecker:audit` · `/uichecker:review` · `/uichecker:refactor`
+`/uichecker:build` · `/uichecker:audit` · `/uichecker:review` · `/uichecker:refactor`
 
 </td>
 <td width="50%" valign="top">
@@ -50,7 +50,7 @@ None of this is a bug, so tests won't catch it. A good designer would catch it i
 
 Three design skills review the same UI on their own. You get one score out of 100: what they agree on, where they disagree (you choose), and what only one of them noticed.
 
-`/ultimatedesign:audit` · `/ultimatedesign:review` · `/ultimatedesign:apply`
+`/ultimatedesign:build` · `/ultimatedesign:audit` · `/ultimatedesign:review` · `/ultimatedesign:apply`
 
 </td>
 </tr>
@@ -100,10 +100,11 @@ Most checklists throw every rule at every file. uichecker first lists the elemen
 
 It also doesn't care about your colours. The rules are about relationships, such as "one accent, only on the main action" or "exits about 40% shorter than entrances". So they work with any brand and any stack: React, Vue, Svelte, plain CSS, Tailwind, React Native, SwiftUI and more.
 
-### Three commands
+### Four commands
 
 | Command | When to use it | What you get |
 |---|---|---|
+| `/uichecker:build <what>` | When you start a new screen or component | New UI with every state, input method and motion rule built in, self-checked |
 | `/uichecker:audit [path]` | Once, on the whole project | A scored report, area by area, saved to `UX-AUDIT.md` |
 | `/uichecker:review [branch \| PR]` | Before every merge | A verdict on your changes only |
 | `/uichecker:refactor [P0 \| F-001 … \| path]` | After an audit or review | The fixes, followed by your lint, tests and build |
@@ -171,10 +172,11 @@ flowchart LR
 - 🔦 **Blind spots get covered.** Anything only one skill caught gets its own section, so you see what each skill adds.
 - 📈 **One score you can track.** Each area is scored, and so is the whole UI out of 100, next to each skill's own score.
 
-### Three commands
+### Four commands
 
 | Command | What it does |
 |---|---|
+| `/ultimatedesign:build <what> [--ask-first \| --ask-along \| --auto]` | Builds new UI by all three skills. Where they disagree, you choose: before it starts, along the way, or it takes the recommendations. Without a flag it asks you which |
 | `/ultimatedesign:audit [path] [--deep]` | Reviews the whole project and writes `ULTIMATE-DESIGN.md`. `--deep` adds impeccable's heuristic critique |
 | `/ultimatedesign:review [branch \| PR]` | Reviews only your changes, with a verdict |
 | `/ultimatedesign:apply [recommended \| P0 \| U-001 … \| D-1=A …]` | Applies the fixes and the options you picked, then runs your checks |

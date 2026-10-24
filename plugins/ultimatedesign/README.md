@@ -43,6 +43,7 @@ If one of them is missing, UltimateDesign runs with the other two and says what 
 
 | Command | What it does |
 |---|---|
+| `/ultimatedesign:build <what to build> [--ask-first \| --ask-along \| --auto]` | Builds new UI by all three skills: their guidance per element merged into one checklist, their disagreements put to you as choices, asked before building, along the way, or taken as recommended. Without a flag it asks you which. |
 | `/ultimatedesign:audit [path] [--deep] [--current \| --lite]` | Whole project (or a path). Writes `ULTIMATE-DESIGN.md`: score, agreed findings, single-skill findings, decisions, coverage. `--deep` adds impeccable's heuristic critique. Changes no code. |
 | `/ultimatedesign:review [ref \| range \| branch \| PR] [--current \| --lite]` | Only the changes on your branch, in the working tree, or in a range or PR. Verdict in the conversation. |
 | `/ultimatedesign:apply [recommended \| P0 \| U-001 … \| D-1=A …]` | Applies the fixes and the options you chose, runs your checks, updates the report. |
@@ -69,6 +70,7 @@ Use the full names: uichecker has commands with the same short names (`/uichecke
 
 - Reads your project's UI files and the member skills' own files; runs `git` (to collect a diff), `ls` (to locate the installed skills) and, read-only, the member skills' bundled scripts: impeccable's `scripts/impeccable detect` and ui-ux-pro-max's `search.py` database search.
 - In full mode starts one subagent per member skill for each audit or review; `--current` and `--lite` use none.
+- `build` creates and edits the files of the new UI; it asks before letting a member skill write its own project files (impeccable's `PRODUCT.md` or `DESIGN.md`, a ui-ux-pro-max design system).
 - Writes only `ULTIMATE-DESIGN.md` during an audit; `apply` edits the files of the findings you choose and runs your project's own checks (lint, tests, build).
 - UltimateDesign itself sends nothing anywhere and has no hooks or MCP servers. One member does: impeccable's launcher downloads its engine binary once, on first use, if it is not cached yet (`~/.impeccable/bin`).
 

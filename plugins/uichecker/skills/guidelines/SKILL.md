@@ -152,6 +152,7 @@ The user owns their product. If they insist on something a rule advises against,
 
 The user runs these; suggest them when they fit:
 
+- `/uichecker:build <what to build>` builds a new screen, flow or component with these rules applied from the start, then self-checks it.
 - `/uichecker:audit [path]` checks the whole codebase (or a path) and writes a prioritised report to `UX-AUDIT.md`.
 - `/uichecker:review [base ref | range | branch | PR number]` checks only the changes on the current branch or in the working tree. Always give the full name: `/review` is a different, built-in command.
 - `/uichecker:refactor [audit | P0 | F-001 … | R-001 … | path]` fixes problems directly, from the audit report, or from the last review.
