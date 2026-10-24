@@ -53,6 +53,13 @@ Use the full names: uichecker has commands with the same short names (`/uichecke
 2. `/ultimatedesign:apply P0 D-1=A D-2=B` → blocking issues plus your choices; or `/ultimatedesign:apply recommended`.
 3. Before each merge: `/ultimatedesign:review`, then `/ultimatedesign:apply U-…` for what it finds.
 
+## What it runs and writes
+
+- Reads your project's UI files and the member skills' own files; runs `git` (to collect a diff), `find` (to locate the installed skills) and, read-only, the member skills' bundled local scripts: impeccable's `detect.mjs` detector and ui-ux-pro-max's `search.py` database search.
+- Starts one subagent per member skill for each audit or review.
+- Writes only `ULTIMATE-DESIGN.md` during an audit; `apply` edits the files of the findings you choose and runs your project's own checks (lint, tests, build).
+- Sends nothing anywhere and downloads nothing; no hooks, no MCP servers.
+
 ## Credits
 
 impeccable (Apache-2.0) and ui-ux-pro-max (MIT) belong to their authors and are not bundled here; UltimateDesign only finds and runs the copies you have installed. The orchestration, merge rules and scoring are original (MIT).

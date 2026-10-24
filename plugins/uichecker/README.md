@@ -53,6 +53,12 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 
 `sources.md` maps every Instagram post to the rule files it produced and links its written breakdown in [`research/designmotionhq/`](../../research/designmotionhq/INDEX.md).
 
+## What it runs and writes
+
+- Reads your project's UI files and runs read-only searches (`rg`/grep) and `git` (to collect a diff for review).
+- `audit` writes only `UX-AUDIT.md`; `review` writes nothing; `refactor` edits the files of the findings it fixes and runs your project's own checks (lint, tests, build).
+- Sends nothing anywhere and downloads nothing; no hooks, no MCP servers, no scripts.
+
 ## Credits
 
 All ideas come from the free videos and breakdowns by [designmotionhq](https://www.designmotionhq.com/patterns). The wording, structure and commands are original; no videos, frames or paid content (UX Engine) are included. If you like the rules, follow the account.
