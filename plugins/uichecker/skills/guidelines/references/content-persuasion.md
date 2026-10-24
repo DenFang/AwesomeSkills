@@ -1,6 +1,6 @@
 # Content, flow psychology and the "AI look"
 
-Words, page structure, the psychology of flows, and the tells that make an interface look machine-generated. Persuasion rules come with honesty limits: the skill never builds dark patterns.
+Persuasion rules have honesty limits: never build dark patterns (CON-8, CON-9).
 
 Severity: **P0** deceptive or harmful, **P1** confusing or generic, **P2** polish.
 

@@ -13,7 +13,7 @@ Scope: `$ARGUMENTS` (if empty, the whole project).
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Load the topic references only when the inventory (step 2) contains elements they cover.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Also load `references/content-persuasion.md` for the holistic pass (step 3 cites CON-3, CON-5 and CON-6) and the files that hold the always-on rules: `interaction.md`, `visual-system.md`, and `motion.md` when anything moves. Load the other topic references only when the inventory (step 2) contains elements they cover.
 
 ## 2. Map the project
 
@@ -32,13 +32,13 @@ Before checking rules one by one, read the main screens as a designer would and 
 - **Flows**: the main tasks (sign up, create, pay, find) from start to end: missing states, dead ends, unclear next steps, how flows end (CON-5).
 - **Consistency**: do similar things look and behave alike across screens?
 
-Keep these notes separate from the rule findings until step 5, so the systematic checks are not anchored by first impressions. Turn each holistic problem you can locate in code into a finding with the closest rule ID.
+Keep these notes apart from the rule findings, so the systematic pass is not anchored by first impressions. In step 5, turn each holistic problem you can locate in code into a finding with the closest rule ID, and keep the rest as first-impression lines.
 
 ## 4. Systematic pass
 
 1. **Fast sweep.** Run the searches in `references/detection.md` for the rules that apply. Treat every match as a lead and open the code to confirm. Count how often each pattern appears.
 2. **Rules that can be P0 first**, wherever they apply: INT-1, INT-2, INT-4, INT-9, INT-11, INT-12, FRM-2, FRM-10, FRM-11, STA-1, STA-7, DAT-13, VIS-7, VIS-8, MOT-3, MOT-12, MOT-13, CON-8, CON-9, CON-10, CON-12. Several are P0 only in the case their heading names (for example CON-10 only when single-key shortcuts fire while typing); report the severity the evidence supports.
-3. **Then the module rules** from the routing table for each element in the inventory, plus the always-on rules. For reference, the modules span states (STA-1…18), forms (FRM-1…21), data (DAT-1…19), interaction (INT-1…28), motion (MOT-0…16), visual system (VIS-1…21) and content (CON-1…13); a rule is checked only when its element is in the inventory. Read the code; do not report from a regex match alone.
+3. **Then the module rules** from the routing table for each element in the inventory, plus the always-on rules. Read the code; do not report from a regex match alone.
 4. **Verify** each candidate finding: the element is really there, the rule really applies to it, and the evidence shows the problem. Drop anything you cannot point at.
 
 Static code cannot prove everything (contrast over images, the real feel of an animation, layout at a given width). If the app can be run without installing or configuring anything and a browser tool is available, you may check a few key screens; otherwise list such items under "Not checked" instead of guessing.

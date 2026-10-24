@@ -13,7 +13,7 @@ Target: `$ARGUMENTS`
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, then the topic references for the elements you will touch.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, then the topic references for the elements you will touch. For a path target, also read `references/detection.md` (path mode uses the audit's fast sweep).
 
 ## 2. Decide what to fix
 
@@ -26,14 +26,16 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-f
 | A path or glob | Inventory that scope and check the rules that apply (same method as the audit, no report file). List the findings first. Fix the P0 and P1 problems that are local and leave the look unchanged (labels, focus, states, semantics); ask before applying any that change visible design, and before any P2. |
 | Empty | If `UX-AUDIT.md` exists, ask whether to work through it or a specific path; otherwise ask which path to refactor. |
 
-Look for `UX-AUDIT.md` and `.ux-ignore.md` in the target path when it is a path, otherwise in the current directory, then at the repository root. If the target needs it and it does not exist, say so and suggest `/uichecker:audit`, or offer to refactor a path directly.
+Look for `UX-AUDIT.md` and `.ux-ignore.md` in the target path when it is a path, otherwise in the current directory, then at the repository root. If `UX-AUDIT.md` is still not found, search the project for it (excluding `node_modules`); if several exist, ask which one. If the target needs it and it does not exist, say so and suggest `/uichecker:audit`, or offer to refactor a path directly.
 
-Before editing, check that each finding still applies to the current code. Mark findings that no longer apply as `fixed (already resolved)`.
+If no open finding matches the requested severity or `F-`/`R-` IDs, say so and list the open findings instead. Never invent finding IDs.
 
 ## 3. Before the first edit
 
+- If the project is not a git repository, say that your edits cannot be told apart from existing changes or reverted with git, and ask before editing.
 - Run `git status`. If there are uncommitted changes, say so, so the user can tell your changes from theirs.
 - Read the project context (guidelines Step 1) and keep to its design system.
+- Check that each finding still applies to the current code. Mark findings that no longer apply as `fixed (already resolved)`.
 - If more than about 20 findings are open, work in batches by severity and run the checks (step 5) after each batch.
 
 ## 4. Fix well

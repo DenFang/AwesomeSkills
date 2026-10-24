@@ -1,7 +1,5 @@
 # States and feedback
 
-A component is not done when the happy path renders. Anything that fetches, submits or waits has states, and every one of them is designed on purpose. The user must always know what is happening, what happened, and what to do next.
-
 Severity: **P0** breaks use, loses data or misleads, **P1** friction, **P2** polish.
 
 ---

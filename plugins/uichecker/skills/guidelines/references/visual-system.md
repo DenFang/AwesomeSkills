@@ -1,6 +1,6 @@
 # Visual system
 
-Tokens, type, colour roles, spacing, radius, elevation and hierarchy. These rules are palette-independent: they define relationships (how many colours, which role gets the accent, how surfaces step), never specific brand colours. Always use the project's own palette and tokens.
+Palette-independent: always use the project's own palette and tokens.
 
 Severity: **P0** unreadable or inaccessible, **P1** inconsistent or confusing, **P2** polish.
 

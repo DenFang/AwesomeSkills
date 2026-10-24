@@ -5,10 +5,10 @@
 One run of three design skills over the same UI, merged into one scored report:
 
 - **[uichecker](../uichecker/README.md)**: 137 scoped UI/UX rules (states, forms, tables, navigation, motion, visual system, honest persuasion), checked only where their element exists.
-- **[impeccable](https://github.com/pbakaus/impeccable)** by Paul Bakaus: design fluency, anti-AI-slop guidance, technical audit (accessibility, performance, theming, responsive, anti-patterns) and heuristic critique.
+- **[impeccable](https://github.com/pbakaus/impeccable)** by Paul Bakaus: design fluency, anti-AI-slop guidance, technical audit (accessibility, performance, theming, responsive, implementation integrity) and heuristic critique.
 - **[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)** by Next Level Builder: a searchable design database (styles, palettes, font pairings, UX guidelines, stacks) and a priority-ranked checklist.
 
-Each skill reviews the code on its own, in a separate subagent, so none of them anchors on another. UltimateDesign then:
+By default each skill reviews the code on its own, in a separate subagent, so none of them anchors on another (see [Modes](#modes) for faster runs). UltimateDesign then:
 
 1. normalises their severities to one P0 to P3 scale and verifies every blocking finding against the code;
 2. groups the same problem reported by several skills into one finding with an agreement mark (3/3, 2/3, 1/3);
@@ -43,11 +43,21 @@ If one of them is missing, UltimateDesign runs with the other two and says what 
 
 | Command | What it does |
 |---|---|
-| `/ultimatedesign:audit [path] [--deep]` | Whole project (or a path). Writes `ULTIMATE-DESIGN.md`: score, agreed findings, single-skill findings, decisions, coverage. `--deep` adds impeccable's heuristic critique. Changes no code. |
-| `/ultimatedesign:review [ref \| range \| branch \| PR]` | Only the changes on your branch, in the working tree, or in a range or PR. Verdict in the conversation. |
+| `/ultimatedesign:audit [path] [--deep] [--current \| --lite]` | Whole project (or a path). Writes `ULTIMATE-DESIGN.md`: score, agreed findings, single-skill findings, decisions, coverage. `--deep` adds impeccable's heuristic critique. Changes no code. |
+| `/ultimatedesign:review [ref \| range \| branch \| PR] [--current \| --lite]` | Only the changes on your branch, in the working tree, or in a range or PR. Verdict in the conversation. |
 | `/ultimatedesign:apply [recommended \| P0 \| U-001 … \| D-1=A …]` | Applies the fixes and the options you chose, runs your checks, updates the report. |
 
 Use the full names: uichecker has commands with the same short names (`/uichecker:audit`, …), and `/review` is built into Claude Code.
+
+## Modes
+
+| Mode | Flag | How it runs | Pick it when |
+|---|---|---|---|
+| full | none | each skill in its own subagent, in parallel | you want the most independent opinions (slowest, most tokens) |
+| current | `--current` | the same three passes, one after another in this session | subagents are unavailable or you want to watch the work; same depth, a little less independent |
+| lite | `--lite` | one pass in this session: rules that say the same thing are merged into the most detailed one, rules that disagree still become your choices | you want a quick check; agreement then means "how many skills hold this rule", not "how many found it" |
+
+`--deep` works in full and current. Reports from every mode work with `/ultimatedesign:apply`.
 
 ## Typical flow
 
@@ -57,10 +67,10 @@ Use the full names: uichecker has commands with the same short names (`/uichecke
 
 ## What it runs and writes
 
-- Reads your project's UI files and the member skills' own files; runs `git` (to collect a diff), `find` (to locate the installed skills) and, read-only, the member skills' bundled local scripts: impeccable's `detect.mjs` detector and ui-ux-pro-max's `search.py` database search.
-- Starts one subagent per member skill for each audit or review.
+- Reads your project's UI files and the member skills' own files; runs `git` (to collect a diff), `ls` (to locate the installed skills) and, read-only, the member skills' bundled scripts: impeccable's `scripts/impeccable detect` and ui-ux-pro-max's `search.py` database search.
+- In full mode starts one subagent per member skill for each audit or review; `--current` and `--lite` use none.
 - Writes only `ULTIMATE-DESIGN.md` during an audit; `apply` edits the files of the findings you choose and runs your project's own checks (lint, tests, build).
-- Sends nothing anywhere and downloads nothing; no hooks, no MCP servers.
+- UltimateDesign itself sends nothing anywhere and has no hooks or MCP servers. One member does: impeccable's launcher downloads its engine binary once, on first use, if it is not cached yet (`~/.impeccable/bin`).
 
 ## Credits and license
 

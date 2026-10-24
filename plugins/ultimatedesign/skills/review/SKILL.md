@@ -1,7 +1,7 @@
 ---
 name: review
-description: Review only the UI changes on the current branch, in the working tree, or in a given range or PR with impeccable, ui-ux-pro-max and uichecker as three independent passes, then give one merged verdict with agreement and choices. Read-only.
-argument-hint: "[base ref | commit range | branch | PR number]"
+description: Review only the UI changes on the current branch, in the working tree, or in a given range or PR with impeccable, ui-ux-pro-max and uichecker, then give one merged verdict with agreement and choices. Modes - default (parallel subagents), --current (same passes in this session), --lite (one fast pass over a de-duplicated rule list). Read-only.
+argument-hint: "[base ref | commit range | branch | PR number] [--current | --lite]"
 disable-model-invocation: true
 ---
 
@@ -9,29 +9,35 @@ disable-model-invocation: true
 
 Review what changed, not the whole codebase. Do not modify any file.
 
-Target: `$ARGUMENTS`
+Target: `$ARGUMENTS`: what to review (empty for the default), optionally one mode flag, `--current` or `--lite`.
 
 ## 1. Load the method
 
-Read `${CLAUDE_PLUGIN_ROOT}/shared/passes.md`, `${CLAUDE_PLUGIN_ROOT}/shared/merge.md` and `${CLAUDE_PLUGIN_ROOT}/shared/report-format.md`.
+Read `${CLAUDE_PLUGIN_ROOT}/shared/modes.md`, `${CLAUDE_PLUGIN_ROOT}/shared/passes.md`, `${CLAUDE_PLUGIN_ROOT}/shared/merge.md` and `${CLAUDE_PLUGIN_ROOT}/shared/report-format.md`. Pick the mode (modes.md section 1); `--deep` has no effect in a review.
 
 ## 2. Find the members
 
-As in passes.md section 1. One line to the user on which copies run; fewer than two available: say so and stop.
+As in passes.md section 1. One line to the user on which copies run and in which mode; fewer than two available: say so and stop.
 
 ## 3. Collect the change
 
-Use the rules in uichecker's review command, section "Collect the change" (`<uichecker>/skills/review/SKILL.md`): the default base, ranges, branches, PR numbers read without checking out, and the filter that keeps only UI-relevant files. If nothing UI-related changed, say so in one line and stop.
+Use the rules in uichecker's review command, section "Collect the change" (`<uichecker>/skills/review/SKILL.md`): the default base, ranges, branches, PR numbers read without checking out, and the filter that keeps only UI-relevant files. Not a git repository, or nothing UI-related changed: say so in one line and stop.
 
 Write the shared brief (passes.md section 2) once, and add to it: the exact diff command, the list of changed UI files, and the instruction that findings must be introduced or touched by the change. A P0 in an untouched line of a changed component may be reported as "nearby".
 
-## 4. Run the passes
+## 4. Run and merge
 
-One subagent per available member, in parallel, in review mode (passes.md section 6), each with its folder, the shared brief, the rules from section 3 verbatim, its section 4 text and the return shape. impeccable and ui-ux-pro-max check the changed files only; uichecker follows its review procedure.
+Follow the chosen mode in modes.md, in review mode, on the change only:
 
-## 5. Merge and reply
+- **full**: section 2, one subagent per member, then merge.md steps 1 to 7;
+- **current**: section 3, the passes one after another in this session, then merge.md steps 1 to 7;
+- **lite**: section 4, the rule-level merge and one check of the changed code.
 
-Follow merge.md steps 1 to 7 on the change only, then answer in the conversation in the review layout of report-format.md:
+impeccable and ui-ux-pro-max check the changed files only; uichecker follows its review procedure.
+
+## 5. Reply
+
+Answer in the conversation in the review layout of report-format.md, with the mode in the header:
 
 - Verdict: ✅ ready (no P0 or P1), ⚠️ ready after the P1 fixes, ⛔ needs changes (any P0).
 - Findings `U-001`, … with `path:line` in the new code, their sources and agreement, and a concrete fix.

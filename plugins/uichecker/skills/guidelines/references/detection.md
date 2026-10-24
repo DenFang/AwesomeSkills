@@ -20,7 +20,7 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | INT-11 | `w-4 h-4`, `w-5 h-5`, `size-4`, `width:\s*(16\|20\|24)px` on clickable icons | Hit area padded to 44 px on touch |
 | INT-12 | `:hover`, `hover:`, `onMouseEnter`, `group-hover:opacity` | Not the only way to reach an action; `@media (hover: hover)` gating |
 | INT-7 | `title=`, `Tooltip` | Icon-only buttons also have `aria-label`; no essential content in tooltips |
-| INT-9 | `delete`, `destroy`, `remove` handlers; `confirm(` | Undo or a named confirmation; destructive styling only on destructive actions |
+| INT-9 | `delete`, `destroy`, `remove` handlers; `confirm\(` | Undo or a named confirmation; destructive styling only on destructive actions |
 | INT-28 | `breadcrumb` | Last crumb is plain text with `aria-current="page"`; the first level never folds; one back link on phones |
 | FRM-2 | `placeholder=` | A real `<label>` is associated |
 | FRM-4 | `disabled=\{!`, `:disabled="!` | Submit greyed until valid |
@@ -38,18 +38,18 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 
 | Rule | Search for | Then check |
 |---|---|---|
-| STA-1 | `useQuery`, `useSWR`, `fetch(`, `axios`, `createResource`, `load(` | Loading, empty, error branches exist where they apply |
-| STA-1 | `.map(` in JSX next to fetched data | Empty array handled |
+| STA-1 | `useQuery`, `useSWR`, `fetch\(`, `axios`, `createResource`, `load\(` | Loading, empty, error branches exist where they apply |
+| STA-1 | `\.map\(` in JSX next to fetched data | Empty array handled |
 | STA-7 | *(literal)* `Something went wrong`, `An error occurred`, `err.message`, `error.message`, `alert(` | Specific copy and a recovery action |
 | STA-7 | `catch\s*(\([^)]*\))?\s*\{\s*\}`, `\.catch\(\s*\(\)\s*=>\s*\{\s*\}\s*\)` | Errors swallowed |
 | STA-2 | `Spinner`, `Loader`, `animate-spin`, `CircularProgress` | Right pattern for the wait; no full-page spinner over known layouts |
 | STA-6 | `No data`, `No results`, `No items`, `Nothing here`, `Empty` | Explains why and offers the next action |
-| STA-11 | `toast(`, `enqueueSnackbar`, `notify(` | Duration by severity, errors persistent, dismissible, announced |
+| STA-11 | `toast\(`, `enqueueSnackbar`, `notify\(` | Duration by severity, errors persistent, dismissible, announced |
 | STA-14 | *(literal)* `confirm(`, `Are you sure` | Undo instead, or named verbs on the buttons |
 | STA-15 | `clipboard.writeText` | try/catch, raw value, reset, `aria-live` |
-| STA-18 | `typing`, `isTyping`, `showTypingIndicator`, `delay(`, `sleep(` near message sending | Indicator bound to real activity; no artificial delay |
+| STA-18 | `typing`, `isTyping`, `showTypingIndicator`, `delay\(`, `sleep\(` near message sending | Indicator bound to real activity; no artificial delay |
 | STA-17 | `upload`, `onUploadProgress`, `progress` events with `animate-spin` | Determinate bar when `loaded`/`total` exist |
-| FRM-10 | `onSubmit`, `handleSubmit`, `mutate(`, payment and create handlers | In-flight guard, busy state, idempotency where money is involved |
+| FRM-10 | `onSubmit`, `handleSubmit`, `mutate\(`, payment and create handlers | In-flight guard, busy state, idempotency where money is involved |
 | FRM-11 | `autosave`, `onChange=\{[^}]*save`, `debounce` | Debounced, honest status, conflict handling |
 
 ## Motion
@@ -72,7 +72,7 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | VIS-1, VIS-2 | `-\[[0-9]+px\]` (Tailwind arbitrary values), `margin:\s*[0-9]+px`, `padding:\s*[0-9]+px` | Off-scale spacing |
 | VIS-4 | `font-size:`, `text-\[`, `fontSize` | Count distinct sizes; leading per size; measure on paragraphs |
 | VIS-8 | `text-red`, `text-green`, `color: red`, `color: green`, status dots without text | Meaning also carried by text, an icon or a shape |
-| VIS-9 | `invert(`, `#000\b`, `#fff\b` in dark styles, `dark:` | Real dark surfaces, not inversion |
+| VIS-9 | `invert\(`, `#000\b`, `#fff\b` in dark styles, `dark:` | Real dark surfaces, not inversion |
 | VIS-10 | `border-radius:`, `rounded-` | Scale, nested radius (`R − b − p`), flush images and control thumbs, full radius on multi-line boxes |
 | VIS-11 | `box-shadow:`, `shadow-` | Only floating layers; x offset 0 everywhere; contact plus soft layer; negative spread on the soft layer |
 | VIS-18 | `z-index:\s*[0-9]{3,}`, `z-\[` | z-index wars, missing stacking contexts |
