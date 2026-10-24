@@ -10,7 +10,7 @@
     {
       "name": "designmotionhq-ux",
       "source": "./plugins/designmotionhq-ux",
-      "description": "UI/UX pattern guidelines from every @designmotionhq video, with audit, review and refactor commands.",
+      "description": "UI/UX pattern guidelines from the UI/UX videos of @designmotionhq, with audit, review and refactor commands.",
       "category": "design",
       "tags": ["ui", "ux", "design", "accessibility", "audit"]
     }

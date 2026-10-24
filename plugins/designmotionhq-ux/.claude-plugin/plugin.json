@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "designmotionhq-ux",
   "version": "1.0.0",
-  "description": "UI/UX pattern guidelines distilled from every @designmotionhq video, with audit, review and refactor commands. Palette-independent.",
+  "description": "UI/UX pattern guidelines distilled from the UI/UX videos of @designmotionhq, with audit, review and refactor commands. Palette-independent.",
   "author": {
     "name": "DenFang",
     "url": "https://github.com/DenFang"
