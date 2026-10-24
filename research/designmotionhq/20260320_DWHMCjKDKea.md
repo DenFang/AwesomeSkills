@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Proximity: spacing does the grouping
 
-**Caption:** not captured yet
+**Caption:** Proximity is the key 🔑
 **Hook:** The same 12 icons, one layout chaotic and the other instantly clear, separated by one rule: proximity.
 
 ## Main rule

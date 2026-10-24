@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Six form field states
 
-**Caption:** not captured yet
+**Caption:** Input states make form readable.
 **Hook:** A text field has six states, and most apps only ship two of them.
 
 ## Main rule

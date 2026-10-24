@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Filter chips: three states, OR/AND logic, live count, clear-all, one scrolling row
 
-**Caption:** not captured yet
+**Caption:** Filter chips should show intent
 **Hook:** Three taps take a catalogue from about 200 results down to a dozen; every one of those taps has to be visible and reversible.
 
 ## Main rule

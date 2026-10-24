@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Skeleton loading instead of spinners
 
-**Caption:** not captured yet
+**Caption:** Skeleton is the key to turn anxiety into anticipation ☝️
 **Hook:** Same loading time, completely different feeling: a spinner versus a skeleton.
 
 ## Main rule

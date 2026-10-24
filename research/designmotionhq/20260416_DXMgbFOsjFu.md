@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Empty states: five rules
 
-**Caption:** not captured yet
+**Caption:** Empty state shouldn’t be empty
 **Hook:** The empty state is the user's first impression of a feature, and most apps waste it.
 
 ## Main rule

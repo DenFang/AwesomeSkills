@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Animation timing: five duration budgets
 
-**Caption:** not captured yet
+**Caption:** Timming is the key to organic animations
 **Hook:** The same confirm-dialog animation played at two durations (500 ms vs 250 ms) feels completely different; the viewer perceives the difference without being told.
 
 ## Main rule

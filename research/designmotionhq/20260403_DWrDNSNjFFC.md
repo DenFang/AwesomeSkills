@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Gradient design: four rules from cheap to premium
 
-**Caption:** not captured yet
+**Caption:** The perfect gradient ☝️
 **Hook:** Two "Get Started" buttons with gradients; one looks cheap and one looks expensive, and the difference is a few construction rules.
 
 ## Main rule

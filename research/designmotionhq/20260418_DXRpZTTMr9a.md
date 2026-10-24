@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Toast notifications: five rules
 
-**Caption:** not captured yet
+**Caption:** Toasts make you app feel reactive.
 **Hook:** Most toasts break three of these five rules.
 
 ## Main rule

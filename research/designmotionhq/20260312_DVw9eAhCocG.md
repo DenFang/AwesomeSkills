@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Visual hierarchy: five levers that decide what users see first
 
-**Caption:** not captured yet
+**Caption:** Visual hierarchy changes everything 5 rules that will transform your UI → save for later
 **Hook:** Same layout and same content, but one version grabs attention instantly; five rules make the difference.
 
 ## Main rule

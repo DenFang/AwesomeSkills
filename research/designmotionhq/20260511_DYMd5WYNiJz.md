@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Zeigarnik effect: open loops in progress UI
 
-**Caption:** not captured yet
+**Caption:** The Zeigarnik Effect 🧠
 **Hook:** One progress bar pulls you in and the other does not, because unfinished tasks stay on your mind.
 
 ## Main rule

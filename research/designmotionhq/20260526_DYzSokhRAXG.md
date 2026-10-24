@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Stepper wizard: chunk a long form into steps
 
-**Caption:** not captured yet
+**Caption:** Wizard is the key for structured forms
 **Hook:** Twelve fields make one wall; four steps make one path.
 
 ## Main rule

@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Range sliders: designing around imprecise dragging
 
-**Caption:** not captured yet
+**Caption:** Sliders should be done like this
 **Hook:** Trying to drag to exactly 47 the readout jitters between 46, 47 and 49; a finger cannot tell 47 from 48.
 
 ## Main rule

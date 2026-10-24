@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Optimistic UI: update first, sync after, roll back on failure
 
-**Caption:** not captured yet
+**Caption:** Optimistic UI bet on success
 **Hook:** Two like buttons on the same network: one waits for the server and feels slow, the other updates immediately and feels instant.
 
 ## Main rule

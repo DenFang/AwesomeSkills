@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Notification system: four surfaces, four volumes
 
-**Caption:** not captured yet
+**Caption:** Notification system is the key for a good Ux
 **Hook:** Notifications are a system; pick the wrong surface and users tune out.
 
 ## Main rule

@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Search experience system: five parts most apps skip
 
-**Caption:** not captured yet
+**Caption:** Search is a system and not just an input.
 **Hook:** Search is not one input but a system of five parts, and most apps ship only the bare box.
 
 ## Main rule

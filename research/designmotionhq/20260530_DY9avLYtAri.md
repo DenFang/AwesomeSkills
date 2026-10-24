@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Toggle anatomy: proportions, morph, accessibility, async state
 
-**Caption:** not captured yet
+**Caption:** Toggles UX deserve all those rules
 **Hook:** Two toggles side by side: one snaps between states, the other morphs, and the morphing one feels like a real control.
 
 ## Main rule

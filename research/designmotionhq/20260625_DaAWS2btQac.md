@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Color picker UX: format, memory, live contrast, alpha preview, palette output
 
-**Caption:** not captured yet
+**Caption:** Color picker should be that easy
 **Hook:** One pick recolours the whole interface (button, toggle, progress bar, badge), so the picker should help you make a good decision, not just expose a gradient and a hue slider.
 
 ## Main rule

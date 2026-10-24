@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Loading is a system, not a default skeleton
 
-**Caption:** not captured yet
+**Caption:** Loading is a system
 **Hook:** Stop using skeletons for everything; there are five loading patterns and one right choice per context.
 
 ## Main rule

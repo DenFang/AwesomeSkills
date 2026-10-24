@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Shadow elevation: layered shadows, tinted glow, slight 3D lift
 
-**Caption:** not captured yet
+**Caption:** Shadow glow can really elevate an UI
 **Hook:** The same card can sit flat or float; the difference is three layers of depth.
 
 ## Main rule

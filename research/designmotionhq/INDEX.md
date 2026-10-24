@@ -5,7 +5,7 @@ Each breakdown is written in our own words from frames, voice-over transcript an
 author's pattern page; media files are not stored in this repository.
 Dates are UTC upload dates decoded from the post shortcode.
 
-Posts with a breakdown: 37 of 129. Breakdowns waiting for their Instagram id: 38.
+Posts with a breakdown: 57 of 129. Extra breakdowns of videos not on the profile: 19.
 
 | Date | Id | Kind | Topic | Type | File |
 |---|---|---|---|---|---|
@@ -44,7 +44,7 @@ Posts with a breakdown: 37 of 129. Breakdowns waiting for their Instagram id: 38
 | 2026-04-08 | [DW3pUsiDMKp](https://www.instagram.com/p/DW3pUsiDMKp/) | carousel |  |  | not broken down yet |
 | 2026-04-10 | [DW8147gjNon](https://www.instagram.com/p/DW8147gjNon/) | carousel |  |  | not broken down yet |
 | 2026-04-10 | [DW87CGQDKbY](https://www.instagram.com/reel/DW87CGQDKbY/) | reel | Golden ratio for spacing, layout and type | ui | [20260410_DW87CGQDKbY.md](20260410_DW87CGQDKbY.md) |
-| 2026-04-12 | [DXCMEljsw3w](https://www.instagram.com/reel/DXCMEljsw3w/) | reel |  |  | not broken down yet |
+| 2026-04-12 | [DXCMEljsw3w](https://www.instagram.com/reel/DXCMEljsw3w/) | reel | Design system foundations: tokens, type scale, spacing, states, motion | ui | [20260412_DXCMEljsw3w.md](20260412_DXCMEljsw3w.md) |
 | 2026-04-13 | [DXEXGAwDAWQ](https://www.instagram.com/p/DXEXGAwDAWQ/) | carousel |  |  | not broken down yet |
 | 2026-04-16 | [DXMgbFOsjFu](https://www.instagram.com/reel/DXMgbFOsjFu/) | reel | Empty states: five rules | ui | [20260416_DXMgbFOsjFu.md](20260416_DXMgbFOsjFu.md) |
 | 2026-04-18 | [DXRpZTTMr9a](https://www.instagram.com/reel/DXRpZTTMr9a/) | reel | Toast notifications: five rules | ui | [20260418_DXRpZTTMr9a.md](20260418_DXRpZTTMr9a.md) |
@@ -68,32 +68,32 @@ Posts with a breakdown: 37 of 129. Breakdowns waiting for their Instagram id: 38
 | 2026-06-03 | [DZHt9j8t1vW](https://www.instagram.com/reel/DZHt9j8t1vW/) | reel | Star rating that does not lie | ui | [20260603_DZHt9j8t1vW.md](20260603_DZHt9j8t1vW.md) |
 | 2026-06-05 | [DZM5K5otAGy](https://www.instagram.com/reel/DZM5K5otAGy/) | reel | Charts that lie: drawing choices that change the story | ui | [20260605_DZM5K5otAGy.md](20260605_DZM5K5otAGy.md) |
 | 2026-06-08 | [DZUtKvIqrHo](https://www.instagram.com/reel/DZUtKvIqrHo/) | reel | Range sliders: designing around imprecise dragging | ui | [20260608_DZUtKvIqrHo.md](20260608_DZUtKvIqrHo.md) |
-| 2026-06-10 | [DZZ5y8cNZiE](https://www.instagram.com/reel/DZZ5y8cNZiE/) | reel |  |  | not broken down yet |
+| 2026-06-10 | [DZZ5y8cNZiE](https://www.instagram.com/reel/DZZ5y8cNZiE/) | reel | Input masking: card number field done right | ui | [20260610_DZZ5y8cNZiE.md](20260610_DZZ5y8cNZiE.md) |
 | 2026-06-12 | [DZfDbWdNTU5](https://www.instagram.com/reel/DZfDbWdNTU5/) | reel | Filter chips: three states, OR/AND logic, live count, clear-all, one scrolling row | ui | [20260612_DZfDbWdNTU5.md](20260612_DZfDbWdNTU5.md) |
-| 2026-06-15 | [DZmkBhghnD8](https://www.instagram.com/reel/DZmkBhghnD8/) | reel |  |  | not broken down yet |
+| 2026-06-15 | [DZmkBhghnD8](https://www.instagram.com/reel/DZmkBhghnD8/) | reel | OTP input: paste-first, auto-advance, one string, OS autofill, throttled resend, instant result | ui | [20260615_DZmkBhghnD8.md](20260615_DZmkBhghnD8.md) |
 | 2026-06-17 | [DZruKB6N1X0](https://www.instagram.com/reel/DZruKB6N1X0/) | reel | Command palette: five rules that make Cmd+K fast | ui | [20260617_DZruKB6N1X0.md](20260617_DZruKB6N1X0.md) |
 | 2026-06-19 | [DZxM_QoNZ0n](https://www.instagram.com/reel/DZxM_QoNZ0n/) | reel | Pagination: stable data, truncated pager, state in the URL | ui | [20260619_DZxM_QoNZ0n.md](20260619_DZxM_QoNZ0n.md) |
-| 2026-06-21 | [DZ2Dp5wt0pJ](https://www.instagram.com/reel/DZ2Dp5wt0pJ/) | reel |  |  | not broken down yet |
+| 2026-06-21 | [DZ2Dp5wt0pJ](https://www.instagram.com/reel/DZ2Dp5wt0pJ/) | reel | File upload UX: five feedback signals | ui | [20260621_DZ2Dp5wt0pJ.md](20260621_DZ2Dp5wt0pJ.md) |
 | 2026-06-23 | [DZ7NPPItOoJ](https://www.instagram.com/reel/DZ7NPPItOoJ/) | reel | Password field UX: coach while typing, don't punish after submit | ui | [20260623_DZ7NPPItOoJ.md](20260623_DZ7NPPItOoJ.md) |
 | 2026-06-25 | [DaAWS2btQac](https://www.instagram.com/reel/DaAWS2btQac/) | reel | Color picker UX: format, memory, live contrast, alpha preview, palette output | ui | [20260625_DaAWS2btQac.md](20260625_DaAWS2btQac.md) |
 | 2026-07-01 | [DaPx5yytc9Q](https://www.instagram.com/reel/DaPx5yytc9Q/) | reel | Form validation timing | ui | [20260701_DaPx5yytc9Q.md](20260701_DaPx5yytc9Q.md) |
-| 2026-07-03 | [DaU4BxwtF5N](https://www.instagram.com/reel/DaU4BxwtF5N/) | reel |  |  | not broken down yet |
+| 2026-07-03 | [DaU4BxwtF5N](https://www.instagram.com/reel/DaU4BxwtF5N/) | reel | Microcopy: words that convert | ui | [20260703_DaU4BxwtF5N.md](20260703_DaU4BxwtF5N.md) |
 | 2026-07-06 | [DaclzgJNUeQ](https://www.instagram.com/reel/DaclzgJNUeQ/) | reel | Optimistic UI: update first, sync after, roll back on failure | ui | [20260706_DaclzgJNUeQ.md](20260706_DaclzgJNUeQ.md) |
-| 2026-07-08 | [DahwAvbhOmx](https://www.instagram.com/reel/DahwAvbhOmx/) | reel |  |  | not broken down yet |
-| 2026-07-10 | [Dam5kJONlIN](https://www.instagram.com/reel/Dam5kJONlIN/) | reel |  |  | not broken down yet |
-| 2026-07-12 | [DasD0mctu1m](https://www.instagram.com/reel/DasD0mctu1m/) | reel |  |  | not broken down yet |
-| 2026-07-14 | [DaxPFk9tOuy](https://www.instagram.com/reel/DaxPFk9tOuy/) | reel |  |  | not broken down yet |
-| 2026-07-17 | [Da4-EmYNYAP](https://www.instagram.com/reel/Da4-EmYNYAP/) | reel |  |  | not broken down yet |
-| 2026-07-20 | [DbAsaXANvpq](https://www.instagram.com/reel/DbAsaXANvpq/) | reel |  |  | not broken down yet |
-| 2026-07-23 | [DbIaxSzNg97](https://www.instagram.com/reel/DbIaxSzNg97/) | reel |  |  | not broken down yet |
+| 2026-07-08 | [DahwAvbhOmx](https://www.instagram.com/reel/DahwAvbhOmx/) | reel | Focus states: five keyboard-focus rules | ui | [20260708_DahwAvbhOmx.md](20260708_DahwAvbhOmx.md) |
+| 2026-07-10 | [Dam5kJONlIN](https://www.instagram.com/reel/Dam5kJONlIN/) | reel | Undo UX: design for regret | ui | [20260710_Dam5kJONlIN.md](20260710_Dam5kJONlIN.md) |
+| 2026-07-12 | [DasD0mctu1m](https://www.instagram.com/reel/DasD0mctu1m/) | reel | Swipe actions: thresholds, resistance, direction, discoverability, undo | ui | [20260712_DasD0mctu1m.md](20260712_DasD0mctu1m.md) |
+| 2026-07-14 | [DaxPFk9tOuy](https://www.instagram.com/reel/DaxPFk9tOuy/) | reel | Context menus are a system | ui | [20260714_DaxPFk9tOuy.md](20260714_DaxPFk9tOuy.md) |
+| 2026-07-17 | [Da4-EmYNYAP](https://www.instagram.com/reel/Da4-EmYNYAP/) | reel | Destructive actions as a design language | ui | [20260717_Da4-EmYNYAP.md](20260717_Da4-EmYNYAP.md) |
+| 2026-07-20 | [DbAsaXANvpq](https://www.instagram.com/reel/DbAsaXANvpq/) | reel | Live cursors and multiplayer presence | ui | [20260720_DbAsaXANvpq.md](20260720_DbAsaXANvpq.md) |
+| 2026-07-23 | [DbIaxSzNg97](https://www.instagram.com/reel/DbIaxSzNg97/) | reel | Inline editing: affordance, zero layout shift, Enter/Escape, one blur rule, optimistic save | ui | [20260723_DbIaxSzNg97.md](20260723_DbIaxSzNg97.md) |
 | 2026-07-24 | [DbLMlT3q8NA](https://www.instagram.com/reel/DbLMlT3q8NA/) | reel |  |  | not broken down yet |
-| 2026-07-26 | [DbQJvWxty4v](https://www.instagram.com/reel/DbQJvWxty4v/) | reel |  |  | not broken down yet |
-| 2026-07-29 | [DbX0IKMtBKr](https://www.instagram.com/reel/DbX0IKMtBKr/) | reel |  |  | not broken down yet |
-| 2026-07-31 | [DbdABtaNMs0](https://www.instagram.com/reel/DbdABtaNMs0/) | reel |  |  | not broken down yet |
+| 2026-07-26 | [DbQJvWxty4v](https://www.instagram.com/reel/DbQJvWxty4v/) | reel | Autosave is a system, not a "Saved" label | ui | [20260726_DbQJvWxty4v.md](20260726_DbQJvWxty4v.md) |
+| 2026-07-29 | [DbX0IKMtBKr](https://www.instagram.com/reel/DbX0IKMtBKr/) | reel | Settings is a system | ui | [20260729_DbX0IKMtBKr.md](20260729_DbX0IKMtBKr.md) |
+| 2026-07-31 | [DbdABtaNMs0](https://www.instagram.com/reel/DbdABtaNMs0/) | reel | Behind the Button: the six-step round trip | ui | [20260731_DbdABtaNMs0.md](20260731_DbdABtaNMs0.md) |
 | 2026-08-01 | [DbgqEnahoz6](https://www.instagram.com/reel/DbgqEnahoz6/) | reel |  |  | not broken down yet |
 | 2026-08-04 | [Dbnf7g1Kzp3](https://www.instagram.com/reel/Dbnf7g1Kzp3/) | reel |  |  | not broken down yet |
-| 2026-08-05 | [Dbp5G_otN_c](https://www.instagram.com/reel/Dbp5G_otN_c/) | reel |  |  | not broken down yet |
-| 2026-08-07 | [DbvCsRetjhR](https://www.instagram.com/reel/DbvCsRetjhR/) | reel |  |  | not broken down yet |
+| 2026-08-05 | [Dbp5G_otN_c](https://www.instagram.com/reel/Dbp5G_otN_c/) | reel | The hover trap: actions that vanish on touch | ui | [20260805_Dbp5G_otN_c.md](20260805_Dbp5G_otN_c.md) |
+| 2026-08-07 | [DbvCsRetjhR](https://www.instagram.com/reel/DbvCsRetjhR/) | reel | Don't disable the submit button, explain the blocker | ui | [20260807_DbvCsRetjhR.md](20260807_DbvCsRetjhR.md) |
 | 2026-08-09 | [Db0M74jtjQS](https://www.instagram.com/reel/Db0M74jtjQS/) | reel | Bulk actions: selection is a system | ui | [20260809_Db0M74jtjQS.md](20260809_Db0M74jtjQS.md) |
 | 2026-08-12 | [Db78b8stxa6](https://www.instagram.com/reel/Db78b8stxa6/) | reel |  |  | not broken down yet |
 | 2026-08-16 | [DcGQMxYNjxh](https://www.instagram.com/reel/DcGQMxYNjxh/) | reel |  |  | not broken down yet |
@@ -109,9 +109,9 @@ Posts with a breakdown: 37 of 129. Breakdowns waiting for their Instagram id: 38
 | 2026-09-04 | [Dc3KFOaNfnW](https://www.instagram.com/reel/Dc3KFOaNfnW/) | reel |  |  | not broken down yet |
 | 2026-09-06 | [Dc8RfGzNPCN](https://www.instagram.com/reel/Dc8RfGzNPCN/) | reel |  |  | not broken down yet |
 | 2026-09-07 | [Dc-4jNbtyJg](https://www.instagram.com/reel/Dc-4jNbtyJg/) | reel |  |  | not broken down yet |
-| 2026-09-10 | [DdGkqx_t3vH](https://www.instagram.com/reel/DdGkqx_t3vH/) | reel |  |  | not broken down yet |
-| 2026-09-12 | [DdLvXSsNLpr](https://www.instagram.com/reel/DdLvXSsNLpr/) | reel |  |  | not broken down yet |
-| 2026-09-14 | [DdQ7QwqNLiY](https://www.instagram.com/reel/DdQ7QwqNLiY/) | reel |  |  | not broken down yet |
+| 2026-09-10 | [DdGkqx_t3vH](https://www.instagram.com/reel/DdGkqx_t3vH/) | reel | CSS :has(): let the DOM drive UI state | ui | [20260910_DdGkqx_t3vH.md](20260910_DdGkqx_t3vH.md) |
+| 2026-09-12 | [DdLvXSsNLpr](https://www.instagram.com/reel/DdLvXSsNLpr/) | reel | Reverse-engineered "expensive" app UI: five decisions | ui | [20260912_DdLvXSsNLpr.md](20260912_DdLvXSsNLpr.md) |
+| 2026-09-14 | [DdQ7QwqNLiY](https://www.instagram.com/reel/DdQ7QwqNLiY/) | reel | De-AI landing hero: five tells, five fixes | ui | [20260914_DdQ7QwqNLiY.md](20260914_DdQ7QwqNLiY.md) |
 | 2026-09-16 | [DdWFVgYNYRB](https://www.instagram.com/reel/DdWFVgYNYRB/) | reel |  |  | not broken down yet |
 | 2026-09-18 | [DdbOcQ9tpKW](https://www.instagram.com/reel/DdbOcQ9tpKW/) | reel |  |  | not broken down yet |
 | 2026-09-19 | [Ddd04e2tQWx](https://www.instagram.com/reel/Ddd04e2tQWx/) | reel |  |  | not broken down yet |
@@ -139,48 +139,30 @@ Posts with a breakdown: 37 of 129. Breakdowns waiting for their Instagram id: 38
 | 2026-10-22 | [DeyuDIphgj3](https://www.instagram.com/reel/DeyuDIphgj3/) | reel |  |  | not broken down yet |
 | 2026-10-24 | [De33jSIkUtH](https://www.instagram.com/p/De33jSIkUtH/) | carousel |  |  | not broken down yet |
 
-## Breakdowns not yet matched to an Instagram post
+## Videos not on the Instagram profile
 
-These come from videos the author publishes on designmotionhq.com/patterns. The
-pattern page does not link the reel, so the matching post id is still unknown.
+These videos are published on designmotionhq.com/patterns but have no matching reel on
+the profile (matched by voice-over transcript on 2026-10-24). One links a reel that has
+since been removed from the profile.
 
 | Pattern page | Topic | Type | File |
 |---|---|---|---|
-| https://designmotionhq.com/patterns/accordion-disclosure | Accordion and disclosure: smooth height, synced chevron, real button | ui | [pending_accordion-disclosure.md](pending_accordion-disclosure.md) |
-| https://designmotionhq.com/patterns/autosave-ux | Autosave is a system, not a "Saved" label | ui | [pending_autosave-ux.md](pending_autosave-ux.md) |
-| https://designmotionhq.com/patterns/behind-the-button | Behind the Button: the six-step round trip | ui | [pending_behind-the-button.md](pending_behind-the-button.md) |
-| https://designmotionhq.com/patterns/border-radius | Border radius: nested math, one scale, brand-driven range | ui | [pending_border-radius.md](pending_border-radius.md) |
-| https://designmotionhq.com/patterns/bottom-sheets | Bottom sheets: build for the thumb | ui | [pending_bottom-sheets.md](pending_bottom-sheets.md) |
-| https://designmotionhq.com/patterns/card-hover-anatomy | Card hover anatomy | ui | [pending_card-hover-anatomy.md](pending_card-hover-anatomy.md) |
-| https://designmotionhq.com/patterns/color-accessibility | Colour accessibility: contrast ratio and never colour alone | ui | [pending_color-accessibility.md](pending_color-accessibility.md) |
-| https://designmotionhq.com/patterns/context-menu | Context menus are a system | ui | [pending_context-menu.md](pending_context-menu.md) |
-| https://designmotionhq.com/patterns/css-has-selector | CSS :has(): let the DOM drive UI state | ui | [pending_css-has-selector.md](pending_css-has-selector.md) |
-| https://designmotionhq.com/patterns/dark-mode | Dark mode is not black mode | ui | [pending_dark-mode.md](pending_dark-mode.md) |
-| https://designmotionhq.com/patterns/data-table | Data tables: a table is a system | ui | [pending_data-table.md](pending_data-table.md) |
-| https://designmotionhq.com/patterns/de-ai-landing-hero | De-AI landing hero: five tells, five fixes | ui | [pending_de-ai-landing-hero.md](pending_de-ai-landing-hero.md) |
-| https://designmotionhq.com/patterns/depth-layers | Depth layers: three properties that turn a flat list into depth | ui | [pending_depth-layers.md](pending_depth-layers.md) |
-| https://designmotionhq.com/patterns/design-system-kit | Design system foundations: tokens, type scale, spacing, states, motion | ui | [pending_design-system-kit.md](pending_design-system-kit.md) |
-| https://designmotionhq.com/patterns/design-tokens | Design tokens: name by role, snap to a scale, layer primitives -> semantic -> component | ui | [pending_design-tokens.md](pending_design-tokens.md) |
-| https://designmotionhq.com/patterns/destructive-actions | Destructive actions as a design language | ui | [pending_destructive-actions.md](pending_destructive-actions.md) |
-| https://designmotionhq.com/patterns/disabled-buttons | Don't disable the submit button, explain the blocker | ui | [pending_disabled-buttons.md](pending_disabled-buttons.md) |
-| https://designmotionhq.com/patterns/doherty-threshold | Doherty Threshold: respond within 400 ms, or fake it well | ui | [pending_doherty-threshold.md](pending_doherty-threshold.md) |
-| https://designmotionhq.com/patterns/easing-curves | Easing curves: same distance, different feel | ui | [pending_easing-curves.md](pending_easing-curves.md) |
-| https://designmotionhq.com/patterns/file-upload-ux | File upload UX: five feedback signals | ui | [pending_file-upload-ux.md](pending_file-upload-ux.md) |
-| https://designmotionhq.com/patterns/focus-states | Focus states: five keyboard-focus rules | ui | [pending_focus-states.md](pending_focus-states.md) |
-| https://designmotionhq.com/patterns/gestalt-laws | Five Gestalt laws for layout | ui | [pending_gestalt-laws.md](pending_gestalt-laws.md) |
-| https://designmotionhq.com/patterns/hover-trap | The hover trap: actions that vanish on touch | ui | [pending_hover-trap.md](pending_hover-trap.md) |
-| https://designmotionhq.com/patterns/icon-design-rules | Icon design rules: five ways an icon set stops looking cheap | ui | [pending_icon-design-rules.md](pending_icon-design-rules.md) |
-| https://designmotionhq.com/patterns/inline-editing | Inline editing: affordance, zero layout shift, Enter/Escape, one blur rule, optimistic save | ui | [pending_inline-editing.md](pending_inline-editing.md) |
-| https://designmotionhq.com/patterns/input-masking | Input masking: card number field done right | ui | [pending_input-masking.md](pending_input-masking.md) |
-| https://designmotionhq.com/patterns/landing-page-skeleton | Landing page skeleton: five sections in a fixed order | ui | [pending_landing-page-skeleton.md](pending_landing-page-skeleton.md) |
-| https://designmotionhq.com/patterns/live-cursors | Live cursors and multiplayer presence | ui | [pending_live-cursors.md](pending_live-cursors.md) |
-| https://designmotionhq.com/patterns/microcopy | Microcopy: words that convert | ui | [pending_microcopy.md](pending_microcopy.md) |
-| https://designmotionhq.com/patterns/modal-hierarchy | Modal hierarchy: pick the overlay by whether it blocks | ui | [pending_modal-hierarchy.md](pending_modal-hierarchy.md) |
-| https://designmotionhq.com/patterns/otp-input | OTP input: paste-first, auto-advance, one string, OS autofill, throttled resend, instant result | ui | [pending_otp-input.md](pending_otp-input.md) |
-| https://designmotionhq.com/patterns/perfect-card | The premium card: four CSS changes | ui | [pending_perfect-card.md](pending_perfect-card.md) |
-| https://designmotionhq.com/patterns/reverse-engineered-linear | Reverse-engineered "expensive" app UI: five decisions | ui | [pending_reverse-engineered-linear.md](pending_reverse-engineered-linear.md) |
-| https://designmotionhq.com/patterns/scroll-driven-animations | Scroll-driven animations in pure CSS | ui | [pending_scroll-driven-animations.md](pending_scroll-driven-animations.md) |
-| https://designmotionhq.com/patterns/settings-system | Settings is a system | ui | [pending_settings-system.md](pending_settings-system.md) |
-| https://designmotionhq.com/patterns/swipe-actions | Swipe actions: thresholds, resistance, direction, discoverability, undo | ui | [pending_swipe-actions.md](pending_swipe-actions.md) |
-| https://designmotionhq.com/patterns/undo-ux | Undo UX: design for regret | ui | [pending_undo-ux.md](pending_undo-ux.md) |
-| https://designmotionhq.com/patterns/von-restorff | Von Restorff effect: isolate the one thing you want chosen | ui | [pending_von-restorff.md](pending_von-restorff.md) |
+| https://designmotionhq.com/patterns/z-index-mastery | z-index: position, stacking contexts, isolation | ui | [20260422_DXbUi2Ytj6f.md](20260422_DXbUi2Ytj6f.md) |
+| https://designmotionhq.com/patterns/accordion-disclosure | Accordion and disclosure: smooth height, synced chevron, real button | ui | [site-only_accordion-disclosure.md](site-only_accordion-disclosure.md) |
+| https://designmotionhq.com/patterns/border-radius | Border radius: nested math, one scale, brand-driven range | ui | [site-only_border-radius.md](site-only_border-radius.md) |
+| https://designmotionhq.com/patterns/bottom-sheets | Bottom sheets: build for the thumb | ui | [site-only_bottom-sheets.md](site-only_bottom-sheets.md) |
+| https://designmotionhq.com/patterns/card-hover-anatomy | Card hover anatomy | ui | [site-only_card-hover-anatomy.md](site-only_card-hover-anatomy.md) |
+| https://designmotionhq.com/patterns/color-accessibility | Colour accessibility: contrast ratio and never colour alone | ui | [site-only_color-accessibility.md](site-only_color-accessibility.md) |
+| https://designmotionhq.com/patterns/dark-mode | Dark mode is not black mode | ui | [site-only_dark-mode.md](site-only_dark-mode.md) |
+| https://designmotionhq.com/patterns/data-table | Data tables: a table is a system | ui | [site-only_data-table.md](site-only_data-table.md) |
+| https://designmotionhq.com/patterns/depth-layers | Depth layers: three properties that turn a flat list into depth | ui | [site-only_depth-layers.md](site-only_depth-layers.md) |
+| https://designmotionhq.com/patterns/design-tokens | Design tokens: name by role, snap to a scale, layer primitives -> semantic -> component | ui | [site-only_design-tokens.md](site-only_design-tokens.md) |
+| https://designmotionhq.com/patterns/doherty-threshold | Doherty Threshold: respond within 400 ms, or fake it well | ui | [site-only_doherty-threshold.md](site-only_doherty-threshold.md) |
+| https://designmotionhq.com/patterns/easing-curves | Easing curves: same distance, different feel | ui | [site-only_easing-curves.md](site-only_easing-curves.md) |
+| https://designmotionhq.com/patterns/gestalt-laws | Five Gestalt laws for layout | ui | [site-only_gestalt-laws.md](site-only_gestalt-laws.md) |
+| https://designmotionhq.com/patterns/icon-design-rules | Icon design rules: five ways an icon set stops looking cheap | ui | [site-only_icon-design-rules.md](site-only_icon-design-rules.md) |
+| https://designmotionhq.com/patterns/landing-page-skeleton | Landing page skeleton: five sections in a fixed order | ui | [site-only_landing-page-skeleton.md](site-only_landing-page-skeleton.md) |
+| https://designmotionhq.com/patterns/modal-hierarchy | Modal hierarchy: pick the overlay by whether it blocks | ui | [site-only_modal-hierarchy.md](site-only_modal-hierarchy.md) |
+| https://designmotionhq.com/patterns/perfect-card | The premium card: four CSS changes | ui | [site-only_perfect-card.md](site-only_perfect-card.md) |
+| https://designmotionhq.com/patterns/scroll-driven-animations | Scroll-driven animations in pure CSS | ui | [site-only_scroll-driven-animations.md](site-only_scroll-driven-animations.md) |
+| https://designmotionhq.com/patterns/von-restorff | Von Restorff effect: isolate the one thing you want chosen | ui | [site-only_von-restorff.md](site-only_von-restorff.md) |

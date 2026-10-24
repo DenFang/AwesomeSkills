@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Password field UX: coach while typing, don't punish after submit
 
-**Caption:** not captured yet
+**Caption:** Make your users life easier when creating a password
 **Hook:** Eight characters and a symbol still makes a weak password: "P@ssw0rd!" passes every rule and is cracked in about two hours.
 
 ## Main rule
