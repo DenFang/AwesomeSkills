@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "awesome-skills",
+  "description": "DenFang's collection of Claude Code skills and plugins.",
+  "owner": {
+    "name": "DenFang",
+    "url": "https://github.com/DenFang"
+  },
+  "plugins": [
+    {
+      "name": "designmotionhq-ux",
+      "source": "./plugins/designmotionhq-ux",
+      "description": "UI/UX pattern guidelines from every @designmotionhq video, with audit, review and refactor commands.",
+      "category": "design",
+      "tags": ["ui", "ux", "design", "accessibility", "audit"]
+    }
+  ]
+}
