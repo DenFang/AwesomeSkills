@@ -1,5 +1,5 @@
 ---
-name: ux-refactor
+name: refactor
 description: Fix UI code so it follows the designmotionhq UX guidelines, either directly on a path, from the findings in UX-AUDIT.md, or from the last review, then verify and record what was fixed.
 argument-hint: "[audit | P0 | P0 P1 | F-001 F-004 … | R-001 … | path]"
 disable-model-invocation: true
@@ -7,13 +7,13 @@ disable-model-invocation: true
 
 # UX refactor
 
-Change the code so it follows the guidelines in `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/`, without changing what the product does.
+Change the code so it follows the guidelines in `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/`, without changing what the product does.
 
 Target: `$ARGUMENTS`
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/SKILL.md` and `references/report-format.md` from the same folder, then the topic references for the elements you will touch.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, then the topic references for the elements you will touch.
 
 ## 2. Decide what to fix
 
@@ -22,11 +22,11 @@ Read `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/SKILL.md` and `references/repor
 | `audit` | Fix every `open` finding in `UX-AUDIT.md`, P0 first, then P1, then P2. |
 | A severity (`P0`, `P0 P1`) | Fix the open findings of that severity from `UX-AUDIT.md`. |
 | Audit IDs (`F-001 F-004`) | Fix those findings from `UX-AUDIT.md`. |
-| Review IDs (`R-001 R-003`) | Fix those findings from the most recent review in this conversation; if there is none, ask the user to run `/ux-review` first. |
+| Review IDs (`R-001 R-003`) | Fix those findings from the most recent review in this conversation; if there is none, ask the user to run `/uichecker:review` first. |
 | A path or glob | Inventory that scope and check the rules that apply (same method as the audit, no report file). List the findings first. Fix the P0 and P1 problems that are local and leave the look unchanged (labels, focus, states, semantics); ask before applying any that change visible design, and before any P2. |
 | Empty | If `UX-AUDIT.md` exists, ask whether to work through it or a specific path; otherwise ask which path to refactor. |
 
-Look for `UX-AUDIT.md` and `.ux-ignore.md` in the target path when it is a path, otherwise in the current directory, then at the repository root. If the target needs it and it does not exist, say so and suggest `/ux-audit`, or offer to refactor a path directly.
+Look for `UX-AUDIT.md` and `.ux-ignore.md` in the target path when it is a path, otherwise in the current directory, then at the repository root. If the target needs it and it does not exist, say so and suggest `/uichecker:audit`, or offer to refactor a path directly.
 
 Before editing, check that each finding still applies to the current code. Mark findings that no longer apply as `fixed (already resolved)`.
 

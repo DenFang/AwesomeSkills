@@ -4,29 +4,30 @@
 
 ## Установка
 
-Добавь маркетплейс один раз:
+В Claude Code:
 
 ```text
 /plugin marketplace add DenFang/AwesomeSkills
+/plugin install uichecker@awesome-skills
+/plugin install ultimatedesign@awesome-skills
 ```
 
-Потом ставь нужный плагин:
+Из терминала:
 
-```text
-/plugin install designmotionhq-ux@awesome-skills
+```bash
+claude plugin marketplace add DenFang/AwesomeSkills
+claude plugin install uichecker@awesome-skills
+claude plugin install ultimatedesign@awesome-skills
 ```
 
-Или одной командой (Claude Code 2.1.275+):
-
-```text
-/plugin install designmotionhq-ux --marketplace DenFang/AwesomeSkills
-```
+Обновление: `claude plugin marketplace update awesome-skills`, затем `claude plugin update <плагин>@awesome-skills`.
 
 ## Плагины
 
 | Плагин | Что делает |
 |---|---|
-| [designmotionhq-ux](plugins/designmotionhq-ux/README.md) | Гайдлайн по UI/UX-паттернам из UI/UX-видео [@designmotionhq](https://www.instagram.com/designmotionhq/): тайминги анимаций, состояния загрузки и ошибок, формы, таблицы, навигация, доступность, визуальная система, анти-«ИИ-вид». Не привязан к цветам. Команды `/ux-audit` (весь код), `/ux-review` (только изменения) и `/ux-refactor` (исправление сразу, по аудиту или по ревью). |
+| [uichecker](plugins/uichecker/README.md) | 137 правил UI/UX из всех постов [@designmotionhq](https://www.instagram.com/designmotionhq/): анимации, состояния загрузки и ошибок, формы, таблицы, навигация, доступность, визуальная система, честные продажи, анти-«ИИ-вид». Проверяет только правила для элементов, которые реально есть в коде. Не привязан к цветам. Команды `/uichecker:audit` (весь код), `/uichecker:review` (только изменения), `/uichecker:refactor` (исправление). |
+| [ultimatedesign](plugins/ultimatedesign/README.md) | Прогоняет код через три скилла сразу: impeccable, ui-ux-pro-max и uichecker. Даёт общую оценку из 100 и показывает, где скиллы согласны, где спорят (ты выбираешь вариант) и что заметил только один из них. Команды `/ultimatedesign:audit`, `/ultimatedesign:review`, `/ultimatedesign:apply`. uichecker ставится вместе с ним; impeccable и ui-ux-pro-max ставятся от их авторов (команды в README плагина). |
 
 ## Структура
 

@@ -1,5 +1,5 @@
 ---
-name: ux-review
+name: review
 description: Review only the UI changes on the current branch, in the working tree, or in a given range or PR against the designmotionhq UX guidelines, and give a verdict with findings. Read-only.
 argument-hint: "[base ref | commit range | branch | PR number; default: this branch since the default branch, plus uncommitted work]"
 disable-model-invocation: true
@@ -13,7 +13,7 @@ Target: `$ARGUMENTS`
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/SKILL.md` and `references/report-format.md` from the same folder. Load topic references only for the elements the change touches (step 3).
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder. Load topic references only for the elements the change touches (step 3).
 
 ## 2. Collect the change
 
@@ -49,4 +49,4 @@ Answer in the conversation using the review layout in `references/report-format.
 - Findings numbered `R-001`, `R-002`, … with `path:line` in the new code, evidence, impact and a concrete fix (a small code suggestion when it helps).
 - One to three things the change does well.
 
-Write the review to a file only if the user asks. Offer `/ux-refactor R-001 R-002 …` to apply the fixes.
+Write the review to a file only if the user asks. Offer `/uichecker:refactor R-001 R-002 …` to apply the fixes.

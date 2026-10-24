@@ -1,9 +1,9 @@
 ---
-name: ux-guidelines
-description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions designmotionhq. 137 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
+name: guidelines
+description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions uichecker or designmotionhq. 137 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish, distilled from the @designmotionhq videos. Palette-independent: works with any brand colours.
 ---
 
-# UX guidelines (designmotionhq)
+# uichecker: UI/UX guidelines
 
 Most @designmotionhq videos show one interface twice, a cheap version and a premium one, and name the few concrete decisions that separate them. This skill turns those videos into 137 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
 
@@ -153,8 +153,8 @@ The user owns their product. If they insist on something a rule advises against,
 
 This plugin also gives the user three commands that use these guidelines:
 
-- `/ux-audit [path]` checks the whole codebase (or a path) and writes a prioritised report to `UX-AUDIT.md`.
-- `/ux-review [base ref | range | branch | PR number]` checks only the changes on the current branch or in the working tree.
-- `/ux-refactor [audit | P0 | F-001 … | R-001 … | path]` fixes problems directly, from the audit report, or from the last review.
+- `/uichecker:audit [path]` checks the whole codebase (or a path) and writes a prioritised report to `UX-AUDIT.md`.
+- `/uichecker:review [base ref | range | branch | PR number]` checks only the changes on the current branch or in the working tree.
+- `/uichecker:refactor [audit | P0 | F-001 … | R-001 … | path]` fixes problems directly, from the audit report, or from the last review.
 
-Full names: `/designmotionhq-ux:ux-audit`, `/designmotionhq-ux:ux-review`, `/designmotionhq-ux:ux-refactor`. The shared report format is in `references/report-format.md`, and search patterns for finding violations quickly are in `references/detection.md`.
+Bare `/audit` and `/refactor` also work while no other command uses those names; `/review` is a built-in Claude Code command, so the review always needs its full name. The shared report format is in `references/report-format.md`, and search patterns for finding violations quickly are in `references/detection.md`.

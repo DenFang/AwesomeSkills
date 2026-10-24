@@ -1,5 +1,5 @@
 ---
-name: ux-audit
+name: audit
 description: Audit the whole UI codebase (or a given path) against the designmotionhq UX guidelines and write a prioritised, scored report to UX-AUDIT.md. Read-only; it changes no code.
 argument-hint: "[path or glob, default: whole project]"
 disable-model-invocation: true
@@ -7,13 +7,13 @@ disable-model-invocation: true
 
 # UX audit
 
-Audit the project's interface code against the guidelines in `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/`. Do not modify any source file, install dependencies or change configuration. The only file you write is the report.
+Audit the project's interface code against the guidelines in `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/`. Do not modify any source file, install dependencies or change configuration. The only file you write is the report.
 
 Scope: `$ARGUMENTS` (if empty, the whole project).
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/ux-guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Load the topic references only when the inventory (step 2) contains elements they cover.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Load the topic references only when the inventory (step 2) contains elements they cover.
 
 ## 2. Map the project
 
@@ -56,4 +56,4 @@ Write `UX-AUDIT.md` at the root of the audited project or package (if it exists,
 
 ## 6. Reply
 
-In the conversation, give a short summary: area scores, counts by severity, the top five fixes by impact with their IDs, any questions (for example whether a hard-coded claim is real), and the report path. Suggest `/ux-refactor P0` and then `/ux-refactor audit` as next steps. Do not paste the whole report.
+In the conversation, give a short summary: area scores, counts by severity, the top five fixes by impact with their IDs, any questions (for example whether a hard-coded claim is real), and the report path. Suggest `/uichecker:refactor P0` and then `/uichecker:refactor audit` as next steps. Do not paste the whole report.

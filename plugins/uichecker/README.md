@@ -1,4 +1,4 @@
-# designmotionhq-ux
+# uichecker
 
 UI/UX pattern guidelines for Claude Code, distilled from the UI/UX videos of [@designmotionhq](https://www.instagram.com/designmotionhq/): motion timing, loading, empty and error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion, and how to stop UI from looking AI-generated.
 
@@ -8,27 +8,36 @@ The rules describe relationships, not a palette, so they work with any brand col
 
 ```text
 /plugin marketplace add DenFang/AwesomeSkills
-/plugin install designmotionhq-ux@awesome-skills
+/plugin install uichecker@awesome-skills
 ```
+
+From a terminal:
+
+```bash
+claude plugin marketplace add DenFang/AwesomeSkills
+claude plugin install uichecker@awesome-skills
+```
+
+Update later with `claude plugin update uichecker@awesome-skills`.
 
 ## What you get
 
 | Part | How it runs | What it does |
 |---|---|---|
-| `ux-guidelines` skill | Automatically, whenever Claude builds or changes UI | 137 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
-| `/ux-audit [path]` | You run it | Checks the whole codebase (or a path) in two passes (designer's read, then rule by rule), scores each area 0 to 4 and writes a prioritised `UX-AUDIT.md`; changes no code |
-| `/ux-review [ref \| range \| branch \| PR]` | You run it | Checks only the changes on your branch, in the working tree, or in a range or PR, and gives a verdict |
-| `/ux-refactor [audit \| P0 \| F-001 … \| R-001 … \| path]` | You run it | Fixes problems from the audit, from the last review, or on a path; runs your checks and records what was fixed |
+| `guidelines` skill | Automatically, whenever Claude builds or changes UI | 137 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
+| `/uichecker:audit [path]` | You run it | Checks the whole codebase (or a path) in two passes (designer's read, then rule by rule), scores each area 0 to 4 and writes a prioritised `UX-AUDIT.md`; changes no code |
+| `/uichecker:review [ref \| range \| branch \| PR]` | You run it | Checks only the changes on your branch, in the working tree, or in a range or PR, and gives a verdict |
+| `/uichecker:refactor [audit \| P0 \| F-001 … \| R-001 … \| path]` | You run it | Fixes problems from the audit, from the last review, or on a path; runs your checks and records what was fixed |
 
-Full names are `/designmotionhq-ux:ux-audit`, `/designmotionhq-ux:ux-review` and `/designmotionhq-ux:ux-refactor`; the short forms work as long as no other plugin uses the same names. The commands carry a `ux-` prefix because Claude Code has a built-in `/review`.
+Commands are namespaced by the plugin. Bare `/audit` and `/refactor` also work while no other command uses those names; `/review` is a built-in Claude Code command, so type `/uichecker:review`.
 
 Only rules whose element exists in the code are checked: a dropdown menu is checked against menu, overlay and motion rules plus the always-on accessibility rules, never against table or form rules. Add a `.ux-ignore.md` to the project to silence rules you have decided against (format in `references/report-format.md`).
 
 ## Typical flow
 
-1. `/ux-audit` → read `UX-AUDIT.md`.
-2. `/ux-refactor P0` → fix the blocking issues first, then `/ux-refactor audit` for the rest.
-3. Before each merge, `/ux-review` on the branch, then `/ux-refactor R-001 …` for anything it finds.
+1. `/uichecker:audit` → read `UX-AUDIT.md`.
+2. `/uichecker:refactor P0` → fix the blocking issues first, then `/uichecker:refactor audit` for the rest.
+3. Before each merge, `/uichecker:review` on the branch, then `/uichecker:refactor R-001 …` for anything it finds.
 
 ## Rule areas
 
