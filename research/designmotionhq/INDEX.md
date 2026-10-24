@@ -5,7 +5,7 @@ Each breakdown is written in our own words from frames, voice-over transcript an
 author's pattern page; media files are not stored in this repository.
 Dates are UTC upload dates decoded from the post shortcode.
 
-Posts with a breakdown: 90 of 129. Extra breakdowns of videos not on the profile: 19.
+Posts with a breakdown: 120 of 129. Extra breakdowns of videos not on the profile: 19.
 
 | Date | Id | Kind | Topic | Type | File |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Posts with a breakdown: 90 of 129. Extra breakdowns of videos not on the profile
 | 2026-02-11 | [DUoZ4_GDMWp](https://www.instagram.com/reel/DUoZ4_GDMWp/) | reel | Button feel: hover lift, press squash, ripple with spring easing | ui | [20260211_DUoZ4_GDMWp.md](20260211_DUoZ4_GDMWp.md) |
 | 2026-02-15 | [DUy5XFaDHqZ](https://www.instagram.com/reel/DUy5XFaDHqZ/) | reel | Cheap vs premium modal: entrance, backdrop, micro-interactions | ui | [20260216_DUy5XFaDHqZ.md](20260216_DUy5XFaDHqZ.md) |
 | 2026-02-20 | [DU_Nv2UjFSm](https://www.instagram.com/reel/DU_Nv2UjFSm/) | reel | Decoy effect: a third pricing tier that exists to sell the top one | ui | [20260220_DU_Nv2UjFSm.md](20260220_DU_Nv2UjFSm.md) |
-| 2026-02-22 | [DVC2fsoiEFC](https://www.instagram.com/reel/DVC2fsoiEFC/) | reel |  |  | not broken down yet |
+| 2026-02-22 | [DVC2fsoiEFC](https://www.instagram.com/reel/DVC2fsoiEFC/) | reel | Build a design system from tokens | ui | [20260222_DVC2fsoiEFC.md](20260222_DVC2fsoiEFC.md) |
 | 2026-02-25 | [DVLUTTWDHpz](https://www.instagram.com/reel/DVLUTTWDHpz/) | reel | 60-30-10: dominant, secondary, accent | ui | [20260225_DVLUTTWDHpz.md](20260225_DVLUTTWDHpz.md) |
 | 2026-03-02 | [DVZOM4HDJif](https://www.instagram.com/reel/DVZOM4HDJif/) | reel | Corner radius sets the tone of the whole UI | ui | [20260302_DVZOM4HDJif.md](20260302_DVZOM4HDJif.md) |
 | 2026-03-04 | [DVdixdNjGhC](https://www.instagram.com/reel/DVdixdNjGhC/) | reel | Glassmorphism card: four CSS properties | ui | [20260304_DVdixdNjGhC.md](20260304_DVdixdNjGhC.md) |
@@ -90,8 +90,8 @@ Posts with a breakdown: 90 of 129. Extra breakdowns of videos not on the profile
 | 2026-07-26 | [DbQJvWxty4v](https://www.instagram.com/reel/DbQJvWxty4v/) | reel | Autosave is a system, not a "Saved" label | ui | [20260726_DbQJvWxty4v.md](20260726_DbQJvWxty4v.md) |
 | 2026-07-29 | [DbX0IKMtBKr](https://www.instagram.com/reel/DbX0IKMtBKr/) | reel | Settings is a system | ui | [20260729_DbX0IKMtBKr.md](20260729_DbX0IKMtBKr.md) |
 | 2026-07-31 | [DbdABtaNMs0](https://www.instagram.com/reel/DbdABtaNMs0/) | reel | Behind the Button: the six-step round trip | ui | [20260731_DbdABtaNMs0.md](20260731_DbdABtaNMs0.md) |
-| 2026-08-01 | [DbgqEnahoz6](https://www.instagram.com/reel/DbgqEnahoz6/) | reel |  |  | not broken down yet |
-| 2026-08-04 | [Dbnf7g1Kzp3](https://www.instagram.com/reel/Dbnf7g1Kzp3/) | reel |  |  | not broken down yet |
+| 2026-08-01 | [DbgqEnahoz6](https://www.instagram.com/reel/DbgqEnahoz6/) | reel | Layouts must survive real data | ui | [20260802_DbgqEnahoz6.md](20260802_DbgqEnahoz6.md) |
+| 2026-08-04 | [Dbnf7g1Kzp3](https://www.instagram.com/reel/Dbnf7g1Kzp3/) | reel | One design contract for every screen: extract, enforce, then decide per axis | ui | [20260804_Dbnf7g1Kzp3.md](20260804_Dbnf7g1Kzp3.md) |
 | 2026-08-05 | [Dbp5G_otN_c](https://www.instagram.com/reel/Dbp5G_otN_c/) | reel | The hover trap: actions that vanish on touch | ui | [20260805_Dbp5G_otN_c.md](20260805_Dbp5G_otN_c.md) |
 | 2026-08-07 | [DbvCsRetjhR](https://www.instagram.com/reel/DbvCsRetjhR/) | reel | Don't disable the submit button, explain the blocker | ui | [20260807_DbvCsRetjhR.md](20260807_DbvCsRetjhR.md) |
 | 2026-08-09 | [Db0M74jtjQS](https://www.instagram.com/reel/Db0M74jtjQS/) | reel | Bulk actions: selection is a system | ui | [20260809_Db0M74jtjQS.md](20260809_Db0M74jtjQS.md) |
@@ -102,41 +102,41 @@ Posts with a breakdown: 90 of 129. Extra breakdowns of videos not on the profile
 | 2026-08-21 | [DcS6-2ltaLc](https://www.instagram.com/reel/DcS6-2ltaLc/) | reel | Copy-to-clipboard done right | ui | [20260820_DcS6-2ltaLc.md](20260820_DcS6-2ltaLc.md) |
 | 2026-08-23 | [DcYUpuzthq-](https://www.instagram.com/reel/DcYUpuzthq-/) | reel | Double-submit prevention: one tap, one charge | ui | [20260823_DcYUpuzthq-.md](20260823_DcYUpuzthq-.md) |
 | 2026-08-23 | [DcYX_cxNfOA](https://www.instagram.com/reel/DcYX_cxNfOA/) | reel | Numbers that line up: five formatting rules | ui | [20260825_DcYX_cxNfOA.md](20260825_DcYX_cxNfOA.md) |
-| 2026-08-27 | [DcikWR-NQPT](https://www.instagram.com/reel/DcikWR-NQPT/) | reel |  |  | not broken down yet |
-| 2026-08-29 | [Dcnuc60NbeO](https://www.instagram.com/reel/Dcnuc60NbeO/) | reel |  |  | not broken down yet |
-| 2026-08-31 | [DctFPo-tTQO](https://www.instagram.com/reel/DctFPo-tTQO/) | reel |  |  | not broken down yet |
+| 2026-08-27 | [DcikWR-NQPT](https://www.instagram.com/reel/DcikWR-NQPT/) | reel | Avatar as a system: fallback, colour from name, initials, stack, presence ring, three sizes | ui | [20260827_DcikWR-NQPT.md](20260827_DcikWR-NQPT.md) |
+| 2026-08-29 | [Dcnuc60NbeO](https://www.instagram.com/reel/Dcnuc60NbeO/) | reel | A notification badge is a system | ui | [20260829_Dcnuc60NbeO.md](20260829_Dcnuc60NbeO.md) |
+| 2026-08-31 | [DctFPo-tTQO](https://www.instagram.com/reel/DctFPo-tTQO/) | reel | Dark mode is a system, not black plus white | ui | [20260831_DctFPo-tTQO.md](20260831_DctFPo-tTQO.md) |
 | 2026-09-02 | [Dcx__07t8e5](https://www.instagram.com/reel/Dcx__07t8e5/) | reel | Border radius is a system | ui | [20260902_Dcx__07t8e5.md](20260902_Dcx__07t8e5.md) |
-| 2026-09-04 | [Dc3KFOaNfnW](https://www.instagram.com/reel/Dc3KFOaNfnW/) | reel |  |  | not broken down yet |
-| 2026-09-06 | [Dc8RfGzNPCN](https://www.instagram.com/reel/Dc8RfGzNPCN/) | reel |  |  | not broken down yet |
-| 2026-09-07 | [Dc-4jNbtyJg](https://www.instagram.com/reel/Dc-4jNbtyJg/) | reel |  |  | not broken down yet |
+| 2026-09-04 | [Dc3KFOaNfnW](https://www.instagram.com/reel/Dc3KFOaNfnW/) | reel | Data table: six decisions that stop it looking like a spreadsheet | ui | [20260904_Dc3KFOaNfnW.md](20260904_Dc3KFOaNfnW.md) |
+| 2026-09-06 | [Dc8RfGzNPCN](https://www.instagram.com/reel/Dc8RfGzNPCN/) | reel | Mobile tables: restructure, don't shrink | ui | [20260906_Dc8RfGzNPCN.md](20260906_Dc8RfGzNPCN.md) |
+| 2026-09-07 | [Dc-4jNbtyJg](https://www.instagram.com/reel/Dc-4jNbtyJg/) | reel | Five AI-slop tells in dashboards and their fixes | ui | [20260908_Dc-4jNbtyJg.md](20260908_Dc-4jNbtyJg.md) |
 | 2026-09-10 | [DdGkqx_t3vH](https://www.instagram.com/reel/DdGkqx_t3vH/) | reel | CSS :has(): let the DOM drive UI state | ui | [20260910_DdGkqx_t3vH.md](20260910_DdGkqx_t3vH.md) |
 | 2026-09-12 | [DdLvXSsNLpr](https://www.instagram.com/reel/DdLvXSsNLpr/) | reel | Reverse-engineered "expensive" app UI: five decisions | ui | [20260912_DdLvXSsNLpr.md](20260912_DdLvXSsNLpr.md) |
 | 2026-09-14 | [DdQ7QwqNLiY](https://www.instagram.com/reel/DdQ7QwqNLiY/) | reel | De-AI landing hero: five tells, five fixes | ui | [20260914_DdQ7QwqNLiY.md](20260914_DdQ7QwqNLiY.md) |
-| 2026-09-16 | [DdWFVgYNYRB](https://www.instagram.com/reel/DdWFVgYNYRB/) | reel |  |  | not broken down yet |
-| 2026-09-18 | [DdbOcQ9tpKW](https://www.instagram.com/reel/DdbOcQ9tpKW/) | reel |  |  | not broken down yet |
-| 2026-09-19 | [Ddd04e2tQWx](https://www.instagram.com/reel/Ddd04e2tQWx/) | reel |  |  | not broken down yet |
-| 2026-09-21 | [Ddi_Dt3NDT6](https://www.instagram.com/reel/Ddi_Dt3NDT6/) | reel |  |  | not broken down yet |
-| 2026-09-23 | [DdoDi8uNRiI](https://www.instagram.com/reel/DdoDi8uNRiI/) | reel |  |  | not broken down yet |
-| 2026-09-25 | [DdtNKkqNu5q](https://www.instagram.com/reel/DdtNKkqNu5q/) | reel |  |  | not broken down yet |
-| 2026-09-26 | [DdxNRopKTZo](https://www.instagram.com/reel/DdxNRopKTZo/) | reel |  |  | not broken down yet |
-| 2026-09-29 | [Dd3nH-NNkR3](https://www.instagram.com/reel/Dd3nH-NNkR3/) | reel |  |  | not broken down yet |
-| 2026-10-01 | [Dd8tUtdhVYZ](https://www.instagram.com/reel/Dd8tUtdhVYZ/) | reel |  |  | not broken down yet |
-| 2026-10-03 | [DeCPyOTqzqh](https://www.instagram.com/reel/DeCPyOTqzqh/) | reel |  |  | not broken down yet |
-| 2026-10-06 | [DeJlOw2ho-y](https://www.instagram.com/reel/DeJlOw2ho-y/) | reel |  |  | not broken down yet |
-| 2026-10-09 | [DeQLuJ0KxqY](https://www.instagram.com/reel/DeQLuJ0KxqY/) | reel |  |  | not broken down yet |
-| 2026-10-10 | [DeT0na6D8X8](https://www.instagram.com/reel/DeT0na6D8X8/) | reel |  |  | not broken down yet |
-| 2026-10-12 | [DeY-H8hDDRk](https://www.instagram.com/reel/DeY-H8hDDRk/) | reel |  |  | not broken down yet |
+| 2026-09-16 | [DdWFVgYNYRB](https://www.instagram.com/reel/DdWFVgYNYRB/) | reel | Chat UI as a system: six decisions that make a thread readable | ui | [20260916_DdWFVgYNYRB.md](20260916_DdWFVgYNYRB.md) |
+| 2026-09-18 | [DdbOcQ9tpKW](https://www.instagram.com/reel/DdbOcQ9tpKW/) | reel | Calendar week view: six layout rules | ui | [20260918_DdbOcQ9tpKW.md](20260918_DdbOcQ9tpKW.md) |
+| 2026-09-19 | [Ddd04e2tQWx](https://www.instagram.com/reel/Ddd04e2tQWx/) | reel | Typography is a system: seven decisions with one font | ui | [20260919_Ddd04e2tQWx.md](20260919_Ddd04e2tQWx.md) |
+| 2026-09-21 | [Ddi_Dt3NDT6](https://www.instagram.com/reel/Ddi_Dt3NDT6/) | reel | Pricing page: five tells of an AI-made layout | ui | [20260921_Ddi_Dt3NDT6.md](20260921_Ddi_Dt3NDT6.md) |
+| 2026-09-23 | [DdoDi8uNRiI](https://www.instagram.com/reel/DdoDi8uNRiI/) | reel | Cards are a system: six decisions | ui | [20260923_DdoDi8uNRiI.md](20260923_DdoDi8uNRiI.md) |
+| 2026-09-25 | [DdtNKkqNu5q](https://www.instagram.com/reel/DdtNKkqNu5q/) | reel | Success is a system: five decisions for the "done" screen | ui | [20260925_DdtNKkqNu5q.md](20260925_DdtNKkqNu5q.md) |
+| 2026-09-26 | [DdxNRopKTZo](https://www.instagram.com/reel/DdxNRopKTZo/) | reel | UX Engine plugin promo | off-topic | [20260927_DdxNRopKTZo.md](20260927_DdxNRopKTZo.md) |
+| 2026-09-29 | [Dd3nH-NNkR3](https://www.instagram.com/reel/Dd3nH-NNkR3/) | reel | Kanban: one drag, five design decisions | ui | [20260929_Dd3nH-NNkR3.md](20260929_Dd3nH-NNkR3.md) |
+| 2026-10-01 | [Dd8tUtdhVYZ](https://www.instagram.com/reel/Dd8tUtdhVYZ/) | reel | View Transitions: a card becomes a page | ui | [20261001_Dd8tUtdhVYZ.md](20261001_Dd8tUtdhVYZ.md) |
+| 2026-10-03 | [DeCPyOTqzqh](https://www.instagram.com/reel/DeCPyOTqzqh/) | reel | Modal, bottom sheet or side drawer: five rules for one container | ui | [20261003_DeCPyOTqzqh.md](20261003_DeCPyOTqzqh.md) |
+| 2026-10-06 | [DeJlOw2ho-y](https://www.instagram.com/reel/DeJlOw2ho-y/) | reel | Five signup form mistakes and their fixes | ui | [20261006_DeJlOw2ho-y.md](20261006_DeJlOw2ho-y.md) |
+| 2026-10-09 | [DeQLuJ0KxqY](https://www.instagram.com/reel/DeQLuJ0KxqY/) | reel | Switch, checkbox, radio, segmented: pick the control by when it acts | ui | [20261009_DeQLuJ0KxqY.md](20261009_DeQLuJ0KxqY.md) |
+| 2026-10-10 | [DeT0na6D8X8](https://www.instagram.com/reel/DeT0na6D8X8/) | reel | Five decisions that make a checkout feel safe | ui | [20261010_DeT0na6D8X8.md](20261010_DeT0na6D8X8.md) |
+| 2026-10-12 | [DeY-H8hDDRk](https://www.instagram.com/reel/DeY-H8hDDRk/) | reel | Voice message button: five decisions behind hold to record | ui | [20261012_DeY-H8hDDRk.md](20261012_DeY-H8hDDRk.md) |
 | 2026-10-13 | [DebjCwWlDJT](https://www.instagram.com/p/DebjCwWlDJT/) | carousel |  |  | not broken down yet |
-| 2026-10-14 | [DeeHlr8BpLe](https://www.instagram.com/reel/DeeHlr8BpLe/) | reel |  |  | not broken down yet |
+| 2026-10-14 | [DeeHlr8BpLe](https://www.instagram.com/reel/DeeHlr8BpLe/) | reel | Why a launcher feels instant: five decisions | ui | [20261014_DeeHlr8BpLe.md](20261014_DeeHlr8BpLe.md) |
 | 2026-10-15 | [Degse6ngixY](https://www.instagram.com/p/Degse6ngixY/) | carousel |  |  | not broken down yet |
-| 2026-10-15 | [Deh4XHEqzX_](https://www.instagram.com/reel/Deh4XHEqzX_/) | reel |  |  | not broken down yet |
-| 2026-10-16 | [DejRN2Oh3p0](https://www.instagram.com/reel/DejRN2Oh3p0/) | reel |  |  | not broken down yet |
-| 2026-10-17 | [Del2E8Ah8bi](https://www.instagram.com/reel/Del2E8Ah8bi/) | reel |  |  | not broken down yet |
+| 2026-10-15 | [Deh4XHEqzX_](https://www.instagram.com/reel/Deh4XHEqzX_/) | reel | AI prompt input: five designed states | ui | [20261018_Deh4XHEqzX_.md](20261018_Deh4XHEqzX_.md) |
+| 2026-10-16 | [DejRN2Oh3p0](https://www.instagram.com/reel/DejRN2Oh3p0/) | reel | Tree view: five rules for a deep folder tree | ui | [20261016_DejRN2Oh3p0.md](20261016_DejRN2Oh3p0.md) |
+| 2026-10-17 | [Del2E8Ah8bi](https://www.instagram.com/reel/Del2E8Ah8bi/) | reel | Dashboard charts that don't lie: five fixes | ui | [20261017_Del2E8Ah8bi.md](20261017_Del2E8Ah8bi.md) |
 | 2026-10-18 | [Deoa1KZiqp2](https://www.instagram.com/p/Deoa1KZiqp2/) | carousel |  |  | not broken down yet |
-| 2026-10-19 | [Deq_kvJBI3g](https://www.instagram.com/reel/Deq_kvJBI3g/) | reel |  |  | not broken down yet |
+| 2026-10-19 | [Deq_kvJBI3g](https://www.instagram.com/reel/Deq_kvJBI3g/) | reel | Dashboard on a 375 px phone: five spots that break | ui | [20261019_Deq_kvJBI3g.md](20261019_Deq_kvJBI3g.md) |
 | 2026-10-20 | [DetqvE0kU8P](https://www.instagram.com/p/DetqvE0kU8P/) | carousel |  |  | not broken down yet |
-| 2026-10-21 | [DewJMeuBL_s](https://www.instagram.com/reel/DewJMeuBL_s/) | reel |  |  | not broken down yet |
-| 2026-10-22 | [DeyuDIphgj3](https://www.instagram.com/reel/DeyuDIphgj3/) | reel |  |  | not broken down yet |
+| 2026-10-21 | [DewJMeuBL_s](https://www.instagram.com/reel/DewJMeuBL_s/) | reel | Permission prompts: ask once, at the right moment | ui | [20261021_DewJMeuBL_s.md](20261021_DewJMeuBL_s.md) |
+| 2026-10-22 | [DeyuDIphgj3](https://www.instagram.com/reel/DeyuDIphgj3/) | reel | Desktop UI made mobile: cards, no input zoom, thumb targets, safe area | ui | [20261022_DeyuDIphgj3.md](20261022_DeyuDIphgj3.md) |
 | 2026-10-24 | [De33jSIkUtH](https://www.instagram.com/p/De33jSIkUtH/) | carousel |  |  | not broken down yet |
 
 ## Videos not on the Instagram profile

@@ -50,7 +50,7 @@ No transition duration or easing is shown for the hover scale.
 ## Don't
 - Don't ship browser-default button styling for a primary action.
 - Don't rely on the hover scale as the only interactive cue (touch devices have no hover; keyboard users need a focus style).
-- Don't treat "purple means trust" as a rule; the colour should come from the product's theme.
+- Don't treat "this hue signals trust" as a rule; the colour should come from the product's theme.
 
 ## Scene by scene
 - 0:00 Title "How Stripe designed a button that converts" over a small dark "Pay with Stripe" card (email, card number, expiry, CVC fields, "Buy Now" button).
@@ -74,7 +74,7 @@ No transition duration or easing is shown for the hover scale.
 - Closes with the claim that every CSS property was a psychological decision and asks for the next element to decode.
 
 ## Notes for the skill
-- Colour-to-emotion mapping ("purple signals trust") and "rounded = friendly" are folk claims, not established rules; in the skill keep the mechanism (one accent reserved for the primary CTA, strong contrast with the surface) and take the actual hue from the project theme.
+- Colour-to-emotion mapping (the narrator claims the fill hue "signals trust") and "rounded = friendly" are folk claims, not established rules; in the skill keep the mechanism (one accent reserved for the primary CTA, strong contrast with the surface) and take the actual hue from the project theme.
 - The hover is shown without a transition; implement `transition: transform 150-200ms ease-out` (and the same for shadow if it changes) or the scale snaps. Wrap the scale in `@media (hover: hover)` and disable or reduce it under `prefers-reduced-motion: reduce`.
 - Add `:focus-visible` (outline or ring offset from the button) and `:active` (e.g. scale 0.98) states; the reel only shows hover. Disabled and loading states for a checkout button are also missing.
 - `scale(1.05)` on a wide button (e.g. 300px) moves edges by about 7-8px per side, which is noticeable; on full-width mobile buttons prefer a fill/brightness change instead.
