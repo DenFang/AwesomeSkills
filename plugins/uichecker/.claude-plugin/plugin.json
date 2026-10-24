@@ -2,8 +2,8 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "uichecker",
   "displayName": "uichecker",
-  "version": "1.0.0",
-  "description": "137 scoped UI/UX rules with audit, review and refactor commands. Checks only the rules whose element exists in the code. Palette-independent.",
+  "version": "1.1.0",
+  "description": "137 scoped UI/UX rules with build, audit, review and refactor commands. Checks only the rules whose element exists in the code. Palette-independent.",
   "author": {
     "name": "DenFang",
     "url": "https://github.com/DenFang"

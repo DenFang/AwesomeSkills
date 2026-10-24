@@ -6,7 +6,7 @@ Distilled from more than 140 short UI/UX lessons: motion timing, loading, empty 
 
 - **No noise.** Every rule names the element it applies to, so a dropdown is never checked against table rules.
 - **Any brand, any stack.** The rules describe relationships, not a palette.
-- **Works while Claude builds**, and on demand through three commands: audit, review and refactor.
+- **Works while Claude builds**, and on demand through four commands: build, audit, review and refactor.
 
 ## Install
 
@@ -29,6 +29,7 @@ Update later with `claude plugin update uichecker@awesome-skills`.
 | Part | How it runs | What it does |
 |---|---|---|
 | `guidelines` skill | Automatically, whenever Claude builds or changes UI | 137 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
+| `/uichecker:build <what to build>` | You run it | Builds a new screen, flow or component with the rules applied from the start (states, input methods, motion, contrast), self-checks it and runs your checks |
 | `/uichecker:audit [path]` | You run it | Checks the whole codebase (or a path) in two passes (designer's read, then rule by rule), scores each area 0 to 4 and writes a prioritised `UX-AUDIT.md`; changes no code |
 | `/uichecker:review [ref \| range \| branch \| PR]` | You run it | Checks only the changes on your branch, in the working tree, or in a range or PR, and gives a verdict |
 | `/uichecker:refactor [audit \| P0 \| F-001 … \| R-001 … \| path]` | You run it | Fixes problems from the audit, from the last review, or on a path; runs your checks and records what was fixed |
@@ -58,6 +59,7 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 ## What it runs and writes
 
 - Reads your project's UI files and runs read-only searches (`rg`/grep) and `git` (to collect a diff for review).
+- `build` creates and edits the files of the new UI and runs your project's own checks.
 - `audit` writes only `UX-AUDIT.md`; `review` writes nothing; `refactor` edits the files of the findings it fixes and runs your project's own checks (lint, tests, build).
 - Sends nothing anywhere and downloads nothing; no hooks, no MCP servers, no scripts.
 
