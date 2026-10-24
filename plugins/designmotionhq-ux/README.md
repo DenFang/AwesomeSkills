@@ -17,7 +17,7 @@ Or in one step (Claude Code 2.1.275+): `/plugin install designmotionhq-ux --mark
 
 | Part | How it runs | What it does |
 |---|---|---|
-| `ux-guidelines` skill | Automatically, whenever Claude builds or changes UI | 122 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
+| `ux-guidelines` skill | Automatically, whenever Claude builds or changes UI | 137 rules with IDs (`MOT-3`, `FRM-10`, …). Each has a severity, an **Applies to** line so it is only checked where its element exists, and a concrete rule; most have a detection hint and a fix |
 | `/ux-audit [path]` | You run it | Checks the whole codebase (or a path) in two passes (designer's read, then rule by rule), scores each area 0 to 4 and writes a prioritised `UX-AUDIT.md`; changes no code |
 | `/ux-review [ref \| range \| branch \| PR]` | You run it | Checks only the changes on your branch, in the working tree, or in a range or PR, and gives a verdict |
 | `/ux-refactor [audit \| P0 \| F-001 … \| R-001 … \| path]` | You run it | Fixes problems from the audit, from the last review, or on a path; runs your checks and records what was fixed |
@@ -36,15 +36,15 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 
 | File | Prefix | Covers |
 |---|---|---|
-| `motion.md` | MOT | Motion profile, durations, easing, stagger, hover, modals, scroll timelines, reduced motion |
-| `states-feedback.md` | STA | Loading patterns, skeletons, optimistic UI, empty, error, partial, success, toasts, notifications, badges, undo, copy, offline |
-| `forms.md` | FRM | Field states, labels, validation timing, submit, passwords, masks, OTP, steppers, autosave, settings, toggles, dates, sliders, upload, inline edit |
-| `data-display.md` | DAT | Numbers, tables, sorting, selection, bulk actions, responsive tables, pagination, scroll restoration, truncation, filters, search, command palette, charts, dashboards, avatars, chat, ratings, calendars |
-| `interaction.md` | INT | Focus, keyboard, overlay choice, dialogs, sheets, dropdowns, tooltips, menus, destructive actions, buttons, targets, hover, drag and drop, swipe, navigation, tabs, accordions, panels, presence |
-| `visual-system.md` | VIS | Tokens, spacing, type, colour roles, contrast, dark mode, radius, elevation, hierarchy, grid, icons, optical corrections, gradients, z-index |
-| `content-persuasion.md` | CON | Microcopy, landing structure, generated-look tells, flow psychology, honest persuasion, dark patterns to refuse |
+| `motion.md` | MOT | Motion profile, durations, easing, stagger, hover, modals, scroll timelines, success moments, shared-element transitions, reduced motion |
+| `states-feedback.md` | STA | Loading patterns, skeletons, optimistic UI, empty, error, partial, success, toasts, notifications, badges, undo, copy, offline, progress bars, typing indicators |
+| `forms.md` | FRM | Field states, labels, validation timing, submit, passwords, masks, OTP, steppers, autosave, settings, toggles, dates, sliders, upload, inline edit, selection controls, chat and AI composers, payment forms |
+| `data-display.md` | DAT | Numbers, tables, sorting, selection, bulk actions, responsive tables, pagination, scroll restoration, truncation, filters, search, command palette, charts, dashboards and KPI rows, avatars, chat, ratings, calendars, admin screens |
+| `interaction.md` | INT | Focus, keyboard, overlay choice, dialogs, sheets, dropdowns, tooltips, menus, destructive actions, buttons, targets, hover, drag and drop, swipe, navigation, breadcrumbs, tabs, accordions, panels, presence, permission prompts, tree views, boards, voice recording, phone layouts |
+| `visual-system.md` | VIS | Tokens, spacing, type, colour roles, contrast, dark mode, radius, elevation, hierarchy, grid, icons, optical corrections, gradients, glass, z-index, cards, modern CSS layout |
+| `content-persuasion.md` | CON | Microcopy, landing structure, generated-look tells, flow psychology, honest persuasion, pricing sections, success screens, shortcuts, engagement mechanics, dark patterns to refuse |
 
-`sources.md` maps every video to the rules it produced.
+`sources.md` maps every Instagram post to the rule files it produced and links its written breakdown in [`research/designmotionhq/`](../../research/designmotionhq/INDEX.md).
 
 ## Credits
 

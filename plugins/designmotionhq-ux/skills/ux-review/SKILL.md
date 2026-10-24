@@ -37,7 +37,7 @@ Keep only UI-relevant files: components, pages, templates, styles, tokens, theme
 
 1. **P0 first**: missing focus style (INT-1), non-semantic clickable elements (INT-2), dialogs without focus management (INT-4), destructive actions without protection (INT-9), small targets (INT-11), hover-only actions (INT-12), missing labels (FRM-2), possible double submit (FRM-10), unsafe autosave (FRM-11), swallowed errors (STA-7), contrast and colour-only meaning (VIS-7, VIS-8), missing reduced motion (MOT-13), deceptive claims or dark patterns (CON-8, CON-9), single-key shortcuts that fire while typing (CON-10), false urgency or streak loss threats (CON-12).
 2. **New states**: new fetches and submits cover loading, empty, error and success (STA-1).
-3. **Consistency**: new values come from existing tokens; new motion follows the project's motion profile; new copy follows the existing voice.
+3. **Consistency**: new values come from existing tokens; new screens reuse the existing component variants (a third button style or a one-off card is drift, VIS-1); new motion follows the project's motion profile; new copy follows the existing voice.
 
 Report problems the change introduces or touches. A pre-existing problem in an untouched line is out of scope, unless the change makes it worse or it is a P0 in the same component; then add it under "Nearby, not introduced by this change".
 

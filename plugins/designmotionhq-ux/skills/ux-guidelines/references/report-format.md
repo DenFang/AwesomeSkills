@@ -17,6 +17,7 @@ Use the severity written on the rule. When a rule gives a range (for example "P0
 Every finding uses this block. Audit findings are numbered `F-001`, `F-002`, … and review findings `R-001`, `R-002`, …, in report order, so the refactor command can target them.
 
 ```markdown
+
 ### F-007 · P1 · STA-7 · Errors say what happened and offer a way out
 - **Where:** `src/features/invoices/InvoiceList.tsx:84`
 - **Evidence:** `catch (e) { setError("Something went wrong") }` shows a generic message with no retry.
@@ -29,7 +30,7 @@ Every finding uses this block. Audit findings are numbered `F-001`, `F-002`, …
 - **Where**: one primary location as `path:line`. If the same issue repeats, list the first three and give the total ("and 14 more in `src/components/**`").
 - **Evidence**: the code or behaviour that proves it, quoted briefly.
 - **Impact**: who is affected and how, in one sentence.
-- **Fix**: concrete, in the project's own components and tokens.
+- **Fix**: concrete, in the project's own components and tokens. Name the element and the change ("make Save the only filled button in `InvoiceHeader`"), never a vague "consider improving the hierarchy".
 - **Effort**: S (minutes, one place), M (one component or a few files), L (cross-cutting, such as introducing tokens).
 - **Status**: `open`, `fixed`, `fixed (already resolved)`, `wontfix (reason)`, or `needs decision (question)`.
 
@@ -70,13 +71,20 @@ Top 5 fixes by impact: F-003, F-001, F-012, F-007, F-020
 <patterns that repeat across the codebase and are better fixed once, e.g. "no motion tokens: 23 inline durations", each pointing at its finding>
 
 ## Findings
+
 ### States and feedback
 <finding blocks, P0 first>
+
 ### Forms and input
+
 ### Data display
+
 ### Interaction and navigation
+
 ### Motion
+
 ### Visual system
+
 ### Content and persuasion
 
 ## What is already good

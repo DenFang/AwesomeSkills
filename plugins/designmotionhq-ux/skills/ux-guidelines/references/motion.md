@@ -102,8 +102,8 @@ On lively products a short anticipation beat (a slight squash or pull-back) befo
 
 ### MOT-13 · Respect reduced motion (P0)
 **Applies to.** any project with motion (always check).
-**Rule.** Every non-essential animation turns off or becomes a short fade under `prefers-reduced-motion: reduce`. Parallax, auto-playing motion and large movements are removed entirely; shake and bounce become a fade, staggered cascades one quick fade, celebration bursts a static success state, animated counters the final number. Whatever the setting, anything that moves on its own for more than 5 s (looping glows, marquees, auto-rotating carousels) needs a pause or stop control (WCAG 2.2.2).
-**Detect.** No `prefers-reduced-motion` handling anywhere; JS animations (Web Animations API, motion libraries) that ignore the setting.
+**Rule.** Every non-essential animation turns off or becomes a short fade under `prefers-reduced-motion: reduce`. Parallax, auto-playing motion and large movements are removed entirely; shake and bounce become a fade, staggered cascades one quick fade, celebration bursts a static success state, animated counters the final number. Smooth scrolling counts too: put `scroll-behavior: smooth` inside `@media (prefers-reduced-motion: no-preference)`, and let scripted `scrollTo` or `scrollIntoView` with `behavior: 'smooth'` check the same preference. Whatever the setting, anything that moves on its own for more than 5 s (looping glows, marquees, auto-rotating carousels) needs a pause or stop control (WCAG 2.2.2).
+**Detect.** No `prefers-reduced-motion` handling anywhere; JS animations (Web Animations API, motion libraries) that ignore the setting; `scroll-behavior: smooth` set outside a reduced-motion query.
 **Fix.**
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -129,4 +129,4 @@ And check `matchMedia('(prefers-reduced-motion: reduce)')` before starting JS an
 **Detect.** `startViewTransition` with no feature check or reduced-motion handling; the same `view-transition-name` on several visible elements; names derived from array indexes; a clip-path keyframe with only a `from`; morphs longer than about 600 ms.
 
 ---
-Sources: animation-timing, easing-curves, card-hover-anatomy, modal-backdrop, perfect-button, button-feedback, tabs-system, accordion-disclosure, toggle-anatomy, scroll-driven-animations, reverse-engineered-linear, atomic-design, pull-to-refresh, peak-end-rule, view-transitions, success-system. See `sources.md`.
+Sources: animation-timing, easing-curves, card-hover-anatomy, modal-backdrop, perfect-button, button-feedback, tabs-system, accordion-disclosure, toggle-anatomy, scroll-driven-animations, reverse-engineered-linear, design-system-kit, pull-to-refresh, peak-end-rule, view-transitions, success-system, css-one-liners. See `sources.md`.

@@ -126,4 +126,4 @@ Interruption is proportional to consequence: never a 500-style modal for a typo,
 **Detect.** `showTypingIndicator(); await delay(…); send()`; indicators started on a timer rather than an input event; no idle timeout; a full AI answer rendered at once after a long "thinking" state when the API streams; a live region that announces "typing".
 
 ---
-Sources: loading-states-system, skeleton-loading, doherty-threshold, perceived-performance, optimistic-ui, behind-the-button, empty-states, error-states, toast-notifications, notification-system, notification-badge, undo-ux, copy-to-clipboard, typing-indicators, chat-ui-system, drag-and-drop-tips, file-upload-ux, and the free MIT-licensed `ux-states` skill by designmotionhq. See `sources.md`.
+Sources: loading-states-system, skeleton-loading, doherty-threshold, perceived-performance, optimistic-ui, behind-the-button, empty-states, error-states, toast-notifications, notification-system, notification-badge, undo-ux, copy-to-clipboard, typing-indicators, chat-ui-system, file-upload-ux, and the free MIT-licensed `ux-states` skill by designmotionhq. See `sources.md`.

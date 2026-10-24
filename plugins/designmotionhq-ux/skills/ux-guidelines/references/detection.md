@@ -20,11 +20,13 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | INT-11 | `w-4 h-4`, `w-5 h-5`, `size-4`, `width:\s*(16\|20\|24)px` on clickable icons | Hit area padded to 44 px on touch |
 | INT-12 | `:hover`, `hover:`, `onMouseEnter`, `group-hover:opacity` | Not the only way to reach an action; `@media (hover: hover)` gating |
 | INT-7 | `title=`, `Tooltip` | Icon-only buttons also have `aria-label`; no essential content in tooltips |
+| INT-28 | `breadcrumb` | Last crumb is plain text with `aria-current="page"`; the first level never folds; one back link on phones |
 | FRM-2 | `placeholder=` | A real `<label>` is associated |
 | FRM-4 | `disabled=\{!`, `:disabled="!` | Submit greyed until valid |
 | FRM-5 | `onPaste`, `type="password"` | Paste not blocked; reveal toggle; `autocomplete` set |
 | VIS-7 | Muted text tokens and classes (`text-gray-400`, `text-slate-400`, `opacity-50` on text, `#999`, `#aaa`) | Contrast against the real background |
-| MOT-13 | `prefers-reduced-motion`, `motion-reduce:` | Exists at all; JS animation libraries honour it |
+| MOT-13 | `prefers-reduced-motion`, `motion-reduce:`, `scroll-behavior:\s*smooth`, `behavior:\s*['"]smooth` | Exists at all; JS animation libraries and smooth scrolling honour it |
+| FRM-21 | `Pay`, `checkout`, `cc-number`, `PaymentRequest`, `ApplePay`, `GooglePay` | Total on the pay button, wallets first, one column, `autocomplete="cc-*"` |
 | FRM-1 | `:autofill`, `-webkit-autofill` | Autofill styled on themed or dark forms |
 | FRM-6 | `type="number"` | Only on real quantities, never codes, postal codes or card numbers |
 | FRM-19 | `role="switch"`, `Switch`, `Toggle` near a Save button; `indeterminate` | Commit model matches the control; parent checkbox has a mixed state |
@@ -69,12 +71,16 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | VIS-1, VIS-2 | `-\[[0-9]+px\]` (Tailwind arbitrary values), `margin:\s*[0-9]+px`, `padding:\s*[0-9]+px` | Off-scale spacing |
 | VIS-4 | `font-size:`, `text-\[`, `fontSize` | Count distinct sizes; leading per size; measure on paragraphs |
 | VIS-9 | `invert(`, `#000\b`, `#fff\b` in dark styles, `dark:` | Real dark surfaces, not inversion |
-| VIS-10 | `border-radius:`, `rounded-` | Scale, nested radius, full radius on multi-line boxes |
-| VIS-11 | `box-shadow:`, `shadow-` | Shadows on every panel vs only floating layers |
+| VIS-10 | `border-radius:`, `rounded-` | Scale, nested radius (`R − b − p`), flush images and control thumbs, full radius on multi-line boxes |
+| VIS-11 | `box-shadow:`, `shadow-` | Only floating layers; x offset 0 everywhere; contact plus soft layer; negative spread on the soft layer |
 | VIS-18 | `z-index:\s*[0-9]{3,}`, `z-\[` | z-index wars, missing stacking contexts |
 | DAT-1 | `tabular-nums`, numeric table cells, `text-center` on numbers | Tabular figures and right alignment |
 | DAT-9 | `truncate`, `text-overflow: ellipsis` inside flex | `min-width: 0` present |
 | DAT-8 | `scrollTo\(0,\s*0\)`, `scrollRestoration` | Position restored on back; sticky headers cleared with `scroll-padding-top` |
+| VIS-2 | `:last-child\s*\{\s*margin` | Sibling spacing moved to `gap` on the parent |
+| VIS-4 | `<h[1-6][^>]*>[^<]*<br`, `clamp\([^,]+,\s*[0-9.]+vw\s*,` | `text-wrap: balance` instead of hard breaks; a rem term in fluid sizes |
+| VIS-21 | `addEventListener\(['"]scroll`, `100vh`, `height:\s*100%`, `translate\(-50%,\s*-50%\)`, `!important`, `innerWidth`, `scroll-snap-type:[^;]*mandatory` | Sticky, `dvh`, grid centring, container queries or `@layer` would state it directly |
+| DAT-14 | `delta`, `trend`, `change`, `KpiCard`, `StatCard`, `progressbar` near goal or target | A period on every delta, colour by metric direction, at most 4 cards, `<meter>` for goals |
 | VIS-20 | Nested `Card` components, `<a` wrapping a whole card with buttons inside | One entity, one target, no nested cards |
 
 ## Content
@@ -86,5 +92,6 @@ Typical UI globs: `*.{tsx,jsx,ts,js,vue,svelte,astro,html,css,scss,sass,less}`, 
 | CON-6 | *(literal)* `Welcome back` | Greeting as page title |
 | CON-8 | Hard-coded counts near "chose", "users", "customers", strike-through prices | Claims backed by real data |
 | CON-9 | `defaultChecked` on consent or upsell, fees added only in final checkout step, countdown timers | Dark patterns |
-| CON-10 | `keydown` handlers matching single letters | Ignored while typing in a field |
+| CON-13 | `pricing`, `PricingCard`, `Most popular`, `annual`, `yearly` | One featured tier, one badge, one filled button, saving in money |
+| CON-10 | `keydown` handlers matching single letters; `aria-keyshortcuts`, `<kbd` | Ignored while typing; keys shown in menu rows and tooltips, one binding per action |
 | CON-12 | `streak`, `autoplay`, `IntersectionObserver` for infinite loading | Forgiving streaks, cancellable autoplay, an end state or Load more |
