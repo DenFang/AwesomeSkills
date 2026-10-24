@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "ultimatedesign",
   "displayName": "UltimateDesign",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Builds and reviews UI with impeccable, ui-ux-pro-max and uichecker at once: one merged build checklist or one scored report, showing where they agree, where they disagree (you pick) and what only one of them catches.",
   "author": {
     "name": "DenFang",

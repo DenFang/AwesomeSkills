@@ -69,7 +69,7 @@ Use the full names: uichecker has commands with the same short names (`/uichecke
 ## What it runs and writes
 
 - Reads your project's UI files and the member skills' own files; runs `git` (to collect a diff), `ls` (to locate the installed skills) and, read-only, the member skills' bundled scripts: impeccable's `scripts/impeccable detect` and ui-ux-pro-max's `search.py` database search.
-- In full mode starts one subagent per member skill for each audit or review; `--current` and `--lite` use none.
+- In full mode starts one subagent per member skill for each audit or review; `--current`, `--lite` and `build` use none (build runs entirely in your session unless you ask otherwise).
 - `build` creates and edits the files of the new UI; it asks before letting a member skill write its own project files (impeccable's `PRODUCT.md` or `DESIGN.md`, a ui-ux-pro-max design system).
 - Writes only `ULTIMATE-DESIGN.md` during an audit; `apply` edits the files of the findings you choose and runs your project's own checks (lint, tests, build).
 - UltimateDesign itself sends nothing anywhere and has no hooks or MCP servers. One member does: impeccable's launcher downloads its engine binary once, on first use, if it is not cached yet (`~/.impeccable/bin`).
