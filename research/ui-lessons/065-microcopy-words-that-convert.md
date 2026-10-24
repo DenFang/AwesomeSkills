@@ -1,0 +1,73 @@
+---
+lesson: 065
+kind: video
+duration_s: 55
+type: ui
+category: content
+topic: microcopy (button labels, errors, empty states, placeholders, tone)
+sources: frames, voice-over, lesson notes
+---
+
+# Microcopy: words that convert
+
+**Hook:** The same form with different words; one of them converts.
+
+## Main rule
+Write interface text around the user's outcome and next step: buttons name the result, errors name the problem and offer the fix, empty states teach the first action, labels stay visible after typing, and the tone sounds like a person rather than a system log.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 18% vs 86% | "Converts" meter: "Submit" form vs "Create my free account" form | 0:02-0:03 on-screen (illustrative animation, not a cited study) |
+| 1 button, 1 next step | empty-state content | 0:28-0:32 voice |
+
+No timing, size or spacing values are given.
+
+## Before / after
+1. **Button label (0:00-0:12).** Bad: "Submit" ("The button is a chore"). Good: "Create my free account" ("The button is a promise"), annotated "last thing they read before committing" and "Make it the payoff, + conversion". Why: the label is read at the moment of commitment; naming the gained outcome (and that it is free) answers "what happens if I click", reducing hesitation, while "Submit" describes the system mechanic.
+2. **Error message (0:14-0:23).** Bad: field "Email address" with a danger-coloured border and "Invalid input" ("Name the problem, or walk away"). Good: "That email's taken, want to log in?" with "want to log in?" as a link ("hand the fix"), caption "A detour, not a dead end". Why: a specific cause plus a one-click recovery path turns the error into navigation; a generic error forces the user to guess.
+3. **Empty state (0:24-0:32).** Bad: an "Inbox" panel with faint placeholder lines, nothing else ("A void, or a blank"); voice says such a void "looks like a bug". Good: inbox icon, "No messages yet" and one primary "Compose" button ("A void, or a first step", "Teach the first action"). Why: confirms the empty state is intentional (not a loading or error state) and points to the single action that fills it.
+4. **Placeholder as label (0:33-0:41).** Bad: an input whose only text is the placeholder "Date of birth"; typing "01/09/1990" removes it, leaving an unlabelled value and a warning "the question vanished the moment they typed". Good: the label "Date of birth" stays pinned above the value ("A placeholder is a kept label", "the question stays put"). Why: users review and correct entries later; without a persistent label they rely on memory, and screen readers may not announce a placeholder as the field name.
+5. **Tone (0:42-0:50).** Bad: a monospace "SYSTEM · ERROR: operation failed". Good: "YOUR BRAND · Hmm, that didn't go through, try again?", with a "Brand voice" bar filling up ("Words carry the brand"). Why: plain human phrasing with an implied action is easier to understand and reads as the product speaking, not the server.
+
+## Do
+- Label primary buttons with the outcome the user gets (verb + object, e.g. "Create my free account").
+- In errors, state what went wrong in plain words and offer the next move (a link or action).
+- Design empty states with a short explanation and one primary action.
+- Keep a persistent visible label for every input; use placeholders only for format hints, if at all.
+- Write in a conversational, human tone consistent across the product.
+
+## Don't
+- Don't use generic labels such as "Submit" or "OK" for the main action.
+- Don't ship system-speak like "Invalid input", "Invalid entry" or "operation failed".
+- Don't leave an empty screen that could be mistaken for a bug.
+- Don't use placeholder text as the field label.
+
+## Scene by scene
+- 0:00 "Same form. One word." Two identical sign-up forms (Email, Password); left button "Submit" (danger colour), right "Create my free account" (accent). Pointer clicks the right one; "Converts" meters fill to 18% and 86%; caption "The words convert."
+- 0:03 "Labels · The button is a chore": large "Submit" button, note "last thing they read before committing", caption "Make it the payoff + conversion".
+- 0:07 "Submit" morphs into "Create my free account"; headline changes to "The button is a promise".
+- 0:14 "Error messages · Name the problem, or walk away": email field with a danger-coloured border and "Invalid input"; caption "A detour, not a dead end".
+- 0:17 The message rewrites to "That email's taken, want to log in?" with a link; border turns to the accent colour; headline "...or hand the fix".
+- 0:24 "Empty states · A void, or a blank": an empty Inbox card.
+- 0:27 Inbox now shows an icon, "No messages yet" and a "Compose" button; "A void, or a first step", "Teach the first action".
+- 0:33 "Placeholders · A placeholder is not a label": field shows "Date of birth" placeholder; user types 01/09/1990, the hint disappears, a warning icon appears ("the question vanished the moment they typed").
+- 0:40 Fixed: label "Date of birth" pinned on the field border above the value; "A placeholder is a kept label", "the question stays put", "Keep the label pinned".
+- 0:42 "Tone of voice · Write like a person": "SYSTEM ERROR: operation failed" card, then "YOUR BRAND: Hmm, that didn't go through, try again?" card and a filling "Brand voice" bar; "Words carry the brand".
+- 0:51 Outro "Words ship conversion." with a "Create my free account" button, "Follow for more UX writing", "Save this for your next form".
+
+## Voice-over summary
+- "Submit" is a chore and says nothing about what happens next; "Create my free account" is a promise, and as the last thing read before committing it should be the payoff.
+- "Invalid input" names a problem and walks away; "That email's taken, want to log in?" hands over the fix, so an error becomes a detour sign, not a dead end.
+- An empty inbox is the best chance to teach the first action: one button, one next step, not a void that looks like a bug.
+- Placeholder text is not a label: it disappears on typing and takes the question with it.
+- Write like a person, not a server; words carry the brand more than the colour palette.
+
+## Notes for the skill
+- The 18% / 86% conversion meter is animation, not data; do not cite it as a measured lift.
+- In the demo the bad button also uses a different (danger) colour from the good one, so the comparison mixes copy and colour; the copy rule stands on its own, but keep the primary button styling identical when A/B testing labels.
+- Errors: link the message to the field with `aria-describedby`, set `aria-invalid="true"`, and do not rely on the border colour alone (WCAG 1.4.1, 3.3.1 Error Identification, 3.3.3 Error Suggestion). Account-existence messages ("That email's taken") can leak which emails are registered; for sign-up this is usually acceptable, but for login and password reset use a neutral message per security guidance.
+- Placeholders: WCAG 3.3.2 Labels or Instructions and 1.3.1 require a programmatic label (`<label for>`); placeholder text often fails 4.5:1 contrast. A floating label (as in the "kept label" demo) is acceptable if it never disappears and keeps sufficient size and contrast; a static label above the input is simpler and more robust.
+- Date of birth: show the expected format (e.g. "DD / MM / YYYY") as persistent hint text, not only as a placeholder, and use `autocomplete="bday"`.
+- Empty states: distinguish "nothing yet" (first use, show the create action), "no results" (offer to clear filters) and "error" (offer retry); each needs different copy.
+- Human tone should stay clear and specific; avoid jokes in error messages for serious failures (payments, data loss). "Hmm, that didn't go through" is friendly but still vague; add the cause when known.

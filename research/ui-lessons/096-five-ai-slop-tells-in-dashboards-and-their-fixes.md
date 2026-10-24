@@ -1,0 +1,131 @@
+---
+lesson: 096
+kind: video
+duration_s: 82
+type: ui
+category: visual
+topic: removing the "AI-generated" look from dashboards
+sources: frames, voice-over
+---
+
+# Five AI-slop tells in dashboards and their fixes
+
+**Hook:** "Your dashboard looks AI-made": five tells, five fixes.
+
+## Main rule
+Make a dashboard carry information, not decoration: one flat accent colour with a job, no per-card
+colour tiles, one dominant primary metric over smaller secondary ones, hairline borders with radius
+scaled to element size and shadows only on floating layers, and copy that names the period with
+deltas in the right unit, tabular digits and a sparkline.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 5 tells / 5 fixes | structure of the video | 0:00-0:03 on-screen + voice |
+| 4 tile colours (one per card) | tell 2: decorative icon tiles on 4 KPI cards | 0:16-0:27 on-screen + voice |
+| 402 x 160 | identical size of all 4 KPI cards (before) | 0:31-0:38 on-screen |
+| 1 primary + 3 secondary | fixed KPI layout: one large card, three stacked small cards | 0:38-0:42 on-screen + voice |
+| 16 px | uniform corner radius on everything (before) | 0:43-0:51 on-screen + voice |
+| 16 -> 12 px | card radius after fix | 0:56-0:58 on-screen |
+| 16 -> 8 px | input (search) radius after fix | 0:56-0:58 on-screen |
+| 16 -> 6 px | badge radius after fix | 0:56-0:58 on-screen |
+| +12.5% (same badge on all 4 cards, incl. churn) | tell 5: placeholder delta with no shape | 0:30-1:07 on-screen, 1:02 voice |
+| "+12.5% vs Jul", "+3.1%", "+0.4 pt", "-0.2 pt" | fixed deltas: named comparison period, percentage points for rate metrics | 1:09-1:13 on-screen |
+| "Aug 1 to Aug 31, 2026" | named reporting period replacing the greeting | 1:08-1:13 on-screen |
+| 7d / 30d / 90d | chart range segmented control (unchanged) | throughout |
+
+## Before / after
+- **Tell 1, gradient everywhere (0:04-0:15).** Before: the same two-hue gradient on the
+  header bar, the Upgrade button and the chart area fill. After: flat header, line chart without fill,
+  and a single flat accent used only on the Upgrade CTA. Why: when one colour appears only on the
+  primary action, colour itself becomes a signal ("now colour means something"); gradients spread on
+  every surface carry no meaning and read as generated.
+- **Tell 2, icon tiles in four pastel colours (0:16-0:28).** Before: each KPI card has a tinted icon
+  tile in a different hue (four hues, each labelled by name on screen). After: tiles removed, the label is
+  small muted text and the number is the largest element. Why: four colours for four numbers encode
+  nothing (decoration, not information) and compete with the value for attention.
+- **Tell 3, no hierarchy (0:29-0:42).** Before: four identical 402 x 160 cards with the same weight
+  and the same success-coloured "+12.5%" badge. After: Revenue becomes a large primary card (big number, delta,
+  and a Subscriptions / One-time breakdown) with Active users, Conversion and Churn as three compact
+  cards stacked beside it. Why: a single dominant element gives the eye one landing point; equal
+  cards force the reader to scan all four ("a spreadsheet with padding").
+- **Tell 4, 16 px radius and drop shadow on everything (0:43-0:57).** Before: cards, inputs, badges
+  and the chart all use 16 px corners and a drop shadow. After: hairline borders instead of shadows,
+  radius reduced by element size (cards 12, inputs 8, badges 6), and a shadow appears only on a menu
+  that opens above the page (an Export / Filter / Share dropdown, labelled "floats"). Why: elevation
+  is a depth cue; when everything floats nothing does, and a large radius on small parts looks
+  bloated. Nested radii that shrink with size keep proportions consistent.
+- **Tell 5, placeholder copy and shapeless numbers (0:58-1:13).** Before: "Welcome back, Jordan" with
+  a waving-hand emoji, "+12.5% from last month" pill repeated on every card (even churn shows a success-coloured
+  up arrow). After: header "Revenue, Aug 1 to Aug 31, 2026"; primary delta "+12.5% vs Jul" as plain
+  text with a sparkline; secondary deltas "+3.1%", "+0.4 pt", "-0.2 pt"; amounts in the transactions
+  table right-aligned with tabular digits (a dashed guide shows the aligned decimal column). Why:
+  naming the period answers "compared to what"; percentage points are the correct unit for change in
+  a rate; tabular digits keep columns comparable; a sparkline shows trend shape, which a badge cannot.
+
+## Do
+- Reserve one flat accent colour for the primary action and key highlights; keep surfaces neutral.
+- Let the metric value be the largest text in a KPI card; labels small and muted; no decorative icon tiles.
+- Establish hierarchy: one primary metric card larger, with the rest secondary and smaller.
+- Use hairline (1 px) borders for card separation; reserve shadows for layers above the page
+  (menus, popovers, dialogs).
+- Scale radius with element size (e.g. card 12, input 8, badge 6).
+- Label the time period explicitly and state the comparison ("vs Jul").
+- Use percentage points ("pt") for deltas of percentage metrics, and colour deltas by meaning
+  (a churn decrease is good).
+- Use `font-variant-numeric: tabular-nums` and right alignment for numeric columns.
+- Prefer a sparkline for trend over a generic delta badge.
+
+## Don't
+- Don't paint gradients on header, buttons and chart fills at once.
+- Don't give each KPI its own colour tile.
+- Don't make all KPI cards the same size and weight with the same badge.
+- Don't apply a 16 px radius and a drop shadow to every element.
+- Don't ship placeholder greetings, emoji and identical "+12.5%" deltas.
+
+## Scene by scene
+- 0:00 "De-AI your UI 01: Your dashboard looks AI-made." A dark dashboard with gradient header, 4 KPI cards, gradient chart, transactions table; numbered markers 1-5 appear on the tells. Pill "5 tells, 5 fixes".
+- 0:04 "Tell 01, the gradient: Gradients with nothing to say." Callouts point at header, button, chart fill.
+- 0:11 Gradient wipes off: flat header, line-only chart; Upgrade button gets the single accent. Pill "One flat accent".
+- 0:16 "Tell 02, icon tiles: Four colors, four numbers." Each tile gets a label naming its hue (four different hues).
+- 0:23 Tiles fade out; labels become muted text above large numbers. Pill "The number is the hero".
+- 0:29 "Tell 03, hierarchy: Same size, same weight." Dashed outlines show each card at 402 x 160; badges circled.
+- 0:38 Cards reflow: Revenue large with Subscriptions $41,900 / One-time $6,350 breakdown; three small cards stacked right. Pill "One primary. Three secondary."
+- 0:42 Revenue value gets a focus outline (landing point).
+- 0:43 "Tell 04, shadows: When everything floats." Radius tags "16" on search, cards and badges; callouts "drop shadow", "cards", "inputs", "the chart", "badges".
+- 0:52 Radius tags change to 16 -> 12 (cards), 16 -> 8 (search input), 16 -> 6 (badge).
+- 0:55 A "..." menu opens with Export / Filter / Share, the only element with a shadow, tagged "floats". Pill "Shadow only on what floats".
+- 0:58 "Tell 05, copy: Welcome back, Jordan." Greeting and emoji struck through; "+12.5% from last month" circled; dashed guide on the amount column.
+- 1:07 Greeting replaced by "Revenue, Aug 1 to Aug 31, 2026".
+- 1:09 Badges disappear; sparkline appears next to $48,250; deltas become "+12.5% vs Jul", "+3.1%", "+0.4 pt", "-0.2 pt". Pill "Numbers with a shape".
+- 1:13 "Five tells, gone." Final dashboard.
+
+## Voice-over summary
+- Gradients on header, button and chart fill are a generated-UI tell; use one flat accent so colour
+  means something.
+- One pastel icon tile per card is decoration, not information; drop the tiles, the number is the hero.
+- Four identical cards have no hierarchy; one big primary metric and three small secondary ones give
+  the eye one landing spot.
+- 16 px corners and shadows on everything: when every card floats, nothing does; use hairline borders,
+  tighter radius on smaller parts, shadow only on what opens above the page.
+- Placeholder greeting copy and shapeless numbers: name the period, use tabular digits, and a
+  sparkline instead of a badge.
+
+## Notes for the skill
+- Tokens: e.g. `--radius-card: 12px; --radius-input: 8px; --radius-badge: 6px;` and a single
+  `--shadow-overlay` used only by menus, popovers, dialogs and toasts. A nested element's radius should
+  be roughly outer radius minus padding.
+- Delta semantics: colour and arrow must follow "good vs bad" for that metric (churn or cost going
+  down is good). Never convey direction by colour alone; keep a sign (+/-) or arrow and text.
+- Units: change in a percentage metric is in percentage points ("+0.4 pt"); relative change is "%".
+  Always state the comparison baseline ("vs Jul", "vs previous 30 days").
+- Sparklines need an accessible text equivalent (e.g. `aria-label="Revenue trend, up 12.5% vs July"`)
+  or `aria-hidden="true"` if the delta text already covers it.
+- Tabular numbers: `font-variant-numeric: tabular-nums;` plus right alignment and a consistent number
+  of decimals per column.
+- The single-accent rule is about meaning, not banning colour: status colours (success, warning,
+  danger) still apply to statuses such as Paid / Pending / Refunded, with text labels.
+- Hairline borders on dark backgrounds must still meet 3:1 non-text contrast when they are the only
+  boundary of an interactive control (WCAG 1.4.11); decorative card borders are exempt.
+- A personalised greeting is not wrong in itself; the critique is about placeholder copy replacing
+  useful context (period, scope) in the header slot.

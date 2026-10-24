@@ -1,0 +1,66 @@
+---
+lesson: 043
+kind: video
+duration_s: 47
+type: ui
+category: content
+topic: serial position effect (primacy and recency) in layout order
+sources: frames, voice-over, lesson notes
+---
+
+# Serial position: strongest first, strongest last
+
+**Hook:** Of a nine-item list you will remember roughly the first and the last; recall is U-shaped.
+
+## Main rule
+Put the most important item of any sequence at the start and the end (bookends) and put secondary or filler items in the middle: logo first and primary CTA last in a navbar, strongest value proposition first and strongest proof last on a landing page, hook first and payoff last in onboarding.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 9 items | example list / recall chart | 0:00-0:11 |
+| 88% recall item #1, 78% recall item #9, middle items much lower | "Recall data · 9 items" bar chart | 0:03-0:11 on-screen (illustrative, no source given) |
+| Primacy = #1, Middle = #2-#8 (struck out), Recency = #9 | chart labels | 0:09-0:11 |
+| "remember two" | voice claim for 9 items | 0:00 voice |
+| Logo 89% (primacy), nav items 12% (skipped), CTA 76% (recency) | navbar example stats | 0:13-0:22 on-screen (illustrative) |
+| 5 links between logo and CTA | navbar middle | 0:16 voice, 0:13 frames |
+| Onboarding 5 steps: 1/5 "Hook", 2/5-4/5 setup, 5/5 "Payoff" | onboarding example | 0:34-0:42 |
+
+## Before / after
+The video has no explicit bad/good split screens; each application shows the recommended order and dims the middle.
+- **Navbar.** Good: logo at the far left (primacy) and the conversion CTA ("Start free") at the far right (recency); the five secondary links between them are the "skipped" zone. Why: the positions users encode best carry identity and the main action.
+- **Landing page.** Good: hero with the strongest unique value proposition first; middle sections (how it works, integrations, use cases, FAQ, comparison) form a "skip zone: filler, necessary, not memorable"; the page ends with the strongest proof (testimonial, logo wall, case study). Why: first section sets expectation, last section is what visitors leave with.
+- **Onboarding.** Good: slide 1 hooks (welcome, value), slide N pays off ("You're set, time to ship"); setup steps sit in the middle. Why: users remember the opening promise and the completed outcome, not the setup details.
+- Implied bad version: putting the key CTA or the key proof in the middle of a list or page, where recall is lowest.
+
+## Do
+- Treat item order as a design decision.
+- Lead with the most important item and close with the second most important (or repeat the key one at the end).
+- Put the primary CTA at the end of a navbar and at the end of a landing page.
+- Place necessary but low-value content in the middle.
+
+## Don't
+- Don't bury critical CTAs or key information mid-list.
+- Don't assume every position in a sequence is remembered equally.
+
+## Scene by scene
+- 0:00 "Serial position" label; a 9-item vertical nav list (Home ... Sign up) assembles; first and last items highlighted.
+- 0:02 "Memory is U-shaped": "Recall data · 9 items" bar chart grows, item 1 = 88%, item 9 = 78%, middle bars low; chips "Primacy · #1", "Middle #2-#8" (struck), "Recency · #9".
+- 0:12 "Application 1 · Navbars: Logo first. CTA last.": a product navbar with logo, five links, "Start free" button; stat cards Logo 89% primacy, Nav items 12% skipped, CTA 76% recency; caption: strongest links at the edges, weakest in the middle.
+- 0:22 "Application 2 · Landing pages: Strongest USP first. Strongest proof last.": page wireframe with hero ("Now in beta", headline, CTA), dimmed middle sections, testimonial and logo row at the bottom; side labels Primacy (strongest USP: hero copy + value prop, locks in expectation), Skip zone, Recency (strongest proof: testimonial, logo wall, case study). Caption: don't bury the gold in the middle.
+- 0:34 "Application 3 · Onboarding: Slide 1 hooks. Slide N pays off.": five step cards, 1/5 Welcome (Hook) and 5/5 You're set (Payoff) highlighted, 2/5-4/5 dimmed. Caption: magic at the bookends, filler in the middle.
+- 0:43 Outro: "Strongest first. Strongest last." chips Primacy / Recency / Bookends; save and follow.
+
+## Voice-over summary
+- Nine items, you remember about two: memory is U-shaped, first item gets primacy, last gets recency, items two to eight vanish.
+- Navbar: logo first, conversion CTA last; users won't recall the five in between, so put weaker links there.
+- Landing page: lead with the strongest unique value prop, end with the strongest proof (testimonial, logo wall, founder note); the middle is the skipping zone.
+- Onboarding: slide one hooks, the last slide pays off, middle slides get scrolled past.
+- Move filler to the middle, the best material to the bookends.
+
+## Notes for the skill
+- The percentages (88/78, 89/12/76) are illustrative graphics with no cited study; do not quote them as data. The classic serial position curve comes from free-recall experiments (Ebbinghaus; Murdock 1962). Recency mostly reflects short-term memory and fades if recall is delayed (Glanzer & Cunitz 1966), so primacy is the more durable effect for things users must remember later.
+- "You will only remember two" is an oversimplification; middle items are recalled less often, not zero.
+- Interfaces are mostly scanned and searched, not memorised: findability, grouping and labels still matter more than position for menus users revisit. Use serial position to choose which items get the edge slots, not to justify hiding needed links.
+- Keep conventions: logo at the start of the header and the primary action at the end match platform and user expectations; on mobile bottom tab bars, the most used destination is typically first.
+- Middle items in onboarding should still be skippable/short; if a middle step is critical (permissions, data connection), give it its own emphasis rather than relying on position.

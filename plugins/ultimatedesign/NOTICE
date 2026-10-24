@@ -1,0 +1,17 @@
+UltimateDesign
+Copyright 2026 DenFang (https://github.com/DenFang)
+
+Part of AwesomeSkills: https://github.com/DenFang/AwesomeSkills
+
+Licensed under the Apache License, Version 2.0 (see LICENSE). If you
+redistribute these files, or ship a skill, plugin, prompt pack or product
+that is built on them, keep this NOTICE file with it and credit the original
+where you describe your work, for example:
+
+  Based on UltimateDesign by DenFang (https://github.com/DenFang/AwesomeSkills)
+
+UltimateDesign runs, but does not include, three design skills:
+- uichecker by DenFang (Apache-2.0, https://github.com/DenFang/AwesomeSkills)
+- impeccable by Paul Bakaus (Apache-2.0, https://github.com/pbakaus/impeccable)
+- ui-ux-pro-max by Next Level Builder (MIT,
+  https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)

@@ -1,0 +1,83 @@
+---
+lesson: 025
+kind: video
+duration_s: 61
+type: ui
+category: visual
+topic: 12-column grid as a ratio system (ratios, breakpoints, gutters, intentional breaks)
+sources: frames, voice-over, lesson notes
+---
+
+# The grid as a ratio system
+
+**Hook:** The same dashboard content looks chaotic when placed freely and polished when snapped to a grid; the grid nobody teaches is a system of column ratios.
+
+## Main rule
+Lay out pages on a 12-column grid and think in column ratios (4:8, 6:6, 3:9) to express hierarchy; collapse the column count at each breakpoint (12 → 6 → 4 → 1), choose the gutter deliberately for the mood (8 / 24 / 40px), and break the grid only on purpose (full-bleed hero, pull quote into the margin) once the order is established.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 12 columns | base grid; divides into halves, thirds, quarters, sixths | 0:04 voice; 0:21 on-screen "12 cols"; page |
+| 4 : 8 | "Narrow sidebar, wide content area" (corner labels "4 cols" / "8 cols") | 0:05-0:09 on-screen + voice ("gives your content hierarchy") |
+| 6 : 6 | "Equal weight, balanced layout" | 0:09-0:12 on-screen + voice |
+| 3 : 9 | "Minimal sidebar, dominant content" | 0:13-0:17 on-screen + voice ("pushes everything to one side") |
+| 1280px → 12 cols | desktop breakpoint | 0:20-0:21 on-screen + voice |
+| 768px → 6 cols | tablet breakpoint | 0:21-0:23 on-screen + voice |
+| 480px → 4 cols | large phone breakpoint | 0:24-0:26 on-screen + voice |
+| 320px → 1 col | smallest screens, single stacked column | 0:27-0:30 on-screen + voice |
+| 920 / 700 / 500 / 340px | small width readouts under the demo container at each breakpoint (illustrative demo container widths, they animate, e.g. 668px mid-transition) | 0:20-0:30 on-screen, minor labels |
+| 8px gutter | "Dense / Technical" | 0:31-0:35 on-screen + voice ("tight and technical") |
+| 24px gutter | "Balanced / Clean" | 0:35-0:38 on-screen + voice |
+| 40px gutter | "Editorial / Premium" | 0:39-0:43 on-screen + voice ("editorial and luxurious") |
+| 4 KPI cards at 1280px → 2x2 at 768px → 1 per row at 480 / 320px | how the same cards re-span as columns drop | 0:20-0:30 on-screen |
+
+## Before / after
+- **Chaos vs grid (0:00):** the same dashboard pieces (sidebar, three coloured stat tiles, chart, list) scattered, rotated and misaligned, versus the same pieces snapped to shared column edges. Caption "Same content. Different structure." Why: shared edges create invisible alignment lines the eye follows; misalignment reads as error, alignment reads as intent.
+- **Ratios 4:8 vs 6:6 vs 3:9:** the same dashboard (sidebar nav, KPI cards, revenue chart, transactions table) with the sidebar spanning 4, 6 and 3 of 12 columns. 4:8 gives a clear navigation-to-content hierarchy; 6:6 gives both areas equal weight (the content loses room: the third KPI card drops out); 3:9 makes content dominant with a minimal sidebar. Why: relative width is read as relative importance; picking a ratio is picking a hierarchy.
+- **Breakpoints:** at 1280px four KPI cards in one row plus chart and orders side by side; at 768px (6 cols) KPIs become 2x2 and chart / orders keep a wide-narrow split; at 480px (4 cols) and 320px (1 col) every block stacks full-width. Why: the grid is reconfigured rather than removed, so proportions and alignment stay coherent at every size.
+- **Gutters 8 / 24 / 40px:** the same three metric cards (Analytics, Growth, Retention) with only the gap changing. 8px feels dense and technical, 24px balanced and clean, 40px editorial and premium. Caption "Same cards. Different feeling." Why: gap size sets grouping strength and visual density; tight gaps bind items into one data surface, wide gaps isolate each item and slow reading.
+- **Clean grid vs intentional break:** a page with KPI cards, a hero image inset within the columns and a pull quote inside the content column, versus the same page where the hero bleeds to full viewport width ("Full-bleed") and the pull quote extends into the left margin ("Pull quote"). Labels "Not chaos" / "Contrast". Why: a deliberate exception against an established order creates emphasis; without the surrounding order it would just look broken.
+
+## Do
+- Start from 12 columns and choose spans as ratios (4:8 sidebar + content, 6:6 split, 3:9 narrow nav + wide canvas).
+- Anchor every block to shared column edges.
+- Drop columns per breakpoint: 12 at desktop, 6 at tablet, 4 on large phones, 1 on the smallest screens.
+- Pick the gutter for the product's density: about 8px for dense dashboards, 24px for general UI, 40px for editorial / marketing.
+- Break the grid only deliberately and sparingly (full-bleed hero, pull quote into the margin).
+
+## Don't
+- Don't place elements at arbitrary widths or offsets when a column ratio fits.
+- Don't treat the default gutter as a given; it changes the feel of the whole layout.
+- Don't abandon the grid on small screens; reduce the column count instead.
+- Don't break the grid before it is established.
+
+## Scene by scene
+- 0:00 Title "The Grid Nobody Teaches". Left: "Chaos" dashboard, pieces tilted and misaligned. 0:01 pieces snap into a "Grid" layout with faint column guides; caption "Same content. Different structure."
+- 0:04 "It's a Ratio System": dashboard with column guides; chip "4 : 8", "Narrow sidebar, wide content area", corner labels "4 cols" / "8 cols".
+- 0:09 Sidebar widens: "6 : 6", "Equal weight, balanced layout"; only two KPI cards fit.
+- 0:13 Sidebar narrows: "3 : 9", "Minimal sidebar, dominant content"; three KPIs return, chart widens.
+- 0:19 "The Grid Reconfigures": 1280px · 12 cols (4 KPIs in a row, chart + recent orders side by side).
+- 0:21 768px · 6 cols (KPIs 2x2, chart and orders side by side).
+- 0:24 480px · 4 cols (all blocks stacked); 0:27 320px · 1 col (stacked, narrower).
+- 0:31 "The Space Between": gutter selector 8px / 24px / 40px with a small bar chart of the values; three metric cards with gutter markers. 8px "Dense / Technical".
+- 0:35 24px "Balanced / Clean"; 0:39 40px "Editorial / Premium"; caption "Same cards. Different feeling."
+- 0:44 "Clean Grid Layout": page with KPIs, inset hero image placeholder, pull quote card, column stripes in the background.
+- 0:49 "Know When to Break It": hero expands to full bleed (tag "Full-bleed"), quote shifts into the margin (tag "Pull quote"); labels "Not chaos" / "Contrast"; caption "Pros know when to break the rules".
+- 0:56 Outro: "The grid is a superpower. Master it. Then break it on purpose." Follow button, "Save this for your next project".
+
+## Voice-over summary
+- Same content: one version is chaos, the other snaps to a grid.
+- The grid is "not 12 equal columns", it is a ratio system: 4+8 gives hierarchy, 6+6 equality, 3+9 pushes everything to one side.
+- When the screen shrinks the grid reconfigures (12 → 6 → 4 → 1); every breakpoint is a grid decision.
+- Gutters carry mood: 8px tight and technical, 24px balanced, 40px editorial and luxurious; the gutter is a design choice, not a default.
+- Good designers break the grid on purpose (full-width hero, pull quote across the margin): that is contrast, not chaos.
+
+## Notes for the skill
+- CSS: `display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);` then `grid-column: span 4` / `span 8`. Use `minmax(0, 1fr)` so long content cannot blow out a column.
+- Breakpoints: the video uses 1280 / 768 / 480 / 320px viewport widths with 12 / 6 / 4 / 1 columns. Express them as `min-width` media or container queries and redefine `--cols`; spans should be re-declared per breakpoint (a 4-col span in a 6-col grid is two thirds, not a third).
+- Full-bleed inside a constrained grid: named lines, e.g. `grid-template-columns: [full-start] minmax(var(--margin), 1fr) [content-start] repeat(12, minmax(0, 72px)) [content-end] minmax(var(--margin), 1fr) [full-end];` and `grid-column: full;` for the bleed element. Avoid `width: 100vw` tricks that cause horizontal scroll from scrollbar width.
+- Gutter values are illustrative moods; tie them to the spacing scale (e.g. 8 / 24 / 40 are all on an 8px scale) and allow different gutters per breakpoint (smaller on mobile).
+- Accessibility: the visual reorder at breakpoints must keep DOM order meaningful; do not use `order` or explicit grid placement to put content in a visual order that differs from reading / focus order (WCAG 1.3.2, 2.4.3). The single-column mobile layout must work at 320 CSS px without horizontal scrolling (WCAG 1.4.10 Reflow).
+- Minor inconsistency: the voice says the grid is "not 12 equal columns", while the page recommends starting from a 12-column grid. Both mean the same thing in practice: equal columns are the substrate, the design decision is the span ratio.
+- The 6:6 demo hides a KPI card for lack of room; in a real layout, decide which content wraps or moves rather than silently dropping data.

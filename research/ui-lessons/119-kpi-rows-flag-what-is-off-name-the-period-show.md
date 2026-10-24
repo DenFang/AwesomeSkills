@@ -1,0 +1,93 @@
+---
+lesson: 119
+kind: carousel
+type: ui
+category: data display
+topic: KPI row rules (4 cards, 1 number each, a period on every delta, colour only the off value, show the goal)
+sources: image slides 1-3 and 5-6, video slide 4 (frame sheet and final frame)
+---
+
+# KPI rows: flag what is off, name the period, show the goal
+
+**Hook (slide 1):** KPI cards that hide the bad number among good-looking ones.
+
+## Slide by slide
+The carousel has 6 slides: 5 images and 1 short video (slide 4).
+- **Slide 1 (cover).** Headline about KPI cards burying the bad number. A tilted dashboard window titled Pulseboard, section Weekly review. Two cards: Revenue $48.2k with an up-trend arrow and +8%; Signups 1,240 with +3%, both deltas in the success colour. Below them a list of rows Churn, Seats, Refunds, each with a delta pill on the right that is also success-coloured (the Churn pill starts with +1, the rest is cropped off the edge). A dashed danger-coloured outline wraps the list with a danger tag reading Churn is up. The point: churn is rising, yet its delta wears the same success colour as everything else, so the bad number is camouflaged.
+- **Slide 2 (cheat sheet, labelled Save this).** Title: four numbers for a KPI row you read once.
+  - **4** cards per row. A fifth one gets skipped.
+  - **1** number per card. Everything else belongs in the detail view.
+  - **7d** period on every delta. Every change must say "up from when".
+  - **1** danger-coloured value at a time. Only the value that is off gets the danger colour.
+- **Slide 3 (Don't / Do).** Title: colour the outlier, not every delta. Both panels list Revenue +8%, Signups +3%, Churn +1.2% as rows with an icon, label and a pill on the right.
+  - Don't, every delta coloured: +8% and +3% in success-tinted pills, +1.2% in a danger-tinted pill.
+  - Do, only the outlier: +8% and +3% in neutral pills (muted surface, default text), +1.2% stays in the danger-tinted pill.
+- **Slide 4 (video, 4.5 s).** Title: show the goal, not just the number. Subtitle: a bar to the target tells you on track or late before you read a digit. Card: Q4 revenue $48.2k with an up-trend arrow and +8%; row Q4 goal with readout 48.2 / 60 k (value in strong text, the target part muted); a horizontal bar about 80% filled; a calendar icon and Ends Dec 31; status line On track: 80% of the goal, 7 weeks left. See Video slide.
+- **Slide 5 (pre-ship checklist).** Title: four checks before you ship a KPI row. Three passes and one fail:
+  - Pass: every delta names its period.
+  - Pass: danger colour only when the number is bad.
+  - Pass: units on the value, not in the label (write $48.2k under Revenue, not Revenue ($k) over 48.2).
+  - Fail: six cards fighting for one row.
+
+## Main rule
+A KPI row is read once, so it must show at a glance which value needs attention: at most 4 cards, one headline number per card, every delta labelled with its comparison period (for example 7d), the danger colour on only the one value that is off, units attached to the value, and goal context (value / target bar, deadline, status line) where a target exists.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 4 cards per row | maximum KPI cards in one row; a fifth gets skipped | slide 2 |
+| 6 cards in a row | explicit fail | slide 5 |
+| 1 number per card | one headline metric per card; extras go to the detail view | slide 2 |
+| 7d | example comparison period written on every delta | slide 2 |
+| 1 danger-coloured value at a time | only the off value gets the danger colour | slide 2, slide 5 |
+| Revenue $48.2k, +8% | sample KPI | slides 1, 3, 4 |
+| Signups 1,240, +3% | sample KPI | slides 1, 3 |
+| Churn +1.2% | sample bad delta (rising churn), the only coloured pill in the good version | slide 3 |
+| Q4 goal 48.2 / 60 k | goal readout, value strong and target muted | slide 4 |
+| about 80% fill | goal bar at rest (48.2 / 60 = 80.3%) | slide 4 |
+| 0, 8, 16, 28, 36, 44, 48 | readout count-up while the bar refills, sampled every 0.5 s | slide 4, 1.0-4.0 s |
+| Ends Dec 31 | deadline under the bar | slide 4 |
+| On track: 80% of the goal, 7 weeks left | plain-language status line | slide 4 |
+| 4.5 s | video slide length | slide 4 |
+
+Check of the status: Q4 is 13 weeks; 7 weeks left means about 6 weeks (46%) have elapsed while 80% of the goal is reached, so the on-track status holds (it is in fact ahead).
+
+## Before / after
+- **Every delta coloured vs only the outlier (slide 3, slide 1).** Bad: success pills on +8% and +3%, a danger pill on +1.2%, or worse (slide 1) every pill in the success colour including rising churn. Good: neutral pills for normal values, a single danger pill on Churn +1.2%. Why: colour works as a signal only when it is the exception. Three coloured pills make the eye compare three items; one coloured pill among neutral ones pops out pre-attentively, so the reader finds the problem without reading any number. Slide 1 also shows the semantic trap: a plus sign does not mean good. For churn, refunds and costs an increase is bad, so colour must be driven by whether the value is good or bad for the business, never by the sign of the delta.
+- **Value alone vs value with goal (slide 4).** Bad (implied): $48.2k and +8% with no reference point, so the reader must remember the target to judge it. Good: a bar from 0 to the target, the fraction 48.2 / 60 k, the deadline and a status sentence. Why: bar length is judged pre-attentively, so on-track or late registers before any digit is read; the fraction and status line then confirm it in words.
+- **Six cards vs four (slides 2, 5).** Bad: six cards squeezed into one row. Good: four. Why: each card shrinks, numbers lose size, and the reader stops scanning before the end; the slide says the fifth card already gets skipped.
+- **Units in the label vs on the value (slide 5).** Good: $48.2k directly on the value. Why: the unit stays attached when the number is scanned or copied, and the label stays short.
+
+## Do
+- Cap a KPI row at 4 cards; move the rest to a second row, a tab or the detail view.
+- Show one headline number per card; secondary figures go into the drill-down.
+- Write the comparison period on every delta (vs 7d, vs last week, vs Q3).
+- Keep normal deltas in neutral pills or text; give the danger role colour to the one value that is off.
+- Decide good or bad per metric direction (higher is better for revenue, lower is better for churn) before choosing a colour.
+- Put units on the value ($48.2k, 3.1%), not in the label.
+- Where a target exists, show value / target, a bar to the target, the deadline and a short status sentence.
+
+## Don't
+- Don't colour every delta by its sign; rising churn in the success colour is the cover's anti-example.
+- Don't put more than one value in the danger colour at a time unless several are genuinely off; colour inflation kills the signal.
+- Don't show a percentage change without its base period.
+- Don't fit 6 cards into one row.
+- Don't make readers remember the target from elsewhere.
+
+## Video slide
+Slide 4, 4.5 s, frames sampled at 2 per second.
+- 0.0-0.5 s: rest state. Readout 48.2 / 60 k, bar about 80% filled in a warning-role colour.
+- 1.0 s: the bar resets to a sliver in the accent colour, readout 0 / 60 k.
+- 1.5 to 3.5 s: the bar grows in the accent colour while the readout counts 8, 16, 28, 36, 44.
+- 4.0 s and final frame: readout 48 / 60 k (rounded, without the .2), the bar returns to the warning-role colour at about 80%.
+- The headline, revenue card, deadline and status line stay static the whole time; only the bar fill, its colour and the readout move.
+
+## Notes for the skill
+- The post breaks its own period rule: every sample delta (+8%, +3%, +1.2%) has no period, on slides 1, 3 and 4. In the skill write them as +8% vs 7d (or similar).
+- Colour of the goal bar is inconsistent: at rest it uses a warning-role colour while the status says on track. If colour means status, an on-track bar should be neutral, accent or success, and the warning colour reserved for off-track goals (the one-danger-value rule applied to bars).
+- The readout drops from 48.2 to 48 at the end of the animation; a count-up must land on the exact final value with the same precision as the static text.
+- The 4-card limit and 7d are the author's heuristics, not a standard; 7d is an example period, the rule is that some period is named.
+- WCAG 1.4.1 (use of colour): the single danger pill must also carry a non-colour cue, such as an arrow, a word like Up or At risk, or an icon with an accessible name. Pill text needs 4.5:1 against the pill fill (1.4.3); the pill edge and the goal bar fill need 3:1 against adjacent colours where they carry meaning (1.4.11).
+- Semantics: a goal bar is a `<meter>` with `min`, `max`, `value` (or `role="meter"`), not `role="progressbar"`, which is for task progress. Give it an accessible name (Q4 goal) and `aria-valuetext` such as 48.2k of 60k, 80 percent. Keep the visible fraction text.
+- Count-up animation: decorative only. Show the final value immediately under `prefers-reduced-motion: reduce`, and never put the animating number in a live region; screen readers should get only the final value.
+- On-track status should be computed against elapsed time (share of goal reached vs share of the period elapsed) and the logic stated somewhere, not decided by a fixed threshold.

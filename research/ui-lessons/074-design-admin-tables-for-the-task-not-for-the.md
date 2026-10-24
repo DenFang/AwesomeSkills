@@ -1,0 +1,84 @@
+---
+lesson: 074
+kind: video
+duration_s: 53
+type: ui
+category: content
+topic: intent-driven admin table (fewer columns, guarded delete, six states)
+sources: frames, voice-over
+---
+
+# Design admin tables for the task, not for the database schema
+
+**Hook:** AI tools ship database-shaped interfaces: every schema field as a column, Delete next to Edit on every row, no empty or loading state.
+
+## Main rule
+Before building a data screen, ask who uses it day to day and what the worst mistake they could make is; then shape the UI around that: show only the columns the task needs (5, not 12), make search the primary action, move destructive actions into an overflow menu behind a typed confirmation, and spec all six states (loading, empty, error, success, offline, partial) before writing code, with a skeleton that matches the final layout.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 12 columns → 5 columns | users table before vs after (ID, NAME, EMAIL, STATUS, PLAN, CREATED_AT, UPDATED_AT, LAST…, ACTIONS… → USER, STATUS, LAST SEEN, PLAN, row menu) | 0:03-0:09 and 0:19-0:21 on-screen chip + voice |
+| 1 click · no confirm | inline red Delete button in the AI default | 0:10-0:12 on-screen chip |
+| 2 questions | intent discovery: "Who uses this page day-to-day?" and "What's the worst mistake they could make?" | 0:15-0:18 on-screen + voice |
+| Type DELETE to confirm | confirmation for account deletion; "Delete forever" stays disabled until the word is typed | 0:22-0:24 on-screen + voice |
+| 6 states | Loading, Empty, Error, Success, Offline, Partial | 0:26-0:36 on-screen + voice |
+| 1:1 · matches layout | skeleton rows and columns match the loaded table | 0:35-0:37 on-screen + voice |
+| 128 | user count badge next to "Users" (0 in empty state) | 0:19-0:36 on-screen |
+| HIGH / HIGH / MED / LOW | severity labels in the audit list | 0:40-0:42 on-screen |
+| under 100ms, always visible | "Feedback & Affordance" card description (feedback latency target) | 0:43-0:47 on-screen |
+| 6 skills · 2 sub-agents · 3 commands (first shown as 5 · 1 · 2, counting up) | product contents | 0:43-0:47 on-screen + voice |
+
+## Before / after
+- **Schema table vs task table.** Bad: 12 columns mirror the database (internal IDs like `usr_8241`, `CREATED_AT`, `UPDATED_AT` timestamps), the table overflows horizontally and the actions column is pinned. Good: 5 columns: a USER cell combining avatar initials, name and email; STATUS badge with icon (Active / Invited); LAST SEEN as relative time ("2 min ago"); PLAN; and a "…" row menu. Why: support staff scan for a person, not a record ID; merging identity fields and dropping system fields cuts horizontal scanning and cognitive load.
+- **Inline Delete vs guarded delete.** Bad: a red Delete button sits right next to Edit on every row; one misclick deletes an account with no confirmation. Good: the row menu holds View profile, Edit access, Reset password, and a danger-coloured "Delete account…" at the bottom; choosing it opens a dialog "Delete Sarah Chen's account? This cannot be undone. Type DELETE to confirm." with Cancel and a disabled "Delete forever" that activates once DELETE is typed. Why: friction scaled to the cost of the mistake; separating the destructive action from frequent ones removes accidental hits, and typing forces a conscious decision. The ellipsis in "Delete account…" signals that a dialog follows.
+- **No states vs six specced states.** Bad: the generated table has no empty state and no loading state. Good: Loading shows a skeleton with identical rows and columns; Empty shows an icon, "No users yet", "Invite your team to get started." and a primary "Invite your first user" button; Error shows a banner "Couldn't load users" with a Retry action above the stale rows; Success shows a toast "Invitation sent to maya@lumen.dev"; Offline and Partial are listed as required states (not shown in detail). Why: users see every state at some point; a skeleton that matches the real layout prevents layout shift when data arrives.
+- **Search as primary.** The rebuilt header puts a wide search field ("Search name, email, team…") next to the title, with Invite as the only button. Why: the support team's main job is finding a specific user.
+
+## Do
+- Start by naming the primary user of the screen and the worst mistake they could make; let that drive layout and safeguards.
+- Limit a data table to the columns needed for the job (here 5); combine name, avatar and email into one identity cell.
+- Show status as a badge with icon plus text, and time as relative "last seen".
+- Make search the primary control on lookup-heavy admin screens.
+- Put destructive row actions in an overflow menu, last, in the danger colour, with an ellipsis label.
+- For irreversible deletion, require typing a confirmation word and keep the destructive button disabled until it matches; name the object in the dialog title.
+- Spec loading, empty, error, success, offline and partial states before coding; make the skeleton match the final layout 1:1.
+- Give the empty state a heading, one line of guidance and a primary action.
+- Put load errors in an inline banner with Retry, keeping existing data visible.
+
+## Don't
+- Don't render every schema field as a column (internal IDs, created/updated timestamps).
+- Don't place a one-click Delete next to Edit on every row.
+- Don't ship a table without an empty state and a loading state.
+- Don't use a generic spinner or a skeleton that differs from the real table.
+
+## Scene by scene
+- 0:00 A wide "Admin · Users" (title uses a dash on screen) table with a faint "SELECT * FROM users" label; prompt "> build an admin page for my users". Text "Database-shaped."
+- 0:03 Tag "THE AI DEFAULT", title "Built for the database"; chip counts "2 columns" up to "12 columns"; warning chip "One misclick from disaster". Every row has Edit plus a danger-coloured Delete.
+- 0:08 Cursor hovers Delete; label "no empty state" appears below the rows.
+- 0:10 Chip "1 click · no confirm"; the cursor clicks Delete, the screen flashes the danger tone and the table collapses.
+- 0:13 Tag "/UX-DESIGN", title "It asks before it builds": terminal `/ux-design users admin page`, questions "Who uses this page day-to-day?" and "What's the worst mistake they could make?", answer "support team · deleting the wrong account". Chip "Intent before code".
+- 0:19 Tag "THE REBUILD", title "Rebuilt for intent": new table, chip "12 columns" counts down to "5 columns"; footer "Destructive actions earn friction".
+- 0:21 Row "…" menu opens: View profile, Edit access, Reset password, Delete account… (danger colour).
+- 0:22 Dialog "Delete Sarah Chen's account?" with input; typing DELETE enables "Delete forever".
+- 0:25 Cursor moves to the search field, highlighting search as the primary action.
+- 0:27 Tag "STATE COMPLETENESS", title "Six states, specced first": a grid of six state chips (Loading, Empty, Error, Success, Offline, Partial) lights up one by one as the table shows skeleton, empty state, error banner with Retry, success toast.
+- 0:35 Chip "1:1 · matches layout" over the loaded table.
+- 0:38 Tag "/UX-AUDIT", title "Audit what you shipped": `/ux-audit src/app/checkout`, "ux-auditor · scanning 4 screens"; a checkout form turns into a ranked list: HIGH "Pay button below the fold on mobile", HIGH "No error state on payment failure", MED "Coupon field competes with Pay", LOW "Card icons missing", each with a file:line. Chip "Ranked. Actionable. Shippable."
+- 0:43 Tag "THE SYSTEM", "What's inside": six cards (Intent Discovery: who / what / worst case; Info Hierarchy: primary · secondary · tertiary; State Completeness: all six states, always; Form UX: labels, defaults, validation; Feedback & Affordance: under 100ms, always visible; UX Auditor: severity-ranked fixes). Chip "On every prompt. Automatically."
+
+## Voice-over summary
+- AI tools generate database-shaped UIs: 12 columns, Delete next to Edit, no empty or loading state, one misclick from disaster.
+- The tool first asks who uses the page and what the worst mistake would be; answer: support team, deleting the wrong account.
+- Result: delete moves behind a typed confirmation, search becomes primary, 5 columns instead of 12.
+- Every state is specced before code: loading, empty, error, success, offline, partial; the skeleton matches the final layout.
+- The rest is a product pitch: an auditor gives a severity-ranked fix list; "six skills, two sub-agents, three commands".
+
+## Notes for the skill
+- Typed confirmation is heavy friction; reserve it for irreversible, high-impact actions (account deletion, data wipe). For recoverable deletes prefer undo (soft delete + toast with Undo). Make the confirmation word match case-insensitively and trim whitespace.
+- Dialog a11y: `role="alertdialog"`, `aria-labelledby` on the title, `aria-describedby` on "This cannot be undone…", initial focus on the input or Cancel (never on the destructive button), Esc closes, focus returns to the row menu trigger.
+- Row menu trigger "…" needs an accessible name (e.g. `aria-label="Actions for Sarah Chen"`) and a touch target of at least 44×44 px on touch devices (24×24 CSS px is the WCAG 2.2 AA minimum).
+- Status badges must not rely on colour alone: the video correctly pairs icon + text ("Active", "Invited").
+- State model to implement: `loading | empty | error | success | offline | partial`; "partial" means some data loaded and some failed, which should render what loaded plus an inline notice for the rest. Offline and partial visuals are not shown in the video.
+- Skeleton: same row height, column widths and count as the loaded table; announce loading to assistive tech via `aria-busy="true"` on the table region.
+- "Under 100ms" on the feedback card matches the common guideline that interaction feedback should begin within about 100 ms.

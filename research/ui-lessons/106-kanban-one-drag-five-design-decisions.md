@@ -1,0 +1,78 @@
+---
+lesson: 106
+kind: video
+duration_s: 74
+type: ui
+category: interaction
+topic: Kanban board drag-and-drop: lift, placeholder, WIP limit, collapse, swimlanes
+sources: frames, voice-over
+---
+
+# Kanban: one drag, five design decisions
+
+**Hook:** A kanban board is a system: a single drag depends on five decisions.
+
+## Main rule
+Make the dragged card look physically picked up (slight scale, deeper shadow, about 3° tilt), hold its exact height open as the drop placeholder so nothing else shifts, show and enforce WIP limits on the column header, collapse columns to vertical labels with counts instead of scrolling sideways, and split one board into swimlanes instead of creating a second board.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| `scale 1.03` | lifted drag preview | 0:06-0:13 on-screen chip |
+| `+8 px shadow` | extra shadow depth on the lifted card | 0:07-0:13 chip |
+| `3° tilt` | rotation of the drag preview (voice: "three-degree tilt"; Trello cited) | 0:08-0:13 chip + voice |
+| `96 px = 96 px` | placeholder height equals the dragged card's height | 0:17-0:24 chip |
+| `0 layout shift` | sized placeholder result | 0:20-0:24 chip |
+| "jump" | thin-line placeholder makes cards below jump on drop | 0:22-0:24 chip |
+| In progress 3 / 4 then 4 / 4 | WIP count / limit on the column header | 0:25-0:35 |
+| "WIP limit reached: finish one first", "5th card refused" | drop rejected over the limit | 0:34-0:35 |
+| Done 42 | collapsed column vertical label with count | 0:36-0:46 |
+| `7 columns, 0 scroll` | board with collapsed columns fits without horizontal scroll | 0:43-0:46 chip |
+| Web 6, 2 in progress / Mobile 5, 2 in progress | swimlane headers with per-lane counts | 0:50-0:57 |
+| `1 board, 2 lanes` vs "2 truths" | swimlanes vs separate boards | 0:47-0:57 |
+
+## Before / after
+- **Drag preview.** Before ("Flat drag"): the card moves unchanged, "flat = not grabbed". After ("Lifted"): scale 1.03, +8px shadow, 3° tilt, labelled "in hand". Why: depth and tilt signal that the object is detached and held (direct-manipulation affordance), and make the dragged item distinct from the static cards beneath it.
+- **Drop placeholder.** Before ("Thin line"): a hairline insertion marker; when the card drops, the column expands and every card below jumps. After ("Sized slot"): a dashed slot exactly the card's height (96px = 96px) opens once as the card enters, then nothing else moves on drop (0 layout shift). Why: the layout change happens once, predictably, while the user is still aiming, instead of a surprise reflow at release.
+- **WIP limit.** Shown: "In progress 3 / 4" on the header; adding a card makes it 4 / 4 and the header switches to a warning colour; dragging a 5th card shows "WIP limit reached: finish one first" and the drop is refused. Why: the constraint is visible before it is hit, and the board enforces the team's process at the moment of action ("the board says stop before the manager does").
+- **Overflow.** Before: 7 columns force a horizontal scrollbar, columns cut off ("scroll"). After: rarely used columns (Backlog, QA, Staging, Done) collapse into narrow vertical labels with counts ("Done 42"), giving "7 columns, 0 scroll". Why: sideways scroll hides part of the workflow; collapsed columns keep the whole pipeline and its counts in view.
+- **Multiple teams.** Before: separate Web and Mobile boards; card 209 shows "In progress" on one and "To do" on the other ("2 truths"). After: one board with Web and Mobile swimlanes, same columns, counts per lane ("1 board, 2 lanes"). Why: a single source of truth avoids conflicting status for the same item.
+
+## Do
+- On drag start, lift the preview: scale about 1.03, larger shadow, about 3° rotation.
+- Render the drop placeholder at the dragged item's exact measured height.
+- Show WIP as `count / limit` in the column header; change header state at the limit and block or warn on over-limit drops with a reason.
+- Let columns collapse to a vertical label plus item count.
+- Use swimlanes (rows by team, priority, etc.) within one board before adding another board.
+
+## Don't
+- Don't drag a flat, unchanged card.
+- Don't use a thin insertion line that causes a reflow jump at drop.
+- Don't hide WIP limits in settings or enforce them silently.
+- Don't make horizontal scroll the default way to see a wide board.
+- Don't duplicate the same work items across boards.
+
+## Scene by scene
+- 0:00 Sprint board (Backlog, To do, In progress 3/4, Done 42); a card is dragged into In progress; "Kanban is a system 01: One drag. Five decisions."; numbered markers 1-5 point at the preview, placeholder, header, collapse and lanes; footer "drag is the gesture, the board is the system".
+- 0:04 "02: The drag preview lifts." "Lifted" card vs "Flat drag" card; chips appear one by one: scale 1.03, +8 px shadow, 3° tilt, in hand; label "Trello: tilts on drag"; "flat = not grabbed" struck out; footer "lift, shadow, 3°".
+- 0:15 "03: Placeholder = card height." Two In progress columns: "Thin line" (hairline marker, then "jump") vs "Sized slot" (dashed slot, "96 px = 96 px", "0 layout shift").
+- 0:25 "04: WIP limit on the header." Header "In progress 3 / 4", chip "header 3 / 4"; card dropped, header 4 / 4 in warning colour; another card dragged, toast "WIP limit reached: finish one first", chip "5th card refused"; footer "limit visible, color on hit".
+- 0:36 "05: Collapse, don't scroll." Board with 7 columns and a horizontal scrollbar ("scroll"); columns collapse one by one to vertical labels (Backlog 8, QA 1, Staging 1, Done 42); chip "7 columns, 0 scroll"; footer "collapse > scroll".
+- 0:47 "06: Swimlanes, not boards." Two side-by-side boards (Web, Mobile) with card 209 in different columns, "2 truths"; merge into one board with Web and Mobile lanes, "1 board, 2 lanes"; footer "1 board, N lanes".
+
+## Voice-over summary
+- Kanban is a system: one drag, five decisions behind it.
+- The drag preview lifts with a shadow and a three-degree tilt, as Trello does; the tilt says the card is in your hand.
+- The drop placeholder is exactly the card's size, so the column opens once and nothing else moves; a thin line makes every card below jump when it lands.
+- WIP limits live on the column header ("4 of 4"); hitting the limit turns the header to a warning colour, so the board says stop before the manager does.
+- Columns collapse to a vertical label with a count; if you scroll sideways, you lost the board.
+- Swimlanes before a second board: same columns, rows by team or priority; two boards mean two truths. Ends with a product plug.
+
+## Notes for the skill
+- Implementation: apply lift as a transform on the drag overlay only (`transform: scale(1.03) rotate(3deg)` plus a stronger shadow token), not on the original item; animate it in quickly (about 150 ms is common practice, the video gives no duration). Respect `prefers-reduced-motion` by dropping the rotation/scale animation and keeping the shadow change.
+- Placeholder: measure the dragged element's height on drag start (libraries such as dnd-kit / @atlaskit/pragmatic-drag-and-drop expose it) and render a placeholder of that height; this avoids cumulative layout shift at drop.
+- Accessibility: drag-and-drop must have a keyboard and screen-reader alternative (WCAG 2.5.7 Dragging Movements, 2.1.1 Keyboard): e.g. a "Move to..." menu or keyboard pick-up (Space), arrow keys, drop (Space), cancel (Escape), with live-region announcements ("Picked up card TMP-214, In progress, position 2 of 4").
+- WIP warning: do not rely on colour alone; keep the "4 / 4" text and the explicit refusal message (the video does both). Decide whether over-limit is a hard block or a soft warning per team policy.
+- Collapsed columns: the vertical label must remain a button with an accessible name including the count (e.g. "Expand Done, 42 cards") and `aria-expanded`.
+- Mobile boards are a different problem (one column per screen with swipe or a column picker); the collapse pattern targets desktop widths.
+- Final segment is a product advertisement; no UI rule there.
