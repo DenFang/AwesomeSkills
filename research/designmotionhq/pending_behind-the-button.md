@@ -60,7 +60,7 @@ No timing (ms) values are shown; "like repaint: instant" vs "payment confirm: wa
 - 0:03 Section "Steps 1-2 · The request: Validate. Then ship it." Checkout form (email, card number, billing zip) gains check marks field by field; a "0 network calls" badge appears in the browser bar; label "instant feedback · a frontend job".
 - 0:09 A `POST /api/orders` card with JSON body and a masked Bearer token travels from "browser" to "api.lumen.shop" along a dashed line; tracker step 2 lights up.
 - 0:15 Section "Steps 3-4 · Backend: Never trust the client." Server panel checks "schema + types", "token verified", "total re-computed" one after another.
-- 0:19 A red-tinted `curl --data` card with total 0.01 slides in and gets knocked away; "403 rejected" pill appears.
+- 0:19 A danger-tinted `curl --data` card with total 0.01 slides in and gets knocked away; "403 rejected" pill appears.
 - 0:22 Business logic rows fill with progress bars and checks: Stock check (4 in stock), Price check ($89.00 matches catalog), Payment charge (gateway approved).
 - 0:28 Section "Step 5 · Database: All of it, or none of it." `orders_db` cylinder; a TRANSACTION box fills with four rows.
 - 0:32 The payments row turns to the danger colour with "FAIL"; the box empties with "ROLLBACK, nothing written"; rows refill with "retrying..." and end with "COMMIT, atomicity".

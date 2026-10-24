@@ -1,0 +1,79 @@
+---
+id: unknown
+reel_url: unknown
+pattern_page: https://designmotionhq.com/patterns/inline-editing
+date: unknown
+duration_s: 52
+type: ui
+category: forms
+topic: inline (click-to-edit) editing
+sources: frames, voice-over, pattern page
+---
+
+# Inline editing: affordance, zero layout shift, Enter/Escape, one blur rule, optimistic save
+
+**Caption:** not captured yet
+**Hook:** Click a title and it becomes an input, yet nothing on the page moves (layout shift reads 0.000).
+
+## Main rule
+Editable text must hint editability on hover, swap to an input with identical metrics (only the border goes from transparent to accent), commit on Enter and cancel on Escape, apply one consistent blur rule across the product, save optimistically with rollback that keeps the draft, and require an explicit Edit action where a typo is expensive.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| Cumulative layout shift 0.000; "0 px moved" | text -> input swap, good version | 0:00-0:02 on-screen |
+| font-size 46 = 46 (text vs input) | swap measurement | 0:11-0:19 card "The swap, measured" |
+| padding 10 = 10 | swap measurement | 0:11-0:19 |
+| border 2px: transparent -> accent | the only property that changes on swap | 0:11-0:19 (shown as "transparent -> teal") |
+| +3 px (downward) | bad swap: metadata line below the title jumps | 0:16-0:19 |
+| "3rd this week" | support ticket "How do I rename a doc?" when there is no signal | 0:07-0:10 |
+| Enter = commits, Esc = cancels | keyboard semantics | 0:20-0:29 |
+| Doc app: saved on blur; spreadsheet: discarded on blur (typed value replaced, original restored) | blur policy examples | 0:23-0:29 |
+| HTTP 500 | failed save that triggers rollback | 0:34-0:38 |
+| "1 click = 1 write" vs "Edit is a decision" | every-cell editing vs explicit Edit | 0:39-0:46 |
+
+## Before / after
+- **No signal vs signal.** Bad: a title that is editable but looks like static text; users open support tickets asking how to rename (third this week). Good: on hover, a soft background tint, a pencil icon and a "Click to edit" hint. Why: affordance must be discoverable; a cheap hover cue removes the support cost.
+- **Bad swap vs measured swap.** Bad: the input has different padding/line-height, so the content beneath shifts 3px when editing starts. Good: same font, size (46 = 46), padding (10 = 10); a 2px border exists in both states and only changes from transparent to accent. Why: no reflow, so the element feels like the same object changing mode rather than a new control replacing it.
+- **Inconsistent blur vs one rule.** The two common policies are shown side by side: a doc app saves on blur, a spreadsheet discards on blur. The guidance is not which one is right but to pick one and never vary it. Why: users build muscle memory; inconsistency causes data loss or unwanted saves.
+- **Wait-for-server vs optimistic.** Good: the new text shows immediately ("Updated on screen") while the PATCH request travels; if the server returns 500 the title rolls back, a "Couldn't save, draft kept" message explains and preserves the typed draft for retry. Why: perceived latency drops to zero, failure stays recoverable and explained.
+- **Every-cell vs explicit edit.** Every editable cell means one click is one write, so an accidental click turns "Pending" into "Paid". For costly records, show read-only content with a lock and an explicit Edit button. Why: friction proportional to the cost of a mistake.
+
+## Do
+- Show a hover tint plus pencil icon (and a focus-visible equivalent) on editable text.
+- Keep typography, padding and box size identical between display and edit states; reserve the border in both.
+- Enter commits, Escape cancels and restores the original value.
+- Choose one blur behaviour (save or discard) and apply it everywhere.
+- Update UI optimistically; on failure roll back, keep the draft, and say why.
+- Use explicit Edit mode for high-cost data; inline cell editing only where mistakes are cheap and reversible.
+
+## Don't
+- Don't leave editable text without any affordance.
+- Don't let the input be a different size than the text it replaces.
+- Don't save on blur in one screen and discard in another.
+- Don't silently drop a user's edit when the server rejects it.
+
+## Scene by scene
+- 0:00 Document header (breadcrumb, title "Q3 Launch Plan", "edited 2h ago" line); click turns the title into an input; a grid overlay and "0 px moved" badge; a "Cumulative layout shift 0.000" meter. Overlay: nothing moved.
+- 0:03 "Affordance: Editable has to whisper it": "Signal" card (hover reveals tint, pencil, "Click to edit") vs "No signal" card (same title, silent) which receives "Ticket #4821: How do I rename a doc?", "3rd this week". Footer: a pencil costs nothing, tickets do.
+- 0:11 "Zero layout shift: Same box, different chrome": "The swap, measured" toggles h1 <-> input with font-size 46 = 46, padding 10 = 10, border 2px transparent -> accent; "The bad swap" shows "+3 px" and the metadata line moving.
+- 0:20 "Keyboard semantics: Enter commits. Blur is the fight.": doc app title edited to Q4 shows "Saved on blur"; spreadsheet cell typed 51,300 then click-away shows the original 48,200 and "Discarded on blur"; key legend Enter commits, Esc cancels. Footer: pick one blur rule, never break it.
+- 0:30 "Optimistic save: Update first. Ask later.": title shows "Updated on screen" while a PATCH dot travels client -> server; server returns 500; title reverts with "Rolled back" and a notice "Couldn't save, draft kept, retry when you're back online" holding the draft text.
+- 0:39 "Edit modes: Match the mode to the cost of a typo": invoice grid where every cell is editable (an accidental click flips Pending to Paid, "Accidental edit, nobody meant that") vs a read-only invoice with lock and Edit button. Footer: a grid edits fast and breaks fast.
+- 0:46 Outro: "Inline editing is a system", recap chips Affordance / Zero shift / Enter-Esc / Optimistic; follow and save.
+
+## Voice-over summary
+- Editable text should signal it quietly: pencil on hover, soft tint; without it users file tickets just to rename.
+- The swap keeps every pixel: same font, size, padding, border going from transparent; "One jump and the illusion collapses."
+- Enter commits, Escape cancels; blur is contested (one notes app saves on click-away, spreadsheets discard): pick one rule.
+- Save optimistically; if the server fails, roll back, keep the draft and explain.
+- A database-style grid makes every cell editable, document tools make you ask: match the mode to the cost of a typo.
+
+## Notes for the skill
+- Implementation: render the display element and the input with the same class for font, line-height, padding and a permanent `border: 2px solid transparent`; on edit change only `border-color` (and maybe background). Alternatively use `contenteditable` on the same element to avoid any swap, with care for paste sanitising.
+- Affordance must not be hover-only: touch devices have no hover, so show the pencil persistently on touch or on focus; the editable element must be keyboard reachable (a `<button>` that opens edit mode, or the input itself), with an accessible name like "Edit title".
+- On entering edit mode, move focus into the input and select the text; on Enter/Escape return focus to the display element. Escape must restore the pre-edit value.
+- Multi-line fields: Enter usually inserts a newline; commit with Cmd/Ctrl+Enter or blur, and state this.
+- Blur-to-save is risky for accidental clicks; blur-to-discard risks data loss. If you choose discard, warn or keep a recoverable draft. Whichever rule, keep it consistent.
+- Optimistic rollback: announce the failure via `role="alert"` or a live region; keep the draft in state so retry re-sends it; avoid flicker if the request succeeds after a slow response (ignore stale responses).
+- Measure layout shift with the Layout Instability API / CLS in DevTools to verify zero shift.
