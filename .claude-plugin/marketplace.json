@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "awesome-skills",
+  "description": "DenFang's collection of Claude Code skills and plugins.",
+  "owner": {
+    "name": "DenFang",
+    "url": "https://github.com/DenFang"
+  },
+  "plugins": [
+    {
+      "name": "uichecker",
+      "source": "./plugins/uichecker",
+      "description": "137 scoped UI/UX rules with audit, review and refactor commands. Palette-independent.",
+      "category": "design",
+      "tags": ["ui", "ux", "design", "accessibility", "audit", "review"]
+    },
+    {
+      "name": "ultimatedesign",
+      "source": "./plugins/ultimatedesign",
+      "description": "Runs impeccable, ui-ux-pro-max and uichecker over the same UI and merges them into one scored report with agreement, choices and gaps.",
+      "category": "design",
+      "tags": ["ui", "ux", "design", "audit", "review", "impeccable", "ui-ux-pro-max"]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "ultimatedesign",
+  "displayName": "UltimateDesign",
+  "version": "1.0.0",
+  "description": "Runs impeccable, ui-ux-pro-max and uichecker over the same UI, merges their findings into one scored report, shows where they agree, where they disagree (you pick) and what only one of them catches.",
+  "author": {
+    "name": "DenFang",
+    "url": "https://github.com/DenFang"
+  },
+  "homepage": "https://github.com/DenFang/AwesomeSkills/tree/main/plugins/ultimatedesign",
+  "repository": "https://github.com/DenFang/AwesomeSkills",
+  "license": "Apache-2.0",
+  "keywords": ["ui", "ux", "design", "audit", "review", "accessibility", "impeccable", "ui-ux-pro-max", "uichecker", "orchestrator"],
+  "dependencies": ["uichecker"]
+}

@@ -1,0 +1,75 @@
+---
+lesson: 036
+kind: video
+duration_s: 48
+type: ui
+category: css
+topic: z-index and stacking contexts (positioning, parent caps child, isolation, visual debugging)
+sources: frames, voice-over, lesson notes
+---
+
+# z-index: position, stacking contexts, isolation
+
+**Hook:** "Your dropdown hides behind the modal": z-index lies, and a bigger number does not win on its own.
+
+## Main rule
+z-index only orders elements that participate in stacking (positioned elements, plus flex/grid items) and only against siblings inside the same stacking context; a child can never rise above what its parent context lost to. Contain each component's layers with `isolation: isolate`, and debug the real stack visually instead of escalating numbers.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| z: 10 (dropdown) vs z: 20 (modal) | opening example: dropdown ends up behind a confirm dialog | 0:01-0:02 on-screen badges |
+| Card A: position relative, z-index 1; Card B: position static, z-index 9999 | rule 1 demo: Card B's 9999 is ignored | 0:03-0:09 on-screen |
+| `position: relative` added to `.card-b` (marked "fix") | rule 1 fix: Card B now rises above Card A | 0:07-0:12 on-screen code |
+| relative · absolute · fixed · sticky | position values that enable z-index | 0:10-0:12 on-screen + voice |
+| Parent A z-index 1 containing Child z-index 9999; Parent B z-index 2 | rule 2 demo: Parent B wins | 0:13-0:23 on-screen |
+| "9999 inside a context of 1 < 2 outside" | rule 2 summary | 0:21-0:23 on-screen |
+| `isolation: isolate` | rule 3: new stacking context without position | 0:24-0:33 on-screen code + voice |
+| Body, Card (z:1), Dropdown (z:10), Modal (z:20) | rule 4: layers shown in 3D in DevTools | 0:34-0:42 on-screen |
+| 9999 / 9000 | "spraying" large z-index values as an anti-pattern | 0:15-0:21, 0:40-0:43 voice |
+
+## Before / after
+1. **Opening (0:00-0:02).** A dropdown menu (Profile, Settings, Help, Sign out) tagged z: 10 is overlapped by a "Confirm action" dialog tagged z: 20; the scene tilts into 3D to show the layer order. Sets up the problem: layer order surprises developers.
+2. **Rule 1: z-index needs position (0:03-0:12).** Before: `.card-b { z-index: 9999; }` on a static element; Card B stays below Card A (relative, z-index 1). After: `position: relative` added; Card B rises in front. "No position, no z-index." Why: on non-positioned block elements z-index has no effect, so the 9999 is ignored and DOM order decides.
+3. **Rule 2: parent caps child (0:13-0:23).** Parent A (z-index 1) holds a Child with z-index 9999 ("Still trapped inside Parent A's stacking context"). Parent B (z-index 2) "Wins. Z-index 2 beats Parent A's entire universe." Why: a positioned element with a z-index creates a stacking context; its children are ordered only inside it, and the whole context is placed as one unit at its parent's level (1 < 2), so no child value can escape.
+4. **Rule 3: isolation (0:24-0:33).** Three overlapping component cards (Card, Tooltip, Dropdown) jumble; adding `.component { isolation: isolate; }` gives each an "isolated" badge and a clean, predictable stack. "New stacking context. No position required." Why: `isolation: isolate` creates a stacking context without changing layout or position, so a component's internal z-indexes stay internal and cannot fight with the rest of the page.
+5. **Rule 4: debug visually (0:34-0:43).** A mock "Chrome DevTools / LAYERS" window builds a 3D stack: Body, Card (z:1), Dropdown (z:10), Modal (z:20). "See every layer. Stop guessing." Why: seeing the actual stack shows which ancestor created the trapping context, instead of trial-and-error with ever larger numbers.
+
+## Do
+- Give an element `position: relative` (or absolute/fixed/sticky) before relying on its z-index, unless it is a flex or grid item.
+- Look for the ancestor that creates a stacking context when a high z-index "doesn't work".
+- Put `isolation: isolate` on the root of reusable components that use internal z-indexes.
+- Use a small, named z-index scale (e.g. base, dropdown, sticky, overlay, modal, toast) instead of ad-hoc numbers.
+- Inspect stacking visually in DevTools.
+
+## Don't
+- Don't escalate to 9999 / 99999 to beat an element in another branch; it cannot beat what its parent context already lost to.
+- Don't assume a bigger number always wins; it only ranks siblings within one stacking context.
+- Don't leak component-internal z-indexes into the page.
+
+## Scene by scene
+- 0:00 "z-index lies.": dropdown card alone; then a Confirm action dialog slides over it, badges z: 10 and z: 20, view tilts in 3D.
+- 0:03 "RULE 1 / z-index needs position": code `.card-b { z-index: 9999; }`; Card A (relative, 1) and Card B (static, 9999).
+- 0:07 `position: relative; ← fix` is typed in; Card B grows and moves in front.
+- 0:10 "No position, no z-index. Relative · Absolute · Fixed · Sticky".
+- 0:13 "RULE 2 / Parent caps child.": dashed Parent A (z-index 1), solid Parent B (z-index 2) "Wins."; a Child card "z-index: 9999" appears inside Parent A and tries to rise, but stays trapped.
+- 0:21 Caption "9999 inside a context of 1 < 2 outside".
+- 0:24 "RULE 3 / One line. Clean stack.": Card, Tooltip, Dropdown overlap in a tilted jumble; code `.component { isolation: isolate; }` highlights, each card gets an "isolated" tag and they settle in order.
+- 0:32 "New stacking context. No position required."
+- 0:34 "RULE 4 / Debug visually.": a DevTools window titled LAYERS stacks Body, Card (z:1), Dropdown (z:10), Modal (z:20) as tilted planes.
+- 0:41 "See every layer. Stop guessing."
+
+## Voice-over summary
+- The opening complaint: a dropdown hidden behind a modal.
+- Rule 1: z-index works only on positioned elements (relative, absolute, fixed, sticky); otherwise the browser ignores it.
+- Rule 2: every stacking context is its own universe; a child at 9999 still sits below a sibling context at 1 ("The parent caps the child").
+- Rule 3: `isolation` creates a new stacking context in one line, no position needed, ideal for reusable components.
+- Rule 4: use the Chrome DevTools Layers panel to see the stack in 3D instead of "spraying" z-index 9000 everywhere.
+
+## Notes for the skill
+- Rule 1 is oversimplified: z-index also applies to flex items and grid items even with `position: static` (and a non-auto z-index on them creates a stacking context). Correct statement: z-index applies to positioned boxes and to flex/grid items.
+- Stacking contexts are created by many properties, not only position + z-index: `position: fixed` / `sticky`, `opacity < 1`, `transform`, `filter`, `backdrop-filter`, `perspective`, `clip-path`, `mask`, `mix-blend-mode` other than normal, `isolation: isolate`, `will-change` on those properties, `contain: layout | paint`, container queries (`container-type` size/inline-size). An innocent `transform` or `opacity` animation on an ancestor is the usual cause of "my 9999 doesn't work".
+- DevTools claim is imprecise: Chrome's Layers panel shows compositor layers, which are not the same as stacking contexts (a stacking context may not be composited, and vice versa). For stacking contexts specifically, use Microsoft Edge DevTools 3D View (Z-index mode) or inspect computed styles for the properties above.
+- The opening bug (dropdown behind a modal) is best solved structurally, not with numbers: render overlays (menus, popovers, tooltips, dialogs) outside the clipping/stacking ancestors via a portal, or use the browser top layer: `<dialog>` with `showModal()` and the Popover API (`popover` attribute) both render in the top layer above all z-indexes. For a dropdown inside a modal, render it inside the modal's own context or in the top layer.
+- Keep a z-index token scale (e.g. `--z-dropdown: 1000; --z-sticky: 1100; --z-overlay: 1300; --z-modal: 1400; --z-toast: 1500`; values illustrative, not from the video) so layers are ordered by intent.
+- `isolation: isolate` does not affect layout; it only scopes stacking (and blend modes). It does not help an element escape `overflow: hidden` clipping, which is a separate problem solved by portals or the top layer.

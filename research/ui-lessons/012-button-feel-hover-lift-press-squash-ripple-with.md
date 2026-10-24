@@ -1,0 +1,73 @@
+---
+lesson: 012
+kind: video
+duration_s: 59
+type: ui
+category: motion
+topic: button micro-interactions (hover, press, ripple with spring easing)
+sources: frames, voice-over
+---
+
+# Button feel: hover lift, press squash, ripple with spring easing
+
+**Hook:** Same button, different feeling: three details make a button look expensive.
+
+## Main rule
+Give a primary button three layers of feedback: a hover state (slight scale up, deeper shadow, soft glow), a press state (scale down, shadow moves inward, then a small spring overshoot on release), and a click confirmation (ripple from the pointer position) animated with a spring or ease-out curve, never linear.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| Scale +5% (1.05) | hover state of the button | 0:08-0:15 on-screen chip "Scale +5%" + voice "scale it up 5%" |
+| "Shadow deepens", "Subtle glow" | hover state, no numeric value | 0:09-0:15 on-screen chips |
+| 0.95x press | scale while pressed | 0:21-0:28 on-screen |
+| 1.05x bounce | overshoot scale on release (spring) | 0:21-0:28 on-screen |
+| Linear = "Robotic", Spring = "Natural" | easing comparison sliders | 0:34-0:45 on-screen |
+| 3 secrets | hover, press, ripple | 0:01 voice, 0:46-0:55 recap chips "1. Hover, 2. Press, 3. Ripple" |
+| $29/mo | demo pricing card (no rule meaning) | 0:46-0:55 on-screen |
+| No durations, cubic-bezier or spring parameters | not shown | n/a |
+
+## Before / after
+- **Hover (Without vs With).** Bad: grey flat "Get Started" button that does not change under the cursor. Good: accent button that grows 5%, deepens its shadow and gets a soft glow when hovered. Why: a visible state change confirms the element is interactive before the click (affordance) and makes the interface feel responsive.
+- **Press (Flat vs Spring).** Bad: clicking produces no visible change. Good: the button shrinks to 0.95x while pressed, its shadow shifts inward, and on release it overshoots to 1.05x before settling. Why: it mimics a physical key travelling down, so the user gets immediate tactile-like confirmation that the press registered.
+- **Ripple + easing (No ripple vs Ripple; Linear vs Spring).** Bad: no confirmation after click, or motion on a linear curve. Good: a ripple expands from the exact click point, driven by a spring-based ease-out; two vertical sliders show the linear thumb moving at constant speed ("Robotic") and the spring thumb arriving fast and settling ("Natural"). Why: ease-out / spring motion matches how real objects decelerate; constant speed reads as mechanical. Ripple origin at the pointer ties the feedback to the user's action.
+
+## Do
+- Add a hover state to every clickable button: small scale up (about 1.05), deeper shadow, optional soft glow.
+- Add an active/pressed state: scale to about 0.95 and move the shadow inward.
+- Release with a small spring overshoot (about 1.05) before settling at 1.
+- Start a click ripple at the pointer coordinates.
+- Use spring or ease-out curves for these transitions.
+
+## Don't
+- Don't leave a button visually static on hover and press.
+- Don't animate state feedback with a linear curve.
+- Don't centre the ripple on the button when the click happened elsewhere on it.
+
+## Scene by scene
+- 0:00 Two "Get Started" buttons, flat grey "Before" vs accent "After"; the cursor hovers each. "Same button. Different feeling."
+- 0:04 "Secret #1 Hover states", "Without" vs "With". Hovering the "With" button scales it up and adds glow.
+- 0:08 Chips appear one by one: "Scale +5%", "Shadow deepens", "Subtle glow".
+- 0:16 "Secret #2 Press feedback", "Flat" vs "Spring". Clicking the spring button shows the readout "0.95x press -> 1.05x bounce".
+- 0:28 Caption "Tactile feedback. A real, physical button."
+- 0:29 "Secret #3 Ripple + easing", "No ripple" vs "Ripple". Clicking the right button triggers a ripple.
+- 0:33 Two vertical sliders, "Linear" (labelled "Robotic") vs "Spring" (labelled "Natural"); each click animates both thumbs, the spring one snapping and settling.
+- 0:44 "One click. Maximum satisfaction."
+- 0:46 A "Pro Plan $29/mo" pricing card builds up with feature list (Unlimited projects, Priority support, Advanced analytics, Custom integrations) and a "Get Started" button that shows all three effects; recap chips "1. Hover", "2. Press", "3. Ripple".
+- 0:55 "Design is in the details."
+- 0:56 End card "Want more design secrets? Follow for daily tips".
+
+## Voice-over summary
+- Three details make a button look expensive: hover states, press feedback, ripple with easing.
+- Hover: a cheap button sits there; a premium one reacts by scaling up 5%, deepening the shadow and adding a glow.
+- Press: scale down slightly and shift the shadow inward so it feels like pressing a physical button.
+- Ripple: expanding from the click point confirms the action; the easing curve matters most.
+- "Linear motion feels robotic"; a spring-based ease-out feels natural.
+
+## Notes for the skill
+- CSS sketch: `:hover { transform: scale(1.05); box-shadow: <deeper>; }`, `:active { transform: scale(0.95); box-shadow: inset ...; }`, release overshoot via a spring (Motion/Framer `type: "spring"`) or `cubic-bezier(0.34, 1.56, 0.64, 1)`-style back-out. The video gives no durations; typical values are 150-200 ms for hover and 80-120 ms for press-in, with the spring release around 200-300 ms (these are general practice, not from the video).
+- Wrap hover effects in `@media (hover: hover) and (pointer: fine)` so touch devices do not get stuck hover states; touch still needs the press state.
+- Respect `prefers-reduced-motion`: drop scale/overshoot and the ripple, keep an instant colour or shadow change.
+- Scaling a button 5% can nudge neighbours visually or clip inside `overflow: hidden` containers; `transform` does not affect layout, but leave room for the grown size and glow.
+- Show focus with a visible `:focus-visible` ring too; the video covers mouse states only. Hover and press must not be the only cue that something is clickable.
+- A ripple is a Material-style convention; it is optional. The underlying rule is immediate, pointer-anchored press feedback.

@@ -1,0 +1,84 @@
+---
+lesson: 093
+kind: video
+duration_s: 73
+type: ui
+category: visual
+topic: border radius as a system (nested radii, size scale, pills, edge-docked surfaces, focus rings, images)
+sources: frames, voice-over
+---
+
+# Border radius is a system
+
+**Hook:** Every corner is rounded and the card still looks off, because one radius applied everywhere is not a system.
+
+## Main rule
+Derive every radius from rules instead of one global value: nested corners use inner = outer minus padding; radius scales with element size on one token scale; full (pill) radius only for single-line shapes; corners that touch a container edge get 0; an outset ring uses outer = inner plus gap; images inside rounded cards are clipped by the card or given card radius minus inset.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| tray 12 in card 12 | broken example: inner action tray uses the same radius as the card, so the inner corner bulges | 0:01-0:06 on-screen |
+| inner = outer − padding; 12 − 8 = 4 | card radius 12, padding 8, tray radius 4 (concentric) | 0:07-0:15 on-screen + voice |
+| `border-radius: 8px /* everything */` | broken example: chip, button, card and sheet all at 8 | 0:16-0:22 on-screen |
+| sm 4px (chip, badge) · md 8px (button, input) · lg 12px (card) · xl 16px (modal, sheet) · full 9999 (avatar, toggle) | radius token scale | 0:01 and 0:16-0:27 on-screen |
+| Small 4, medium 8, large 16 | voice-over version of the scale (skips 12) | 0:19-0:24 voice |
+| chip 4, button 8, card 12, sheet 16 | scale applied to the demo components (sheet passes through 14 while animating) | 0:22-0:27 on-screen |
+| `border-radius: 9999` on one line | pill: correct for chip, avatar, toggle; wrong on a card | 0:28-0:39 on-screen |
+| `border-radius: 16px /* all four */` → `16px 16px 0 0` | bottom sheet docked to the screen bottom | 0:39-0:47 on-screen |
+| Sidebar · left edge 0; Toast · bottom edge 0 | other edge-docked surfaces with 0 radius on the touching edge | 0:39-0:47 on-screen |
+| ring 8 · card 8 → "corner pinches"; ring 10 · card 8 → "concentric"; gap 2 | selection ring drawn 2px outside an 8px card | 0:49-0:58 on-screen + voice ("8 in, 10 out") |
+| outer = inner + gap | ring formula | 0:53-0:58 on-screen + voice |
+| image radius 0 → `overflow: hidden` | full-bleed image in a rounded card | 0:59-1:05 on-screen |
+| inset 8 · radius 12 − 8 = 4 | inset image inside a 12px card with 8px inset | 1:07-1:09 on-screen |
+
+## Before / after
+- **Same radius nested.** Bad: card 12 and inner tray 12 with 8px padding; the inner curve looks fatter than the outer and the gap between them is uneven. Good: tray 4 (12 − 8). Why: concentric curves keep a constant gap around the corner; equal radii at different sizes have different centres, so the band between them thickens at the corner.
+- **One radius for all sizes.** Bad: 8px on chip, button, card and sheet. Good: 4 / 8 / 12 / 16 by size. Why: perceived roundness is relative to element size; 8px looks almost pill-like on a small chip and almost square on a large sheet.
+- **Pill on multi-line content.** Bad: 9999 on a card turns it into an ellipse that cuts into content. Good: pill only for single-line elements (chip, avatar, toggle); multi-line containers get a real number. Why: a full radius equals half the height, which only works when height is small and constant.
+- **Floating vs docked sheet.** Bad: a bottom sheet with 16px on all four corners while sitting on the screen edge ("floating on its corners"). Good: `16px 16px 0 0`, flush to the bottom. Why: a corner implies space beyond it; rounding an edge that touches the viewport leaves odd gaps showing the content behind.
+- **Ring inheriting the card radius.** Bad: a selection ring 2px outside an 8px card also at 8px; the corner "pinches". Good: ring at 10 (8 + 2). Why: same concentric-offset geometry as nesting, inverted.
+- **Square image in a rounded card.** Bad: edge-to-edge image with radius 0; its square corners poke past the card's rounded corner. Good: the card clips it (`overflow: hidden`), or an inset image gets card radius minus inset (12 − 8 = 4).
+
+## Do
+- Define a radius scale as tokens (e.g. 4 / 8 / 12 / 16 / full) and map component sizes to steps.
+- For any nested rounded element: inner radius = outer radius − padding (clamp at 0).
+- For outset rings or outlines: ring radius = element radius + gap.
+- Use full radius (e.g. 9999px) only on single-line or square elements: chips, tags, avatars, toggles, pill buttons.
+- Zero the corners on edges that touch a viewport or container edge (bottom sheets, sidebars, docked toasts, full-width bars).
+- Clip full-bleed media with the card (`overflow: hidden`) or apply the subtracted radius to inset media.
+
+## Don't
+- Don't apply one radius to everything.
+- Don't give nested elements the same radius as their parent.
+- Don't put a pill radius on cards or multi-line containers.
+- Don't round corners that sit flush against an edge.
+- Don't draw a focus/selection ring with the element's own radius when it sits outside the element.
+
+## Scene by scene
+- 0:00 "Radius · 01: Every corner rounded." Project card (cover image "12 frames", avatar "JR", title "Aurora Handoff", status "In review", tags, invite-by-email field with "Invite" button, action tray Share / Duplicate / Archive with a "Public link" toggle). Caption "One radius everywhere is not a system".
+- 0:01 "Still nothing lines up"; the tray is outlined and a magnifier shows "tray 12 in card 12"; the scale row sm 4 / md 8 / lg 12 / xl 16 / full 9999 appears.
+- 0:02 "Corners are a system": cover image, avatar, tag and tray outlined in the danger colour.
+- 0:04 "Radius · 02 nested: Inner equals outer minus padding." Magnifier on the bulging tray corner ("inner corner bulges"), chips "card 12 · tray 12", "inner = outer − padding", "12 − 8 = 4"; the corner turns concentric (success colour). Caption "Nested corners share one center".
+- 0:15 "Radius · 03 scale: Radius follows size." Chip, button, card and share sheet each tagged 8 under `border-radius: 8px /* everything */` (struck through); tags change to sm 4, md 8, lg 12, xl 16, each linked to a scale tile. Caption "One scale, every element on it".
+- 0:28 "Radius · 04 pill: Full radius is a shape, not a number." Chip, avatar, toggle approved ("border-radius: 9999 on one line"); applied to the card it becomes an ellipse ("on a card", "Multi line needs a real number"); reverts. Caption "A pill fits exactly one line".
+- 0:39 "Radius · 05 edges: Touching an edge? No corner." Phone with a share bottom sheet at `16px /* all four */` ("Sheet · floating on its corners"), switched to `16px 16px 0 0` ("Sheet · flush to the bottom"); side diagrams "Sidebar · left edge 0" and "Toast · bottom edge 0". Caption "A corner needs space beyond it".
+- 0:48 "Radius · 06 ring: Outer equals inner plus the gap." Pricing cards Starter $0 / Team $24 / Scale $96; cursor selects Team; ring compared "ring 8 · card 8, corner pinches" vs "ring 10 · card 8, concentric", gap 2. Caption "Eight in, ten out".
+- 0:59 "Radius · 07 images: Let the card clip the image." Magnifier "square corner pokes out", "image radius: 0", then `overflow: hidden` ("clipped by the card"), then "inset 8 · radius 12 − 8 = 4". Caption "Clip it, or subtract the padding".
+- 1:09 "Radius · system: Corners are a system." Final card with a checklist Nested, Scale, Pill, Edges, Ring, Images; Follow / Save buttons.
+
+## Voice-over summary
+- Rounding everything still looks wrong; corners have to be a system.
+- Nested corners: inner equals outer minus padding (12 outside, 8 padding, 4 inside) so the curves become concentric.
+- A chip and a modal should not share a radius; radius follows size on one scale.
+- Full radius is a shape for single-line things; on a multi-line card the corners swallow content; a bottom-docked sheet rounds only its top corners because a corner implies space beyond it.
+- A selection ring 2px out flips the formula: outer equals inner plus gap, "8 in, 10 out".
+- Full-bleed images are clipped by the card; inset images subtract the padding.
+
+## Notes for the skill
+- Token example: `--radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;`. The voice-over says "large 16" but the on-screen scale has lg 12 / xl 16; use the on-screen four-step scale.
+- Nested formula in CSS: `border-radius: max(0px, calc(var(--outer) - var(--pad)));`. When padding is greater than or equal to the outer radius, the inner radius is 0 (square inner corners are correct then).
+- Focus rings: `outline` with `outline-offset: 2px` follows `border-radius` in current browsers but keeps the same radius, which produces the "pinched" look; for a perfect match draw the ring with `box-shadow: 0 0 0 2px` (follows the curve) or a pseudo-element with `border-radius: calc(var(--r) + 2px)`. Keep the ring at least 3:1 contrast against adjacent colours (WCAG 2.2 focus appearance guidance).
+- Edge-docked surfaces: bottom sheets `border-radius: var(--radius-xl) var(--radius-xl) 0 0`; on devices with rounded screen corners and safe-area insets the bottom edge still touches the bezel, so 0 remains correct. A floating sheet with margins on all sides should keep all four corners.
+- `overflow: hidden` on the card clips focus rings and dropdowns of children too; for cards with popovers prefer giving the image itself the top radii (`border-radius: var(--r) var(--r) 0 0`) or `overflow: clip` with care.
+- Pill radius: use a large fixed value, not `50%` (50% creates ellipses on non-square boxes).

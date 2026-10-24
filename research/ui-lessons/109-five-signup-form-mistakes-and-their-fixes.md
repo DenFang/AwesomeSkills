@@ -1,0 +1,85 @@
+---
+lesson: 109
+kind: video
+duration_s: 83
+type: ui
+category: forms
+topic: Signup form mistakes: placeholder labels, validation timing, jumping submit, unstyled autofill, type=number for codes
+sources: frames, voice-over
+---
+
+# Five signup form mistakes and their fixes
+
+**Hook:** One signup form with placeholder-as-label, errors on every keystroke and a submit button that jumps, then fixed one by one ("5 fixes, same form").
+
+## Main rule
+Give every field a persistent visible label, validate on blur and then re-validate live only after an error has appeared, reserve space for error messages so the submit button never moves and summarise errors at the top with links to the fields, style the browser autofill state to match your surface, and use `inputmode="numeric"` (not `type="number"`) for codes, postal codes and other digit strings.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 5 | mistakes / fixes in one form ("fixes 0/5" counter in the mock app) | 0:00-0:04 on-screen + voice |
+| errors shown: 2 -> 7 -> 8 | error messages fired while typing an email with on-keystroke validation | 0:21-0:24 on-screen |
+| pushed 90 px | how far error messages pushed the submit button down (click lands on "miss") | 0:31-0:34 on-screen |
+| y: 1480 | submit button position, unchanged after errors appear (space reserved) | 0:36-0:40 on-screen |
+| 2 problems | error summary at top ("Password is too short", "Code needs 6 digits") with links that focus the field | 0:38-0:40 on-screen |
+| "Code needs 6 digits" | verification code rule | 0:31-0:40 on-screen |
+| `box-shadow: inset 4px 0 0 var(--accent), inset 0 0 0 40px var(--surface-2)` | `input:autofill` override | 0:49-0:53 on-screen code |
+| `-webkit-text-fill-color: var(--text)` | autofilled text colour | 0:50-0:53 on-screen code |
+| `type="number"` (bad) -> `inputmode="numeric"` + `pattern="[0-9]*"` + `autocomplete="one-time-code"` | verification code input | 0:54-0:66 on-screen code |
+| '4e2' accepted, then '401' after one wheel tick | `type="number"` accepts the letter e and changes on scroll (4e2 = 400, +1 = 401) | 0:57-0:61 on-screen |
+| '042107' | value kept as a string with the leading zero | 0:65-0:66 on-screen |
+| 04210 / 0421 | postal code and code values in the demo (leading zeros) | throughout |
+No timing values in ms are shown.
+
+## Before / after
+1. **Placeholder is not a label (0:05-0:17).** Bad: fields show only placeholder text; after filling the form, the filled values (name, email, masked password, "0421") have no visible field names, so the user cannot tell whether "0421" was a postal code, phone or code ("placeholder gone", "postal? phone? code?"). Good: a label that sits small above the value and "floats on focus"; it stays visible after typing ("label still there"). Why: placeholders disappear on input, forcing users to remember the question; persistent labels support review and error correction and are read by assistive tech.
+2. **Scold late, praise early (0:18-0:29).** Bad, "on keystroke": typing "to", "tomas.r", "tomas.r@" fires "Invalid email" immediately; 8 errors shown while the user is still typing. Good, "on blur": the first error appears only when the user leaves the field ("blur -> error"); once an error is shown, every keystroke re-checks and the error clears the moment the value becomes valid ("keystroke -> clear", check mark on "tomas.r@northbeam.test"). Why: premature errors punish incomplete input; live re-validation after the first error gives immediate positive feedback while fixing.
+3. **The button never moves (0:30-0:40).** Bad: on submit, inline errors are inserted under fields and push "Create account" down 90 px; the user's next click lands where the button was ("miss"). Good: space under each field is reserved so the button stays at the same position (y 1480); a "2 problems" summary appears at the top with links that move focus to each broken field ("focus -> field"). Why: stable layout keeps the target where the user's hand and eye expect it; the summary gives one place to see everything wrong and a direct path to each field.
+4. **Autofill is a state, style it (0:41-0:53).** Bad: the browser paints autofilled fields with its own light default fill; on a dark form this is a bright block ("browser default, bright block", "autofill not styled"). Good: `input:autofill` overridden with an inset box-shadow that repaints the surface colour (plus a thin accent bar on the left) and `-webkit-text-fill-color` set to the normal text token; fields carry an "autofilled" tag ("matches surface, text readable"). Why: autofill is a legitimate state that should look designed and keep text contrast, not break the theme.
+5. **A code is not a number (0:54-0:66).** Bad: `type="number"` shows spinner arrows, accepts "e" (value '4e2'), and a mouse wheel tick over the focused field changes it to '401'; numeric parsing would also drop leading zeros. Good: `inputmode="numeric"` with `pattern="[0-9]*"` and `autocomplete="one-time-code"`; the phone opens a digit keypad and the value stays the string '042107' with its leading zero. Why: identifiers made of digits are text, not quantities; `inputmode` changes only the virtual keyboard.
+
+## Do
+- Keep a visible label for every field, above the input or as a floating label that never disappears.
+- Validate a field on blur; after an error is shown, re-validate on each keystroke and clear the error as soon as it is fixed.
+- Reserve vertical space for each field's error line so nothing below shifts.
+- On submit, show an error summary at the top that links to (and focuses) each invalid field.
+- Style `:autofill` deliberately: surface colour, readable text colour, optional subtle marker.
+- Use `inputmode="numeric"` (plus `pattern`, `autocomplete`) for OTP codes, postal codes, card numbers and similar digit strings.
+
+## Don't
+- Don't use placeholder text as the only label.
+- Don't show validation errors on the first keystroke of a field the user is still typing in.
+- Don't let inserted error messages move the submit button.
+- Don't ship the browser's default autofill fill on a custom-themed (especially dark) form.
+- Don't use `type="number"` for anything that is not a quantity.
+
+## Scene by scene
+- 0:00 "Form mistakes 01, 5 mistakes. One form.": phone mock "Northbeam, Create your account, Track every session. Free for 14 days."; flags "no label", "error on 1st key", "button jumped"; then labels appear and the button is marked "stays", "After: fixed in place"; footer "5 fixes, same form".
+- 0:05 "Mistake 1, label: A placeholder is not a label.": filled form without labels; "placeholder gone"; question marks on fields; "postal? phone? code?"; "Before: placeholder only".
+- 0:12 "After: floating label": label floats up on focus in Postal code ("label floats on focus"), stays after typing ("label still there"); "label stays".
+- 0:18 "Mistake 2, timing: Scold late. Praise early.": after state "on blur" with chips "blur -> error", "keystroke -> clear"; then "Before: on keystroke" with "errors shown" counter 2, 7, 8 while typing an email.
+- 0:25 After: "Enter a full email address" appears on blur, then clears with a check mark as typing completes the address; "late to scold, early to praise".
+- 0:30 "Mistake 3, submit: The button never moves.": on submit, errors under Email, Password and Verification code push the button; "was here", "pushed 90 px", click "miss"; "Before: errors push it".
+- 0:35 "After: space reserved": button pinned at "y: 1480" while errors appear in reserved space; "2 problems" summary at top with links; clicking a link focuses the field; "fixed button, error summary".
+- 0:41 "Mistake 4, autofill: Autofill is a state. Style it.": autofill dropdown fills Full name and Email with the browser's light fill; signup.css shows only `.field input` rules and "autofill not styled"; computed background is a light browser colour; "browser default, bright block".
+- 0:49 CSS adds `input:autofill { box-shadow: inset 4px 0 0 var(--accent), inset 0 0 0 40px var(--surface-2); -webkit-text-fill-color: var(--text); }`; computed background and color now resolve to the tokens; "After: styled :autofill", "matches surface, text readable".
+- 0:54 "Mistake 5, inputmode: A code is not a number.": signup.html with `type="number"`, `autocomplete="one-time-code"`; field shows spinners, accepts "4e2"; a scroll wheel tick changes it to '401'; chips "spinners", "accepts e", "scroll changed it".
+- 0:62 After: `type="number"` struck, `inputmode="numeric"` and `pattern="[0-9]*"` added; numeric keypad opens; value '042107', "string, leading zero kept".
+- 1:07 "Form mistakes 07, Five fixes. One form that holds.": recap Label, On blur, Fixed submit, Autofill, inputmode next to the fixed form ("fixes 5/5").
+
+## Voice-over summary
+- Three of the mistakes up front: placeholder as label, errors on every keystroke, a submit that jumps.
+- A placeholder vanishes when typing starts; keep a real label above the field or float it on focus so it never leaves.
+- Validate on blur; erroring on the first keystroke punishes someone still typing; after a first error, check every keystroke and clear it once fixed.
+- The submit button never moves: reserve space under each field and on submit show a summary at the top linking to every broken field.
+- Chrome paints autofilled fields pale, which is a bright block on a dark form; style the autofill state to match the surface and keep text readable.
+- Codes and postal codes are not quantities: `type="number"` adds spinners, accepts "e" and changes on scroll; use `inputmode="numeric"` so the phone shows a keypad and the value stays text.
+
+## Notes for the skill
+- Labels: use `<label for>` (as in the demo HTML). A floating label must stay legible when floated (contrast at least 4.5:1, not shrunk below about 12 px) and must not rely on placeholder styling; WCAG 3.3.2 requires labels or instructions.
+- Validation timing is the "reward early, punish late" pattern; the edge case is blur triggered by tapping a link or the browser's autofill. Do not validate empty required fields on blur when the user merely tabs through; flag them on submit.
+- Errors: connect each message to its field with `aria-describedby`, set `aria-invalid="true"`, and put the summary in a container that receives focus (or `role="alert"`) after submit, with in-page links that focus the inputs (WCAG 3.3.1, 3.3.3). Reserving space for an error line is the simplest no-shift technique (`min-height` on the message slot); note that the top summary itself also adds height, so either reserve its slot or accept that the shift happens above the user's focus point.
+- Autofill CSS: the standardised selector is `:autofill` (with `:-webkit-autofill` as a fallback for older engines). The inset box-shadow trick works because browsers do not let authors override the autofill background directly; the spread value (40px in the demo) must cover the field's full height, which is why many implementations use a much larger spread. Do not hide the fact that a field was autofilled from users who need to review it.
+- Digit strings: also consider `autocomplete="postal-code"`, `autocomplete="cc-number"`, `inputmode="tel"` for phone numbers, and server-side validation (`pattern` is not a security control). For OTP, `autocomplete="one-time-code"` enables SMS code autofill on mobile.
+- `type="number"` remains correct for true quantities (amounts, counts), and even there consider disabling wheel changes on blur.

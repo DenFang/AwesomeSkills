@@ -1,0 +1,76 @@
+---
+lesson: 053
+kind: video
+duration_s: 46
+type: ui
+category: interaction
+topic: star rating (hover preview, preview vs committed state, fractional averages, staggered fill, summary ring)
+sources: frames, voice-over, lesson notes
+---
+
+# Star rating that does not lie
+
+**Hook:** "Your star rating is lying to your users": hover, half-fills and honest averages are where five stars break.
+
+## Main rule
+Treat a rating input as two layers: a preview that follows the pointer and a committed value that only changes on click and is restored when the pointer leaves. Display averages with a true fractional fill (4.4 = four full stars + 44% of the fifth), animate a committed fill left to right with about 30 ms between stars, and summarise aggregates with a ring and a distribution, not with stars alone.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 5 stars | rating scale | throughout |
+| 4.4 true average → "4 full + one star filled 44%" | fractional display of an average | 0:19-0:24 on-screen + voice |
+| 4.4 rounded up to 5 full stars | the wrong display ("what most apps show") | 0:19-0:24 on-screen |
+| 30ms stagger, "+30ms" | delay between consecutive stars when filling | 0:26-0:33 on-screen + voice; page "~30ms per star" |
+| 0ms delay | the wrong version: all stars at once ("flat, lifeless") | 0:26-0:33 on-screen |
+| committed 3, preview 4 | preview/commit demo: leaving the widget snaps the display back to 3 | 0:10-0:17 on-screen ("leaves → snaps back to 3"; broken: "stuck at 4, value flickers") |
+| 4.5 / 5, "avg from 1,204 reviews" | summary ring in the opening | 0:02 on-screen |
+| ring counts 4.2 → 4.5; 4.3 → 4.5 | summary ring animating to its value | 0:36, 0:42 on-screen |
+| distribution 5★ 60%, 4★ 25%, 3★ 9%, 2★ 4%, 1★ 2% | rating breakdown bars next to the ring | 0:36-0:41 on-screen |
+
+## Before / after
+1. **Hover preview (0:03-0:09).** Before ("reacts on click", "Tap a star to rate"): the cursor moves across the stars and nothing happens; the value appears only after the click (jumps straight to 4). After ("previews on hover"): stars fill up to the star under the cursor as it moves, including a half star when the pointer is on the left half. Why: the user sees the exact value they are about to commit before committing; a click-only widget hides the target until it is too late, which leads to mis-ratings and re-clicks.
+2. **Preview vs committed (0:10-0:17).** Two rows: PREVIEW LAYER ("follows the cursor") and COMMITTED LAYER ("the real saved value") at 3. Good: hovering to 4 changes only the preview; when the pointer leaves, the preview snaps back to 3 ("leaves → snaps back to 3"). Broken: the preview stays at the last hovered star after the pointer leaves ("stuck at 4, value flickers"), so the widget shows a value that was never saved. Why: keeping hover state separate from saved state means the display always returns to the truth and there is no flicker between the two on every mouse move.
+3. **Honest averages (0:18-0:24).** A 4.4 true average. Wrong ("what most apps show"): 5 full stars, "4.4 rounded up to 5 full stars". Right ("the truth"): 4 full stars plus a fifth clipped to 44%. Why: rounding up inflates perceived quality and misleads people comparing products; a partial fill encodes the real value visually.
+4. **Staggered fill (0:25-0:33).** "all at once" (0 ms delay, "flat, lifeless") vs "30ms stagger" ("fills left to right, satisfying"). Why: a short sequential sweep reads as a single directional motion that reinforces "this many stars", and feels responsive; simultaneous popping has no motion story.
+5. **Stars + ring (0:34-0:41).** A product card with an empty "Rate this product" row of stars (input) above a ring showing 4.5 / 5 and a 5-to-1 star distribution (summary). "Stars to rate, a ring to summarize." Why: discrete stars are good for choosing a value; a continuous arc reads an aggregate faster than a number or five partially filled icons, and the distribution shows how the average is made up.
+
+## Do
+- Fill stars up to the hovered position (with half-star precision if the input allows it) before click.
+- Store `hoverValue` and `value` separately; render `hoverValue ?? value`; clear `hoverValue` on pointer leave.
+- Render averages with a fractional fill (clip the last star to the exact percentage).
+- Stagger the committed fill left to right, about 30 ms per star.
+- Show aggregates as a ring/number plus a distribution breakdown; keep the star row for input.
+
+## Don't
+- Don't wait for the click to show which value will be chosen.
+- Don't leave the preview stuck on the last hovered star after the pointer leaves.
+- Don't round averages to whole stars (especially up).
+- Don't pop all stars at once.
+
+## Scene by scene
+- 0:00 Order card "Sarah Chen, Order #4821, Aria Coffee Roasters, Rate your order": stars fill as the cursor moves, then a ring "4.5 / 5, avg from 1,204 reviews" appears.
+- 0:03 "Hover should preview": two cards. Top (tag "reacts on click", "Tap a star to rate"): cursor passes over, nothing fills, click sets 4. Bottom (tag "previews on hover", "Hover to preview your rating"): stars fill under the moving cursor, half star at the pointer.
+- 0:10 "Preview ≠ committed": PREVIEW LAYER moves 3 → 4 while COMMITTED LAYER stays at 3; pointer leaves and preview returns to 3, chip "leaves → snaps back to 3".
+- 0:15 Same demo in danger colour: preview stays at 4 after the pointer leaves; chip "broken: stuck at 4, value flickers".
+- 0:18 Big number counts to "4.4 true average rating"; card "what most apps show" fills to 5 stars, "4.4 rounded up to 5 full stars".
+- 0:20 Card "the truth": 4 full stars and a 44% fifth, "4 full + one star filled 44%".
+- 0:25 "The 30ms that feels alive": "all at once / 0ms delay, flat, lifeless" vs "30ms stagger / fills left to right, satisfying" with a "+30ms" badge; both replay several times.
+- 0:34 Product card "Aria Coffee Roasters, Ethiopia Guji, Single Origin, Rate this product": empty stars, then a ring counting 4.3 → 4.5 and distribution bars 60/25/9/4/2%. Caption "Stars to rate, a ring to summarize."
+- 0:42 Ring alone counting 4.2 → 4.5, "Stop rounding up.", "Save this before you ship another rating.", handle.
+
+## Voice-over summary
+- Stars should fill on hover, before the click; most widgets only react after the click.
+- Moving the cursor away should snap back; preview and selection are two different layers, and mixing them makes the value flicker.
+- A 4.4 average is not five stars: "Round it up and you're lying to people." Render the real fraction with a clipped star.
+- Fill stars left to right, 30 ms apart; all at once "feels dead".
+- Pair discrete stars with a continuous ring: stars to rate, a ring to summarise.
+
+## Notes for the skill
+- Inconsistency in the video: the distribution shown (60/25/9/4/2%) averages to about 4.37, which should display as 4.4, yet the ring shows 4.5. Compute the summary from the data and round to one decimal correctly; never round in the flattering direction.
+- Fractional fill: clip by width (`clip-path: inset(0 56% 0 0)` or an overlay with `width: 44%`). Note that width-clipping a star does not show exactly 44% of its area; that is the accepted convention, but always print the number next to it ("4.4") so the value never depends on reading a partial star.
+- Accessibility (not covered in the video): implement the input as a radio group (`<fieldset>` + 5 radios with labels "1 star" ... "5 stars", or `role="radiogroup"`), arrow keys move the selection, and the focused star shows the same preview as hover. The read-only average needs a text alternative (e.g. `aria-label="Rated 4.4 out of 5 from 1,204 reviews"`), with the decorative star icons hidden. Stars must not be the only indicator of the selected value (WCAG 1.4.1 if colour-only; add fill/outline difference).
+- Touch has no hover: preview during touch-drag across the stars and commit on release, or commit on tap with the stagger confirming the choice. Each star target should be at least 24 × 24 CSS px (WCAG 2.5.8), ideally 44 × 44.
+- Half-star input precision: the hover demo shows half stars; offer it only if the backend stores halves, otherwise preview whole stars.
+- Stagger: implement with `transition-delay: calc(var(--i) * 30ms)`; with 5 stars the sweep takes about 120 ms plus each star's own fill duration (not given in the video). Under `prefers-reduced-motion`, fill all stars instantly.
+- Pointer leave must also reset on `blur` / `pointercancel` so the preview cannot get stuck on touch or when focus moves away.

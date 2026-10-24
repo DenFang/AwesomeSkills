@@ -1,0 +1,88 @@
+---
+lesson: 048
+kind: video
+duration_s: 51
+type: ui
+category: navigation
+topic: tabs as a system (indicator motion, overflow, keyboard, mobile, content transition)
+sources: frames, voice-over, lesson notes
+---
+
+# Tabs are a system
+
+**Hook:** Stop letting tabs jump: the indicator, overflow, keyboard model, mobile form and panel transition all have to work together.
+
+## Main rule
+Slide the active indicator (spring, about 280 ms) instead of teleporting it, scroll overflowing tab rows horizontally with edge fades and desktop chevrons instead of wrapping, implement the arrow / Home / End / Tab keyboard model with a focus ring visually distinct from the active state, switch to a segmented control (under 5) or bottom sheet (over 5) on mobile, and transition panels with fade out, short pause, fade in while interpolating container height.
+
+## Numbers and values
+| Value | Applies to | Where shown |
+|---|---|---|
+| 0 ms | "Hard cut" indicator change (bad) | 0:00-0:02 on-screen chip |
+| 280 ms | "Smooth slide" of the underline indicator (good) | 0:00-0:02 on-screen chip |
+| `spring({ damping: 22, stiffness: 200 })` | indicator spring config | 0:04-0:10 on-screen code card |
+| 180 ms | "Content fade" paired with the indicator spring | 0:04-0:10 on-screen card |
+| "Ease out", labelled "Slow in. Fast out." | curve card shown next to the spring (drawn as an S-shaped curve) | 0:04-0:10 on-screen; voice "slow in, fast out" |
+| 8 tabs | overflow example (Overview, Activity, Settings, Billing, Team, Integrations, API, Webhooks) | 0:11-0:19 on-screen + voice |
+| 2 lines | wrapped tab row labelled "Don't wrap to 2 lines" | 0:11-0:19 on-screen |
+| 4 keys | ← / → arrows, Home, End, Tab | 0:20-0:29 on-screen + voice |
+| < 5 tabs | mobile: segmented control ("Under 5 tabs", demo shows 3 segments) | 0:30-0:36 on-screen + voice |
+| > 5 tabs | mobile: bottom sheet ("Over 5 tabs", sheet titled "Sections" with 7 items) | 0:30-0:36 on-screen + voice |
+| ≥ 44px | touch targets on mobile ("Touch targets ≥ 44px · thumb zone first") | 0:30-0:36 on-screen |
+| 80 ms / 80 ms / 80 ms | panel switch: "Fade out 80ms", "80ms pause", "Fade in 80ms" | 0:40-0:44 on-screen chips; voice "pause 80 milliseconds"; page "pause ~80ms" |
+Inconsistencies: the indicator section pairs the spring with a 180 ms content fade, while the content section shows 80 + 80 + 80 ms (240 ms total). Both are on screen; neither is reconciled.
+
+## Before / after
+- **Indicator, hard cut vs slide:** two identical tab bars (Overview, Activity, Settings, Billing); the top one swaps the underline instantly ("Hard cut · 0ms"), the bottom one slides it to the new tab ("Smooth slide · 280ms"). A mini Tab A/B/C pair repeats the comparison. Why: a sliding indicator shows where the selection came from and went to (spatial continuity), so the change reads as one action rather than a flicker.
+- **Overflow, wrap vs scroll:** eight tabs wrapped into two lines ("Don't wrap") versus a single row that scrolls horizontally, with chevron buttons at both ends and edge fades hinting at hidden tabs; the row scrolls to reveal and select "Integrations". Chips: "Scroll horizontal", "Edge fades", "Chevrons on desktop". Why: a second row breaks the one-line mental model (which row is "active"?), and with an underline indicator the rows visually swap; a scroller keeps one axis, and the fade tells users there is more.
+- **Keyboard:** focus ring (dashed outline) moves Overview → Activity → Settings with arrows, jumps to the first tab with Home and to Billing with End, then Tab moves focus out to the "Save changes" button. The active tab keeps its underline the whole time. Legend: "Focus never the same as Active" (focus = outline style, active = filled accent). Why: keyboard users must distinguish "where I am" (focus) from "what is selected" (active); if both use the same colour treatment they are indistinguishable.
+- **Mobile:** "Under 5 tabs": a segmented control (Overview, Activity, Settings) with the active segment filled. "Over 5 tabs": the current section name with "Tap to switch section", opening a bottom sheet "Sections" listing Overview, Activity, Settings, Billing, Team, Integrations, API. "Never do this": the desktop tab bar shrunk to tiny labels, crossed out. Why: shrunk tabs produce unreadable labels and targets under 44px; segmented controls and sheets fit thumbs and small widths.
+- **Content, hard cut vs fade / pause / fade:** Stats / Activity / Notes panel switching instantly ("Bad · hard cut") versus fading out, pausing, fading in ("Good · fade · pause · fade", 80 / 80 / 80 ms). Then "Match the height": switching from a tall Activity panel to a short Stats panel ("Two lines of summary content. Compact.") animates the container height, caption "Container height interpolates · no layout shift". Why: the short gap separates old and new content so they never overlap, and the height interpolation stops content below the tabs from jumping; the voice says the brain reads the indicator and content change "as one motion".
+
+## Do
+- Animate the indicator position and width between tabs (spring, roughly 280 ms; e.g. damping 22, stiffness 200).
+- Keep the panel transition timed with the indicator.
+- On overflow, keep one row: horizontal scroll, edge fades, chevron buttons on pointer devices; scroll the active tab into view.
+- Implement arrows (move between tabs), Home (first), End (last), Tab (leave the tablist to the next focusable element).
+- Give focus and active states different visual treatments (e.g. outline ring for focus vs filled / underline accent for active).
+- Mobile: segmented control for fewer than 5 options, bottom sheet for more than 5; touch targets at least 44px.
+- Interpolate panel container height between tabs of different content height.
+
+## Don't
+- Don't teleport the indicator (0 ms hard cut).
+- Don't wrap tabs onto a second line.
+- Don't reuse the focus colour / style for the active state.
+- Don't ship the desktop tab bar scaled down on mobile.
+- Don't hard-cut panel content or let the page jump when panel heights differ.
+
+## Scene by scene
+- 0:00 Two tab bars, top labelled "Hard cut · 0ms", bottom "Smooth slide · 280ms"; cursor clicks Overview → Activity → Settings; overlay "Tabs are a system".
+- 0:03 "01 · Indicator / The underline slides": tab bar with cards `spring({ damping: 22, stiffness: 200 })`, "Content fade 180 ms", and an "Ease out" curve card captioned "Slow in. Fast out."; 0:07 mini comparison "Hard cut" vs "Slide" on Tab A/B/C.
+- 0:11 "02 · Overflow / 8 tabs · 1 screen": eight tabs wrapped onto two lines, tag "Don't wrap".
+- 0:14 Row becomes a horizontal scroller with chevrons; chips "Scroll horizontal", "Edge fades", "Chevrons on desktop"; small "Don't wrap to 2 lines" example below; 0:16-0:19 row scrolls, "Integrations" selected.
+- 0:20 "03 · Keyboard / Arrows. Home. End. Tab.": tab bar, a "Save changes" button, key caps ←, →, Home, End, Tab, legend "Focus never the same as Active". 0:21-0:23 arrows move the focus ring; 0:24 Home → Overview; 0:26 End → Billing; 0:28 Tab → focus on "Save changes".
+- 0:30 "04 · Mobile / Mobile is different.": three phones "Under 5 tabs" (segmented control), "Over 5 tabs" (bottom sheet "Sections"), "Never do this" (shrunk desktop bar, large error-state X); chip "Touch targets ≥ 44px · thumb zone first".
+- 0:37 "05 · Content / Content needs to breathe.": "Bad · hard cut" panel switching Stats → Activity instantly.
+- 0:40 "Good · fade · pause · fade": chips "Fade out 80ms", "80ms pause", "Fade in 80ms".
+- 0:45 "Match the height": Activity (tall) ↔ Stats (short) with "Container height interpolates · no layout shift".
+- 0:47 Outro: tab bar cycling, "Follow for more UI systems", "Save this for your next dashboard".
+
+## Voice-over summary
+- Tabs are a system; the underline never teleports, it slides.
+- The spring config matches the content fade: "slow in, fast out".
+- Eight tabs on one screen: don't wrap, scroll horizontally, edge fades show what is coming, chevrons on desktop.
+- Arrows move between tabs, Home and End jump to first and last, Tab moves to the next focusable group; focus ring and active state never share a colour.
+- On mobile, segmented control under five, bottom sheet over five, never a scaled-down desktop bar; content fades out, pauses 80 ms, fades in, with matched height to avoid layout shift.
+
+## Notes for the skill
+- ARIA (WAI-ARIA APG Tabs pattern): `role="tablist"` (with `aria-label`), each tab `role="tab"` with `aria-selected` and `aria-controls`, panels `role="tabpanel"` with `aria-labelledby`. Roving tabindex: active tab `tabindex="0"`, others `-1`. Left / Right (Up / Down for vertical), Home, End as shown. Tab moves focus from the tablist into the tab panel (or its first focusable element), not straight to "the next group" as the voice phrases it; the demo jumping to a button below is fine only if the panel itself contains nothing focusable and is not made focusable.
+- Activation: decide automatic (arrow selects) vs manual (arrow focuses, Enter / Space selects). Automatic suits cheap panels; manual suits panels that load data. The video does not specify.
+- Focus vs active: use different properties, not only different hues (e.g. focus = 2px outline with offset, active = underline / fill). Focus indicator contrast at least 3:1 against adjacent colours (WCAG 1.4.11, 2.4.7; 2.4.13 in WCAG 2.2 AAA).
+- Spring numbers: with mass 1, damping 22 and stiffness 200 give a damping ratio of about 0.78 (slightly underdamped, roughly 2% overshoot) and settle in about 0.35 s, consistent with the 280 ms "smooth slide" label. In CSS without springs, an ease-out curve around 250-300 ms is the equivalent.
+- The "Ease out" card is captioned "Slow in. Fast out." and draws an S-curve; that caption literally describes an ease-in, and the drawing is closer to ease-in-out. For UI responses the correct choice is ease-out (fast start, gentle stop). Treat the caption as an error.
+- Panel timing conflict (180 ms fade vs 80 / 80 / 80 ms): a 240 ms sequential fade with an empty gap delays content; a shorter alternative is a 150-200 ms crossfade or fade-out 80 ms then fade-in 120 ms. Never block input during the transition.
+- Height interpolation: animate a wrapper's height (measure with ResizeObserver, or use `interpolate-size: allow-keywords` / `calc-size()` where supported); avoid animating layout on long panels every frame if it janks, and keep panel content out of absolute positioning so it stays in the accessibility tree.
+- Reduced motion: under `prefers-reduced-motion: reduce`, move the indicator instantly or with a short opacity change, and skip the height animation.
+- Overflow: edge fades via `mask-image: linear-gradient(...)` shown only when scrollable in that direction; chevrons are pointer-only helpers and can be `aria-hidden` / `tabindex="-1"` because arrow keys already reach hidden tabs; call `scrollIntoView({ inline: 'nearest' })` on focus.
+- Mobile segmented control is a radio group semantically (`role="radiogroup"` / native radios) when it switches views in place; the bottom-sheet section picker is a dialog with a list, and the trigger must show the current section name.
+- Touch targets: 44 x 44 pt is Apple's guideline; Material uses 48 x 48 dp; WCAG 2.5.8 minimum is 24 x 24 CSS px.

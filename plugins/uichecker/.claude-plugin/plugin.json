@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "uichecker",
+  "displayName": "uichecker",
+  "version": "1.0.0",
+  "description": "137 scoped UI/UX rules with audit, review and refactor commands. Checks only the rules whose element exists in the code. Palette-independent.",
+  "author": {
+    "name": "DenFang",
+    "url": "https://github.com/DenFang"
+  },
+  "homepage": "https://github.com/DenFang/AwesomeSkills/tree/main/plugins/uichecker",
+  "repository": "https://github.com/DenFang/AwesomeSkills",
+  "license": "Apache-2.0",
+  "keywords": ["ui", "ux", "design", "accessibility", "motion", "audit", "review", "refactor", "design-system", "ui-patterns"]
+}
