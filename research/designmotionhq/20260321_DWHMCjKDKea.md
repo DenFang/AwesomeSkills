@@ -2,7 +2,7 @@
 id: DWHMCjKDKea
 reel_url: https://www.instagram.com/reel/DWHMCjKDKea/
 pattern_page: https://designmotionhq.com/patterns/proximity-rule
-date: 2026-03-20
+date: 2026-03-21
 duration_s: 52
 type: ui
 category: visual

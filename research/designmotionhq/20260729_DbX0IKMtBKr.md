@@ -12,7 +12,7 @@ sources: frames, voice-over, pattern page
 
 # Settings is a system
 
-**Caption:** Your settings page is harmless — until the last section. Settings is a system.
+**Caption:** Your settings page is harmless: until the last section. Settings is a system.
 **Hook:** Most of a settings page is harmless, but the bottom of it can delete everything; so the page needs rules, not just a list.
 
 ## Main rule
