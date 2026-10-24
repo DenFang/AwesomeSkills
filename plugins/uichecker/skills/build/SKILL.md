@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 Build new UI so it already follows the rules, instead of fixing it afterwards.
 
+Everything runs in this session: do not spawn subagents unless the user asks for it in the request.
+
 Target: `$ARGUMENTS`: what to build and, if known, where it goes. Empty: ask what to build and stop.
 
 ## 1. Load the guidelines

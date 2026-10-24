@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 Build new UI by three design skills at once: what they agree on is applied, where they disagree the user chooses.
 
+Everything runs in this session: do not spawn subagents, and do not let a member skill spawn them, unless the user asks for it in the request.
+
 Target: `$ARGUMENTS`: what to build and, if known, where it goes, plus optionally one question mode:
 
 | Flag | Questions |
