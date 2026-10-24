@@ -5,18 +5,18 @@ description: Use when building, changing or reviewing user-interface code (compo
 
 # uichecker: UI/UX guidelines
 
-The gap between a cheap interface and a premium one comes down to a few concrete decisions. This skill names them as 137 rules you can apply while building and check while reviewing. Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
+Every rule has an ID (`MOT-3`, `FRM-10`, …), a severity, an **Applies to** line that says which elements it is about, and a concrete rule; most also have a detection hint and a fix.
 
 The rules describe relationships, not a palette: "one accent, only on the primary action", "inner radius = outer − border − padding", "exits about 40% shorter than entrances". Always use the project's own colours, fonts and tokens. Never invent a new palette.
 
 ## Core beliefs
 
 1. **A component is a system, not a widget.** A table is alignment, density, sticky regions, empty cells and actions. A toast is position, timing, stacking and dismissal. Decide each part on purpose.
-2. **Every state is designed.** Loading, empty, error, success, partial, disabled, focus, busy. The happy path alone is unfinished work.
+2. **Every state is designed** (STA-1).
 3. **Numbers beat taste.** Durations, sizes, ratios and thresholds are written down once as tokens and reused.
-4. **Feedback is immediate.** Something visible happens within 100 ms of every press and within 400 ms of every request.
+4. **Feedback is immediate** (MOT-3, STA-5).
 5. **Decoration is a tell.** Generated-looking UI decorates because it has nothing concrete to show. Replace decoration with real content, real numbers and one clear focal point.
-6. **Every input method reaches everything.** Keyboard, touch and pointer all reach every action; hover is never the only path.
+6. **Every input method reaches everything** (INT-2, INT-12).
 
 ## Step 1 · Read the context
 
@@ -53,7 +53,7 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Dashboard, charts, metric tiles | `data-display.md`, `content-persuasion.md` | DAT-1, DAT-13, DAT-14, CON-6 |
 | Avatars, chat, ratings, calendar | `data-display.md` | DAT-15…18 |
 | Modal, sheet, drawer, popover, tooltip, menu, dropdown | `interaction.md`, `motion.md` | INT-3…8, MOT-1, MOT-2, MOT-10 |
-| Navigation, tabs, app shell | `interaction.md`, `data-display.md` | INT-16, INT-17, DAT-8 |
+| Navigation, tabs, app shell | `interaction.md`, `data-display.md`, `motion.md` | INT-16, INT-17, DAT-8, MOT-11 |
 | Breadcrumbs, back-to-parent links | `interaction.md` | INT-28 |
 | Tree view, folder tree | `interaction.md` | INT-24 |
 | Kanban or column board | `interaction.md` | INT-13, INT-26 |
@@ -63,7 +63,7 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Buttons, cards, any clickable element | `interaction.md`, `motion.md`, `visual-system.md` | INT-10, MOT-3, MOT-9, VIS-19, VIS-20 |
 | Destructive or bulk actions | `interaction.md`, `states-feedback.md`, `data-display.md` | INT-9, STA-14, DAT-4, DAT-5 |
 | Drag and drop, swipe, pull to refresh | `interaction.md`, `motion.md` | INT-13…15, MOT-14 |
-| Accordion, resizable panel, colour picker, custom widget | `interaction.md`, `motion.md` | INT-18…22, MOT-7, MOT-8 |
+| Accordion, resizable panel, colour picker, custom widget | `interaction.md`, `motion.md` | INT-18, INT-19, INT-21, INT-22, MOT-7, MOT-8 |
 | Toasts, banners, badges, copy buttons, offline support | `states-feedback.md` | STA-11…16 |
 | Typing or "thinking" indicators | `states-feedback.md` | STA-18 |
 | Any animation or transition | `motion.md` | MOT-0…16 |
@@ -73,13 +73,13 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Success screens, completion states | `content-persuasion.md`, `motion.md` | CON-5, MOT-15 |
 | Progress bars, uploads, long-running jobs | `states-feedback.md`, `forms.md` | STA-17, FRM-16 |
 | Keyboard shortcuts | `content-persuasion.md`, `data-display.md` | CON-10, DAT-12 |
-| Interface copy (labels, errors, CTAs) | `content-persuasion.md` | CON-1, FRM-18 |
+| Interface copy (labels, errors, CTAs) | `content-persuasion.md`, `forms.md` | CON-1, FRM-18 |
 | "It looks AI-made" | `content-persuasion.md`, `visual-system.md` | CON-3, CON-6, CON-7, VIS-5, VIS-12 |
 | Pricing, checkout, sign-up, cancellation, consent, feeds | `content-persuasion.md` | CON-8, CON-9, CON-13 |
 | Streaks, feeds, autoplay, notifications | `content-persuasion.md` | CON-12 |
 | Collaboration, presence | `interaction.md` | INT-20 |
 
-All files are in `references/`. Load only the files the inventory needs.
+All files are in `references/`. Load the files the inventory needs, plus the files that hold the always-on rules: `interaction.md` and `visual-system.md`; `motion.md` when anything moves; `content-persuasion.md` when there is copy.
 
 ## The numbers worth memorising
 
@@ -88,12 +88,12 @@ All files are in `references/`. Load only the files the inventory needs.
 | Press, hover, toggle feedback | under 100 ms |
 | Entrance (modal, sheet, panel) | lively: 200 to 300 ms, ease-out; crisp: 150 ms max; dropdowns about 150 ms |
 | Exit | about 40% shorter than the entrance (250 in, 150 out) |
-| Crisp profile ceiling | hover about 80 ms, transitions under 150 ms, no overshoot |
+| Crisp profile ceiling | hover about 80 ms, transitions at most 150 ms, no overshoot |
 | Attention motion (alerts only) | 500 to 800 ms, bounce allowed |
 | List stagger | about 50 ms per item, cap the first 6 to 8 |
 | No loader | for responses under about 300 ms |
 | Must visibly react | within about 400 ms |
-| Spinner vs progress bar | spinner under about 3 s, progress bar with % above |
+| Spinner vs progress bar | spinner in the control for short unmeasurable waits (under about 3 s); determinate bar with % whenever progress is measurable; never an invented % |
 | Tooltip delay | about 300 ms on hover, immediate on focus |
 | Toast duration | about 4 s info, 7 s warning, errors until dismissed; max 3 visible |
 | Undo window | 5 to 10 s with a visible countdown |
@@ -111,12 +111,11 @@ All files are in `references/`. Load only the files the inventory needs.
 1. Apply the rules for each element as you write the code, through the project's tokens.
 2. Before calling the work done, check every state the component can be in (STA-1) and every input method (INT-1, INT-2, INT-11, INT-12).
 3. Check reduced motion (MOT-13) and contrast (VIS-7, VIS-8) for anything new.
-4. In your reply, name the rule IDs you applied only when you created a new screen or component; for small edits apply the rules silently.
 
 ## Proportionality
 
 - **Small change** to existing UI (a label, a colour, one prop): follow the rules quietly and match what the project already does. No lectures, no unrequested refactors.
-- **New screen or component**: apply the rules fully and mention the main decisions in one or two lines.
+- **New screen or component**: apply the rules fully and mention the main decisions, with their rule IDs, in one or two lines.
 - **Audit, review or refactor**: use the commands below.
 
 ## When rules seem to conflict
@@ -151,10 +150,8 @@ The user owns their product. If they insist on something a rule advises against,
 
 ## Commands
 
-This plugin also gives the user three commands that use these guidelines:
+The user runs these; suggest them when they fit:
 
 - `/uichecker:audit [path]` checks the whole codebase (or a path) and writes a prioritised report to `UX-AUDIT.md`.
-- `/uichecker:review [base ref | range | branch | PR number]` checks only the changes on the current branch or in the working tree.
+- `/uichecker:review [base ref | range | branch | PR number]` checks only the changes on the current branch or in the working tree. Always give the full name: `/review` is a different, built-in command.
 - `/uichecker:refactor [audit | P0 | F-001 … | R-001 … | path]` fixes problems directly, from the audit report, or from the last review.
-
-Bare `/audit` and `/refactor` also work while no other command uses those names; `/review` is a built-in Claude Code command, so the review always needs its full name. The shared report format is in `references/report-format.md`, and search patterns for finding violations quickly are in `references/detection.md`.

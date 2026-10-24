@@ -1,7 +1,5 @@
 # Report format
 
-Shared by the audit, review and refactor commands so that their output can be read by people and by the next command.
-
 ## Severity
 
 | Level | Meaning | Examples |
@@ -17,7 +15,7 @@ Use the severity written on the rule. When a rule gives a range (for example "P0
 Every finding uses this block. Audit findings are numbered `F-001`, `F-002`, … and review findings `R-001`, `R-002`, …, in report order, so the refactor command can target them.
 
 ```markdown
-### F-007 · P1 · STA-7 · Errors say what happened and offer a way out
+### F-007 · P0 · STA-7 · Errors say what happened and offer a way out
 - **Where:** `src/features/invoices/InvoiceList.tsx:84`
 - **Evidence:** `catch (e) { setError("Something went wrong") }` shows a generic message with no retry.
 - **Impact:** A user whose invoices fail to load sees no reason and has no way to try again.
@@ -35,6 +33,8 @@ Every finding uses this block. Audit findings are numbered `F-001`, `F-002`, …
 
 Group repeated instances of one rule into one finding rather than one finding per line.
 
+Review findings (`R-NNN`) omit **Effort** and **Status**.
+
 ## Area scores
 
 Score each area that exists in the scope from 0 to 4. Mark an area `n/a` when the scope has nothing it covers (no forms, no motion), never 0.
@@ -42,7 +42,7 @@ Score each area that exists in the scope from 0 to 4. Mark an area `n/a` when th
 | Score | Meaning |
 |---|---|
 | 0 | Broken: P0 problems across the area |
-| 1 | Major gaps: several P0 or many P1 problems |
+| 1 | Major gaps: any P0, or many P1 problems |
 | 2 | Partial: works, with clear P1 problems |
 | 3 | Good: minor P1 or P2 problems only |
 | 4 | Excellent: nothing beyond small polish |
@@ -105,9 +105,11 @@ Verdict: ✅ ready (no P0 or P1) | ⚠️ ready after the P1 fixes | ⛔ needs c
 
 <R-NNN finding blocks for issues introduced or touched by the change, P0 first>
 
-Nearby, not introduced by this change: <P0 finding blocks in the same components, if any>
+Nearby, not introduced by this change: <P0 finding blocks in the same components, if any, numbered R-NNN continuing the sequence>
 
 Already good in this change: <1 to 3 bullets>
+
+Not checked / skimmed: <…> · Suppressed by .ux-ignore.md: <n>
 ```
 
 ## Refactor log

@@ -1,7 +1,5 @@
 # Forms and input
 
-Forms are where users do work and where products lose them. Every field has states, every rule is visible before it is broken, and nothing the user typed is ever lost.
-
 Severity: **P0** blocks, loses data or fails accessibility, **P1** friction, **P2** polish.
 
 ---

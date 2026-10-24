@@ -55,8 +55,6 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 | `visual-system.md` | VIS | Tokens, spacing, type, colour roles, contrast, dark mode, radius, elevation, hierarchy, grid, icons, optical corrections, gradients, glass, z-index, cards, modern CSS layout |
 | `content-persuasion.md` | CON | Microcopy, landing structure, generated-look tells, flow psychology, honest persuasion, pricing sections, success screens, shortcuts, engagement mechanics, dark patterns to refuse |
 
-Every lesson behind the rules is written up in [`research/ui-lessons/`](../../research/ui-lessons/INDEX.md).
-
 ## What it runs and writes
 
 - Reads your project's UI files and runs read-only searches (`rg`/grep) and `git` (to collect a diff for review).

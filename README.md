@@ -142,7 +142,7 @@ Every finding has a place in your code, a reason and a concrete fix. You won't g
 
 ### Why three opinions beat one
 
-Every design skill has blind spots. UltimateDesign runs three of them over the same code, each in its own subagent, so none of them sees the others' answers:
+Every design skill has blind spots. UltimateDesign runs three of them over the same code. By default each one works in its own subagent, so none of them sees the others' answers:
 
 | Skill | Strong at |
 |---|---|
@@ -179,6 +179,16 @@ flowchart LR
 | `/ultimatedesign:review [branch \| PR]` | Reviews only your changes, with a verdict |
 | `/ultimatedesign:apply [recommended \| P0 \| U-001 … \| D-1=A …]` | Applies the fixes and the options you picked, then runs your checks |
 
+### Three speeds
+
+Add a flag to `audit` or `review`:
+
+| Flag | How it runs | Best for |
+|---|---|---|
+| *(none)* | each skill in its own subagent, in parallel | the most independent opinions |
+| `--current` | the same three reviews, one after another in your session | when you'd rather not use subagents; same depth |
+| `--lite` | one quick pass: rules that say the same thing collapse into the most detailed one, rules that disagree still become your choices | a fast check before you commit |
+
 ### You'll also need
 
 impeccable and ui-ux-pro-max come from their authors and are not bundled here. Install them any way you like (plugin, personal skill or project skill), and UltimateDesign will find them:
@@ -206,7 +216,7 @@ If one is missing, UltimateDesign runs with the other two and tells you what it 
 
 - **Audits and reviews only read.** The only file they write is the report (`UX-AUDIT.md` or `ULTIMATE-DESIGN.md`).
 - **Code changes only when you ask**, through `refactor` or `apply`, and they finish by running your lint, tests and build.
-- **Nothing leaves your machine.** No network calls, no hooks, no MCP servers, no telemetry.
+- **Nothing leaves your machine.** The plugins make no network calls and have no hooks, MCP servers or telemetry. (impeccable, if you use it, downloads its own engine once on first run.)
 
 ---
 
@@ -239,7 +249,7 @@ Yes. Add a `.ux-ignore.md` file to your project with the rule IDs and a reason. 
 <details>
 <summary><b>Where do the rules come from?</b></summary>
 
-From more than 140 short UI/UX lessons, each turned into a precise, checkable rule. The written breakdown of every lesson is in [`research/ui-lessons/`](research/ui-lessons/INDEX.md).
+From more than 140 short UI/UX lessons. Each one became a precise, checkable rule with an ID, a severity, a detection hint and a fix.
 </details>
 
 ---
@@ -259,6 +269,5 @@ If you redistribute it or build on it, keep the [NOTICE](NOTICE) file and credit
 .claude-plugin/marketplace.json   the awesome-skills marketplace
 plugins/uichecker/                rules skill and the audit, review, refactor commands
 plugins/ultimatedesign/           orchestrator: passes, merge rules, report format
-research/ui-lessons/              written breakdown of every lesson behind the rules
 ```
 </details>

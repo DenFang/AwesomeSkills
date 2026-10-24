@@ -1,7 +1,5 @@
 # Motion
 
-Motion is judged in milliseconds and curves. The same element with the same distance feels premium or broken depending on duration, easing and order. Pick one motion profile per product (see MOT-0) and apply it everywhere.
-
 Severity: **P0** breaks use or access, **P1** causes friction or reads as broken, **P2** polish.
 
 ---
@@ -9,7 +7,7 @@ Severity: **P0** breaks use or access, **P1** causes friction or reads as broken
 ### MOT-0 · One motion profile per product (P1)
 **Applies to.** any project with transitions or animations.
 **Rule.** Decide once how the product moves, store it as tokens, and never improvise per component.
-- **Crisp** (dense tools, dashboards, editors, admin): hover feedback about 80 ms, every transition at most 150 ms, ease-out only, no overshoot or bounce. A generic 300 ms transition is the tell of an untuned tool.
+- **Crisp** (dense tools, dashboards, editors, admin): hover feedback about 80 ms, every transition at most 150 ms, ease-out (ease-in on exits, MOT-2), no overshoot or bounce. A generic 300 ms transition is the tell of an untuned tool.
 - **Lively** (consumer, marketing, onboarding, playful brands): entrances 200 to 300 ms, small spring overshoot on presses, modals and confirmations.
 Both profiles share the timing rules below, but the profile's ceiling wins: on the crisp profile every duration in every rule (for example MOT-1, MOT-9, MOT-10, FRM-13, INT-17) is capped at 150 ms and springs are off.
 **Detect.** Durations and curves written inline instead of tokens (`transition: all .37s ease`); more than about six distinct durations or four easing curves; a spring in one component and a hard cut in its sibling.

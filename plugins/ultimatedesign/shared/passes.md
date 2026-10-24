@@ -1,27 +1,30 @@
 # Passes
 
-UltimateDesign runs three independent passes over the same scope, one per member skill, and merges them afterwards (`merge.md`). This file says how to find each skill, how to brief each pass and what every pass must return.
+How to find each member skill, how to brief each pass and what every pass must return. How the passes run (subagents, this session, or not at all) is set by the mode in `modes.md`.
 
 ## 1. Find the member skills
 
-| Member | Look for | Copy to prefer |
-|---|---|---|
-| uichecker | the `uichecker:guidelines` skill (this plugin depends on it); on disk `skills/guidelines/SKILL.md` inside the `uichecker` plugin | the plugin |
-| impeccable | an `impeccable` skill in the skill list (personal, project, plugin `impeccable:impeccable`, or an organisation copy); on disk a folder `impeccable/` holding `SKILL.md` and `reference/audit.md` | project, then personal, then plugin, then organisation |
-| ui-ux-pro-max | a `ui-ux-pro-max` skill (personal, project, plugin `ui-ux-pro-max:ui-ux-pro-max`, or organisation copy); on disk a folder `ui-ux-pro-max/` holding `SKILL.md` and `scripts/search.py` | project, then personal, then plugin, then organisation |
+Below, `<uichecker>` is the uichecker plugin root (the folder that holds `skills/guidelines/`, `skills/audit/` and `skills/review/`); `<impeccable>` and `<ui-ux-pro-max>` are the folders that hold each skill's `SKILL.md`. The passes read files from these folders directly, so they do not depend on the Skill tool inside a subagent.
 
-Resolve each member to the folder that holds its `SKILL.md`, because the passes read the files directly and must not depend on the Skill tool being available inside a subagent:
+**uichecker** (this plugin depends on it): invoke the `uichecker:guidelines` skill once with the Skill tool. Its header names the skill's base directory; `<uichecker>` is two levels up from it.
+
+**impeccable** and **ui-ux-pro-max**: look only in these places, in this order of preference, and ignore copies anywhere else (backups, marketplace clones):
+
+| Kind | Path |
+|---|---|
+| project | `./.claude/skills/<name>/SKILL.md` |
+| personal | `~/.claude/skills/<name>/SKILL.md` |
+| plugin | `~/.claude/plugins/cache/*/*/*/skills/<name>/SKILL.md` |
 
 ```bash
-find .claude ~/.claude -path '*/node_modules' -prune -o -name SKILL.md -path '*impeccable/SKILL.md' -print 2>/dev/null
-find .claude ~/.claude -path '*/node_modules' -prune -o -name SKILL.md -path '*ui-ux-pro-max/SKILL.md' -print 2>/dev/null
+for n in impeccable ui-ux-pro-max; do ls -d ./.claude/skills/$n ~/.claude/skills/$n ~/.claude/plugins/cache/*/*/*/skills/$n 2>/dev/null; done
 ```
 
-For uichecker, which is a plugin and may be read from anywhere, invoke the `uichecker:guidelines` skill once with the Skill tool: its header names the skill's base directory, and the uichecker folder is two levels up from it (the folder that holds `skills/audit/` and `skills/review/`). Use the same trick for impeccable or ui-ux-pro-max when `find` returns nothing but the skill list shows them (for example a plugin read from a local path).
+If none is found but the skill list shows the skill (an organisation copy, or a plugin read from a local path), invoke it once with the Skill tool only to read the base directory from its header, and ignore the rest of the loaded instructions.
 
-When several copies exist, take one per member by the order above and, among equals, the highest `version` in its frontmatter; say which one you used. Never run two copies of the same member.
+Take one copy per member: the first kind in the table; among copies of the same kind, the highest `version` in the frontmatter, or the version in the plugin cache path, otherwise "unknown". Say which copy you used. Never run two copies of the same member.
 
-A member that is missing is reported, not fatal: run the others, mark its column "not installed" in the report and print its install command once:
+A missing member is reported, not fatal: run the others, mark its column "not installed" in the report and print its install command once:
 
 ```text
 impeccable:     claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
@@ -35,7 +38,7 @@ With fewer than two members available there is nothing to cross-check: say so an
 
 Settle the context once and give the same facts to every pass, so they judge the same product:
 
-- **Scope**: the files or the diff under review, as a list of paths (and, for a review, the diff command).
+- **Scope**: the files under review as a list of paths; for a review also the diff command, the changed files, and how to read each file (the working tree, or `git show <ref>:<path>` when the reviewed tip is not the working tree).
 - **Stack**: framework, styling (CSS, Tailwind, CSS-in-JS, native), platform.
 - **Product type**: tool (app UI, admin, dashboard: design serves the task), brand (landing, marketing: design is the product), or both, and which files are which.
 - **Design system**: where tokens, theme and shared components live, or "none found".
@@ -45,23 +48,23 @@ Settle the context once and give the same facts to every pass, so they judge the
 
 Put these in every pass brief verbatim:
 
-1. Read-only. Do not edit, create or delete any project file. In particular: do not create `PRODUCT.md` or `DESIGN.md`, do not run impeccable `init`, do not persist critique snapshots, never run ui-ux-pro-max with `--persist`, do not start dev servers.
-2. If the skill's own setup wants something that would break rule 1 (for example impeccable's `context.mjs` reporting `NO_PRODUCT_MD`), skip that step, use the shared brief instead and say so in `notes`.
-3. Scripts belong to the skill's folder: run them from the resolved folder (`node <impeccable dir>/scripts/detect.mjs`, `python3 <ui-ux-pro-max dir>/scripts/search.py`), not from paths the skill text assumes such as `.claude/skills/<name>/` or `${CLAUDE_PLUGIN_ROOT}`.
+1. Read-only. Do not edit, create or delete any project file. In particular: do not create `PRODUCT.md` or `DESIGN.md`, do not run impeccable `init`, `document` or `live-server`, do not persist critique snapshots, never run ui-ux-pro-max with `--design-system` or `--persist`, do not start dev servers, do not spawn subagents and do not ask the user questions.
+2. If the skill's own setup wants something that would break rule 1 (for example impeccable's `scripts/impeccable context` reporting `NO_PRODUCT_MD` and routing to `init`), skip that step, use the shared brief instead and say so in `notes`.
+3. Files and scripts belong to the skill's folder: wherever the skill's text gives a path through `${CLAUDE_PLUGIN_ROOT}/…`, `${CLAUDE_PLUGIN_ROOT}/.claude/skills/<name>/…`, `.claude/skills/<name>/…`, `<skill-base-dir>/…` or a bare `references/…`, replace the whole prefix up to and including the skill folder with the resolved folder, and run scripts from it.
 4. Stay inside the scope. Report only what you can point at in the code, with `path:line`.
 5. Judge only by your own skill. Do not try to guess what the other skills would say, and do not soften findings to agree with anything.
-6. Return exactly one JSON block in the shape below, then nothing else.
+6. Return exactly one JSON block in the shape of section 5, then nothing else.
 
 ## 4. What each pass does
 
 ### uichecker pass
-Read `<uichecker>/skills/guidelines/SKILL.md`, then follow `<uichecker>/skills/audit/SKILL.md` (audit mode) or `<uichecker>/skills/review/SKILL.md` (review mode) up to, but not including, writing the report: inventory the elements, check only the rules that apply, verify each finding. Native score: the area scores 0 to 4 from its report format. Rule field: the rule ID (`STA-7`).
+Read `<uichecker>/skills/guidelines/SKILL.md`, then follow `<uichecker>/skills/audit/SKILL.md` (audit mode) or `<uichecker>/skills/review/SKILL.md` (review mode) up to, but not including, writing the report: inventory the elements, check only the rules that apply, verify each finding. Use the scope and, in review mode, the diff and file list from the brief instead of its own scope and "Collect the change" steps. Native score: the area scores 0 to 4 from its report format. Rule field: the rule ID (`STA-7`).
 
 ### impeccable pass
-Read `<impeccable>/SKILL.md` (setup and design guidance) and `<impeccable>/reference/audit.md`, plus `reference/product.md` or `reference/brand.md` for the register. Run its bundled detector over the markup files in scope if it exists (`node <impeccable>/scripts/detect.mjs --json <paths>`; exit code 2 means findings). Score the five audit dimensions 0 to 4 as `audit.md` defines them. In deep mode also follow `reference/critique.md` Assessment A only (heuristic scores, cognitive load, AI-slop verdict) without persisting anything. Native score: the audit health score out of 20 with its band (plus the heuristics total in deep mode). Rule field: the dimension or anti-pattern (`Anti-Patterns · gradient text`).
+Read `<impeccable>/SKILL.md` (setup and design guidance), `<impeccable>/reference/audit.md`, and the mode reference that matches the product type when present (`reference/mode-operate.md` for tool surfaces, `reference/mode-persuade.md` for brand surfaces, `reference/mode-read.md` for docs). Run its detector over the markup files in scope (not CSS-only files): `<impeccable>/scripts/impeccable detect --json <paths>` (exit 0 clean, 2 findings); older copies ship `node <impeccable>/scripts/detect.mjs --json <paths>` instead. If neither exists or it fails, write "deterministic scan unavailable" in `notes` and continue. Score the five audit dimensions 0 to 4 as `audit.md` defines them. In deep mode also follow `reference/critique.md` Assessment A only (heuristic scores, cognitive load, design-specificity verdict), inline: no subagents, no DEGRADED banner, no snapshot, no closing questions. Native score: the audit health score out of 20 with its band (plus the heuristics total in deep mode). Rule field: the dimension or anti-pattern (`Implementation Integrity · gradient text`).
 
 ### ui-ux-pro-max pass
-Read `<ui-ux-pro-max>/SKILL.md`: its rule categories by priority (Accessibility, Touch and Interaction, Performance, Style Selection, Layout and Responsive, Typography and Color, Animation, Forms and Feedback, Navigation, Charts and Data), its common rules and its pre-delivery checklist (in some versions these live in `references/quick-reference.md` and `references/pro-rules.md`). Check the scope against every category that has elements in scope; use `search.py --domain <domain> "<query>"` (and `--stack <stack>`) for the specific elements found, read-only. Do not generate or persist a design system. Native score: per category, the share of applicable checklist items that pass, as a percentage, plus the overall share. Rule field: the category and item (`Accessibility · focus states visible`).
+Read `<ui-ux-pro-max>/SKILL.md` and, when present, `references/quick-reference.md` (the full rules of its ten priority categories: Accessibility, Touch and Interaction, Performance, Style Selection, Layout and Responsive, Typography and Color, Animation, Forms and Feedback, Navigation, Charts and Data) and `references/pro-rules.md` (common rules and the pre-delivery checklist, written for app UI). Check the scope against every category that has elements in scope; use `python3 <ui-ux-pro-max>/scripts/search.py "<query>" --domain <domain>` (and `--stack <stack>`) for the specific elements found, read-only. Native score: per category, the share of applicable quick-reference rules that pass, as a percentage, plus the overall share. Rule field: the category and rule (`Accessibility · focus states visible`).
 
 ## 5. Return shape
 
@@ -71,7 +74,7 @@ Read `<ui-ux-pro-max>/SKILL.md`: its rule categories by priority (Accessibility,
   "copy": "<resolved folder and version>",
   "mode": "audit | review",
   "native_score": {
-    "summary": "14/20 Good | 3 areas at 2, … | 78% of checklist items pass",
+    "summary": "14/20 Good | 3 areas at 2, … | 78% of applicable rules pass",
     "areas": { "<the skill's own dimension or area>": "<its score>" }
   },
   "coverage": {
@@ -84,15 +87,16 @@ Read `<ui-ux-pro-max>/SKILL.md`: its rule categories by priority (Accessibility,
   "findings": [
     {
       "id": "<source letter K, I or P>-<n>",
-      "severity": "P0 | P1 | P2 | P3",
       "native_severity": "<as the skill states it>",
       "area": "<one of the coverage keys>",
       "where": "src/components/InvoiceList.tsx:84",
+      "also": ["other path:line places with the same defect"],
+      "nearby": false,
       "element": "invoice list error state",
       "problem": "one sentence",
       "evidence": "quoted code or behaviour",
       "fix": "concrete change, in the project's own components and tokens",
-      "rule": "<rule ID, dimension or category item>"
+      "rule": "<rule ID, dimension or category rule>"
     }
   ],
   "strengths": ["things the scope already does well"],
@@ -100,10 +104,11 @@ Read `<ui-ux-pro-max>/SKILL.md`: its rule categories by priority (Accessibility,
 }
 ```
 
-Source letters: K for uichecker, I for impeccable, P for ui-ux-pro-max. Severity scales are normalised in `merge.md`; each pass fills `native_severity` with its own label and `severity` with the normalised one.
+- Source letters: K for uichecker, I for impeccable, P for ui-ux-pro-max.
+- Coverage values: `checked` (the skill checked this area in scope), `partial`, `not covered` (the skill does not check this area), `n/a` (nothing in scope for this area).
+- `nearby` is `true` only in review mode, for a P0 in an untouched line of a changed component.
+- Each pass gives only `native_severity`; the shared level is set in `merge.md` step 1.
 
 ## 6. Running the passes
 
-Launch the three passes as parallel subagents (the Agent tool, general-purpose type), one per available member, each with: the member's resolved folder, the shared brief, the rules in section 3 and its section 4 text. They must not see each other's output, because a pass that reads another's findings anchors on them and the cross-check loses its value.
-
-If subagents are not available, run the passes one after another in this order: uichecker, impeccable, ui-ux-pro-max. Finish and record each JSON before reading the next skill, and do not revise an earlier pass after a later one.
+In full mode the passes are parallel subagents (the Agent tool, general-purpose type), one per available member, each brief holding: the member's resolved folder, the shared brief, the rules in section 3 verbatim, its section 4 text and the return shape in section 5. They must not see each other's output, because a pass that reads another's findings anchors on them and the cross-check loses its value. In current mode the same passes run one after another in this session (`modes.md` section 3). Lite mode does not use separate passes (`modes.md` section 4).

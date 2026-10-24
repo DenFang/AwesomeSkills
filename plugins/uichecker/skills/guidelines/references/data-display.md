@@ -1,7 +1,5 @@
 # Data display
 
-Tables, lists, numbers, search, filters and charts. Data UI looks cheap when it is a grid of divs with default text; it looks engineered when alignment, density and state are decisions.
-
 Severity: **P0** misleads or hides data, **P1** friction, **P2** polish.
 
 ---

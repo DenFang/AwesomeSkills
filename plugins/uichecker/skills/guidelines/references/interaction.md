@@ -1,7 +1,5 @@
 # Interaction, navigation and overlays
 
-How controls respond, how people move around, which overlay to use, and how keyboard, mouse and touch all reach the same actions.
-
 Severity: **P0** unreachable, inaccessible or destructive by accident, **P1** friction, **P2** polish.
 
 ---

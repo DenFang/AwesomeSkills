@@ -12,7 +12,7 @@
 - **Status:** open
 ```
 
-`P1 · 2/3` is the shared severity and the agreement. **Status** is `open`, `fixed`, `fixed (already resolved)`, `wontfix (reason)`, `needs decision (question)`.
+`P1 · 2/3` is the shared severity and the agreement (in lite, `P1 · rule 2/3`: how many skills hold the rule). **Status** is `open`, `fixed`, `fixed (already resolved)`, `wontfix (reason)`, `needs decision (question)`.
 
 ## Decision
 
@@ -30,11 +30,12 @@
 ```markdown
 # UltimateDesign audit · <project> · <YYYY-MM-DD>
 
+Mode: <full | current | lite> · Independence: <separate subagents | same session (passes shared one context) | none (rules merged before the check)>
 Scope: <paths> · Stack: <…> · Product type: <tool | brand | both> · Design system: <where, or none found>
 Skills used: uichecker <version> · impeccable <version, copy> · ui-ux-pro-max <version, copy> (or "not installed")
 
 ## Score
-UltimateDesign score: **72 / 100** (acceptable) · Agreement rate: 41%
+UltimateDesign score: **72 / 100** (acceptable) · Agreement rate: 41% (in lite: "Rule overlap: 41%")
 
 | Area | Unified | uichecker | impeccable | ui-ux-pro-max | Key finding |
 |---|---|---|---|---|---|
@@ -78,9 +79,10 @@ Leave out a section that would be empty.
 ```markdown
 ## UltimateDesign review · <ref range> · <N files>
 Verdict: ✅ ready | ⚠️ ready after the P1 fixes | ⛔ needs changes (any P0)
-Skills used: … · Score for the changed scope: <n>/100 · Agreement: <n>%
+Mode: <full | current | lite> · Skills used: … · Score for the changed scope: <n>/100 · Agreement: <n>% (in lite: rule overlap)
 
 <U-blocks introduced or touched by the change, P0 first, each with its agreement>
+Nearby, not introduced by this change: <P0 U-blocks marked nearby, if any>
 <D-blocks, if any>
 Coverage gaps: <areas no skill checked for this change>
 Already good in this change: <1 to 3 bullets>
