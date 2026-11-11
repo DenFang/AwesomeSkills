@@ -256,6 +256,10 @@ claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill && claude plu
 
 ---
 
+## 🧪 Для сопровождающих
+
+Перед выпуском запусти `python3 tools/check_uichecker.py`: скрипт падает, если идентификатор правила определён дважды, недостижим из таблицы маршрутов, список постоянных правил расходится со своим файлом или заявленное число правил не совпадает с настоящим. Изменения каждой версии в [plugins/uichecker/CHANGELOG.md](plugins/uichecker/CHANGELOG.md).
+
 ## 📄 Лицензия
 
 [Apache License 2.0](LICENSE). Можно использовать, менять и встраивать в коммерческие проекты.

@@ -256,6 +256,10 @@ From more than 140 short UI/UX lessons. Each one became a precise, checkable rul
 
 ---
 
+## 🧪 For maintainers
+
+Before a release, run `python3 tools/check_uichecker.py`: it fails when a rule ID is defined twice, is unreachable from the routing table, the always-on list and its file disagree, or the stated rule count is not the real one. The changes of each version are in [plugins/uichecker/CHANGELOG.md](plugins/uichecker/CHANGELOG.md).
+
 ## 📄 License
 
 [Apache License 2.0](LICENSE). Use it, change it, and ship it in commercial work.

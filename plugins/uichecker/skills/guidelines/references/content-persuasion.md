@@ -6,10 +6,7 @@ Severity: **P0** deceptive or harmful, **P1** confusing or generic, **P2** polis
 
 ---
 
-### CON-1 · Microcopy is interface (P1)
-**Applies to.** all interface copy: button labels, error messages, empty states, field labels and hints, confirmations.
-**Rule.** The button label is the last thing read before committing, so it names the reward or result ("Create my free account", "Send 3 invoices"), never "Submit". Errors name the cause in plain words and hand over the fix as a link or action ("That email is already registered. Log in instead?"): a detour, not a dead end. Empty states give one action, the first step (STA-6), so they never look like a bug. Labels stay visible after typing; a placeholder is not a label (FRM-2). Write like a helpful colleague: plain words, "you", no system jargon ("operation failed", "invalid input", "null"), and stay specific: friendly but vague ("Hmm, that didn't go through") still needs the cause when it is known, and jokes stay out of serious failures (payments, data loss). Keep one voice across the product. Destructive confirmations repeat the verb and the object. On login and password reset, never reveal whether an account exists; use a neutral message there.
-**Detect.** "Submit", "OK", "Click here", "Error occurred", "Invalid", "No data"; a `placeholder` with no `<label>`; mixed tone; shouting capitals in body copy.
+> **CON-1 · Microcopy is interface** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### CON-2 · Landing pages follow one skeleton (P1)
 **Applies to.** landing and marketing pages: hero, social-proof block, problem section, benefits or solution section, final CTA.

@@ -13,7 +13,7 @@ Target: `$ARGUMENTS`
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, plus the references that hold the always-on rules: `interaction.md`, `visual-system.md`, `motion.md` when the change animates anything, `content-persuasion.md` when it changes copy. Load other topic references only for the elements the change touches (step 3).
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, plus `references/always-on.md` (the nine always-on rules). Load topic references only for the elements the change touches (step 3).
 
 ## 2. Collect the change
 

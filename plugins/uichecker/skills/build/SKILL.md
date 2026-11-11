@@ -24,7 +24,7 @@ Ask the user, in one round, only what the code and the request do not answer and
 ## 3. Plan
 
 1. List the elements the new UI will contain (a form, a table, a dialog, navigation, a chart, animations, copy).
-2. Load the rules for those elements from the routing table, plus the always-on rules and their files (guidelines Step 2).
+2. Load the rules for those elements from the routing table, plus the always-on rules in `references/always-on.md` (guidelines Step 2).
 3. Decide up front, in a short plan you show the user before writing code:
    - the states each data component needs (loading, empty, error, partial, success, disabled, busy) and what each one shows (STA-1);
    - the existing components and tokens you will use, and any new token you need (VIS-1; no raw colours or off-scale spacing);

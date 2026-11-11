@@ -4,19 +4,9 @@ Severity: **P0** unreachable, inaccessible or destructive by accident, **P1** fr
 
 ---
 
-### INT-1 · Focus is always visible (P0)
-**Applies to.** every focusable element, the page's tab order and skip links (always check).
-**Rule.** Never remove the focus outline without a better replacement: about 2 px, offset about 2 px, at least 3:1 contrast against the element and every surface it can sit on (check light and dark themes), shown via `:focus-visible` so keyboard users get it and mouse clicks do not (text inputs still show focus on click; leave that alone). Draw it with `outline`, not only `box-shadow`, which forced-colours mode removes; on mixed backgrounds a two-tone ring (a surface-coloured gap plus a contrasting ring) keeps 3:1 everywhere. Sticky headers and overlays must not cover the focused element. The focus style differs from the selected/active style. DOM order matches visual order: reorder the markup, not the layout. On content-heavy pages a "Skip to main content" link is the first focusable element, visually hidden until focused (never `display: none`), and targets `<main id="main" tabindex="-1">` so focus really moves.
-**Detect.** `outline: none` / `outline: 0` without a `:focus-visible` replacement; rings drawn only with `box-shadow`; `tabindex` > 0; CSS reordering (`order`, `flex-direction: row-reverse`, grid placement, absolute positioning) that changes the visual sequence of interactive items; skip links hidden with `display: none`; sticky headers without `scroll-padding-top`.
-**Fix.**
-```css
-:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
-```
+> **INT-1 · Focus is always visible** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
-### INT-2 · Real elements, real keyboard (P0)
-**Applies to.** every interactive element and custom widget (always check).
-**Rule.** Clickable things are `<button>` or `<a href>`, not `<div onClick>`. Custom widgets carry the right roles and states (`aria-expanded`, `aria-controls`, `aria-selected`, `aria-checked`, `aria-haspopup`) and keys: Enter/Space activate, arrows move within composite widgets (menus, tabs, listboxes, radio groups, grids), Home/End jump, Escape closes one level.
-**Detect.** `onClick` on non-interactive elements without role and key handlers; accordions with `<div>` headers; menus that ignore arrow keys.
+> **INT-2 · Real elements, real keyboard** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### INT-3 · Pick the overlay by one question: does it block? (P1)
 **Applies to.** every overlay: modal, sheet, drawer, popover, tooltip.
@@ -67,15 +57,9 @@ For a task, ask one more question: does the user need to see the page while acti
 **Rule.** Every button has hover (where hover exists), pressed, focus, busy and, if truly needed, unavailable states. Press feedback within 100 ms (MOT-3). Primary is filled, secondary outline or ghost, tertiary a text link; one primary per view or form. On lively products a small press squash and release spring, or a ripple from the press point, make the control feel physical: hover scale about 1.02 to 1.05 with a deeper shadow (scoped to `(hover: hover) and (pointer: fine)`), press about 0.95 to 0.97 with the shadow moving in, a slight overshoot on release, and a ripple that starts at the pointer coordinates, not the centre. On full-width or very wide buttons a 5% scale moves the edges several pixels, so change fill or brightness instead. On crisp products a fast value change is enough. Never linear easing; reduced motion keeps an instant colour or shadow change. The primary button's weight comes from a few deliberate properties: a solid accent fill with a 4.5:1 label, horizontal padding about two to three times the vertical, a semibold label, a radius from the scale, at least 44 px tall on touch, and optionally a soft shadow tinted from its own fill at low alpha, tuned per theme. Busy is not disabled: while the request runs the button keeps focus and its place in the tab order, swaps its label for a progress verb with a spinner ("Creating…"), ignores repeat clicks in the handler, and announces the outcome in a polite live region (`aria-busy` alone is poorly supported). Irreversible submits such as payments stay pending until the server confirms, then show the server's values (STA-4). For unavailable buttons see FRM-4.
 **Detect.** Buttons with no `:hover`/`:active` styles; several primaries side by side; two equal-weight CTAs; `disabled={isLoading}` or `disabled={isSubmitting}`.
 
-### INT-11 · Targets are big enough and close (P0 below 24 × 24 px, P1 below 44 × 44 px on touch)
-**Applies to.** every interactive target (the 44 px minimum on touch only).
-**Rule.** Interactive targets at least 44 × 44 px on touch and never below 24 × 24 px (WCAG 2.5.8; inline links in text, and targets spaced so a 24 px circle around each does not overlap a neighbour, are exempt), even when the glyph is smaller; pad the hit area, keep the icon small (a 20 px icon in a 44 px box), preferably with `min-width`/`min-height` or a pseudo-element rather than padding that only works for one icon size, and without letting neighbouring hit areas overlap. Put frequent targets near where the pointer or thumb already is: primary mobile actions at the bottom, menus at the cursor, edit in place rather than in a far modal. Use `@media (pointer: coarse)` to grow controls for touch. Screen edges and corners are effectively infinite targets for a mouse. A floating action button is for the one main creation action per screen, with bottom padding on the content so it never covers the last row or its actions; bottom-docked CTAs clear `env(safe-area-inset-bottom)` (INT-27).
-**Detect.** 16 to 32 px icon buttons without padding on mobile; tiny close buttons; primary mobile actions at the top of the screen.
+> **INT-11 · Targets are big enough and close (P0 below 24 × 24 px, P1 below 44 × 44 px on touch)** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
-### INT-12 · Hover is an extra, never the only path (P0)
-**Applies to.** anything revealed or triggered on hover: card actions, row actions, hover menus.
-**Rule.** Touch has no hover: mobile browsers (iOS Safari most of all, when hover reveals content) turn the first tap into a sticky `:hover` that can stay until the user taps elsewhere, so the tap is spent and the action never fires. Ask the input, not the device: gate hover-reveal styles with `@media (hover: hover) and (pointer: fine)` (consider `any-hover` for hybrids), never with user-agent or screen-width sniffing. Keep actions visible by default and hide them only inside that query, revealing on `:hover` and `:focus-within`; hide them with `opacity: 0` plus `pointer-events: none`, so they take no taps but stay in the tab order and `:focus-within` can reveal them; `visibility: hidden` removes them from the tab order, so use it only when another focusable element in the row or card reveals them first. Hover may reveal extras (compare, quick view), never the primary action, and every extra also has a touch home: in the card, behind a swipe that has a visible alternative, or in a sheet.
-**Detect.** `opacity: 0` actions revealed only on `:hover`; `isMobile` or user-agent checks deciding what to show; `mouseenter` handlers with no touch or focus equivalent.
+> **INT-12 · Hover is an extra, never the only path** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### INT-13 · Drag and drop says where things land (P1)
 **Applies to.** drag and drop, reordering, kanban boards, free canvases.
