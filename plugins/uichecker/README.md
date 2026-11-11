@@ -48,6 +48,7 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 
 | File | Prefix | Covers |
 |---|---|---|
+| `always-on.md` | INT, VIS, MOT, CON | The nine rules that apply to any interactive UI (focus, real elements, targets, hover, tokens, contrast, colour not alone, reduced motion, copy); the only rule file every task loads |
 | `motion.md` | MOT | Motion profile, durations, easing, stagger, hover, modals, scroll timelines, success moments, shared-element transitions, reduced motion |
 | `states-feedback.md` | STA | Loading patterns, skeletons, optimistic UI, empty, error, partial, success, toasts, notifications, badges, undo, copy, offline, progress bars, typing indicators |
 | `forms.md` | FRM | Field states, labels, validation timing, submit, passwords, masks, OTP, steppers, autosave, settings, toggles, dates, sliders, upload, inline edit, selection controls, chat and AI composers, payment forms |
@@ -55,6 +56,8 @@ Only rules whose element exists in the code are checked: a dropdown menu is chec
 | `interaction.md` | INT | Focus, keyboard, overlay choice, dialogs, sheets, dropdowns, tooltips, menus, destructive actions, buttons, targets, hover, drag and drop, swipe, navigation, breadcrumbs, tabs, accordions, panels, presence, permission prompts, tree views, boards, voice recording, phone layouts |
 | `visual-system.md` | VIS | Tokens, spacing, type, colour roles, contrast, dark mode, radius, elevation, hierarchy, grid, icons, optical corrections, gradients, glass, z-index, cards, modern CSS layout |
 | `content-persuasion.md` | CON | Microcopy, landing structure, generated-look tells, flow psychology, honest persuasion, pricing sections, success screens, shortcuts, engagement mechanics, dark patterns to refuse |
+
+Not for game HUD or engine UI (Godot, Unity, Unreal): the rules assume web or native app conventions.
 
 ## What it runs and writes
 

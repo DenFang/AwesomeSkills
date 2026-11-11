@@ -98,17 +98,7 @@ On lively products a short anticipation beat (a slight squash or pull-back) befo
 }
 ```
 
-### MOT-13 · Respect reduced motion (P0 for parallax, large travel or motion over 5 s without a control; P1 otherwise)
-**Applies to.** any project with motion (always check).
-**Rule.** Every non-essential animation turns off or becomes a short fade under `prefers-reduced-motion: reduce`. Parallax, auto-playing motion and large movements are removed entirely; shake and bounce become a fade, staggered cascades one quick fade, celebration bursts a static success state, animated counters the final number. Smooth scrolling counts too: put `scroll-behavior: smooth` inside `@media (prefers-reduced-motion: no-preference)`, and let scripted `scrollTo` or `scrollIntoView` with `behavior: 'smooth'` check the same preference. Essential progress indicators (spinners, indeterminate bars) are exempt from a global reset, or get a slow non-spatial pulse, so they never look frozen. Whatever the setting, anything that moves on its own for more than 5 s (looping glows, marquees, auto-rotating carousels) needs a pause or stop control (WCAG 2.2.2).
-**Detect.** No `prefers-reduced-motion` handling anywhere; JS animations (Web Animations API, motion libraries) that ignore the setting; `scroll-behavior: smooth` set outside a reduced-motion query.
-**Fix.**
-```css
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
-}
-```
-And check `matchMedia('(prefers-reduced-motion: reduce)')` before starting JS animations.
+> **MOT-13 · Respect reduced motion (P0 for parallax, large travel or motion over 5 s without a control; P1 otherwise)** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### MOT-14 · Physical gestures carry weight (P2)
 **Applies to.** drag, swipe and pull gestures.

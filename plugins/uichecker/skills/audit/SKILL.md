@@ -13,7 +13,7 @@ Scope: `$ARGUMENTS` (if empty, the whole project).
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Also load `references/content-persuasion.md` for the holistic pass (step 3 cites CON-3, CON-5 and CON-6) and the files that hold the always-on rules: `interaction.md`, `visual-system.md`, and `motion.md` when anything moves. Load the other topic references only when the inventory (step 2) contains elements they cover.
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, then `references/report-format.md` and `references/detection.md` from the same folder. Also load `references/always-on.md` (the nine always-on rules) and `references/content-persuasion.md` for the holistic pass (step 3 cites CON-3, CON-5 and CON-6). Load the other topic references only when the inventory (step 2) contains elements they cover.
 
 ## 2. Map the project
 

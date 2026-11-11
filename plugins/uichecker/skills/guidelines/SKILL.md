@@ -1,6 +1,6 @@
 ---
 name: guidelines
-description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions uichecker. 137 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish. Palette-independent: works with any brand colours.
+description: Use when building, changing or reviewing user-interface code (components, pages, CSS, Tailwind, React, Vue, Svelte, React Native, SwiftUI, Compose, Flutter), or when the user asks to make UI feel premium, less generic or more usable, or mentions uichecker. 137 rules with IDs (MOT, STA, FRM, DAT, INT, VIS, CON) covering motion timing, loading/empty/error states, forms, tables, navigation, overlays, accessibility, visual systems, honest persuasion and "doesn't look AI-made" polish. Palette-independent: works with any brand colours. Not for game HUD or engine UI (Godot, Unity, Unreal): the rules assume web or native app conventions.
 ---
 
 # uichecker: UI/UX guidelines
@@ -32,7 +32,7 @@ Before writing or judging UI, establish four facts and keep them for the whole t
 Rules are scoped. A rule is checked only where its subject exists: table rules on tables, toast rules on toasts, password rules on password fields. Never report a rule whose **Applies to** element is absent from the code you are looking at.
 
 1. **Inventory** the code in scope: which elements and patterns it actually contains (a form, a table, a modal, a dropdown menu, a chart, navigation, animations, copy).
-2. **Always-on rules** apply to any interactive UI: INT-1 (focus), INT-2 (real elements), INT-11 (targets), INT-12 (hover), VIS-1 (tokens), VIS-7 (contrast), VIS-8 (colour not alone), MOT-13 (reduced motion, when anything moves), CON-1 (copy, when there is text).
+2. **Always-on rules** apply to any interactive UI: INT-1 (focus), INT-2 (real elements), INT-11 (targets), INT-12 (hover), VIS-1 (tokens), VIS-7 (contrast), VIS-8 (colour not alone), MOT-13 (reduced motion, when anything moves), CON-1 (copy, when there is text). All nine are in `references/always-on.md`, not in their topic files.
 3. **Module rules** come from the routing table below, for each element in the inventory.
 4. If an element sits on the border of two modules (a dropdown inside a table row), apply both modules' rules to that element only.
 
@@ -79,7 +79,7 @@ Rules are scoped. A rule is checked only where its subject exists: table rules o
 | Streaks, feeds, autoplay, notifications | `content-persuasion.md` | CON-12 |
 | Collaboration, presence | `interaction.md` | INT-20 |
 
-All files are in `references/`. Load the files the inventory needs, plus the files that hold the always-on rules: `interaction.md` and `visual-system.md`; `motion.md` when anything moves; `content-persuasion.md` when there is copy.
+All files are in `references/`. Load `always-on.md` (13 KB, the nine always-on rules) and the topic files the inventory needs; nothing else. A topic file is not loaded for an always-on rule: a range such as `INT-1…` or `VIS-1…20` in the table means the rules of that range that live in the topic file.
 
 ## The numbers worth memorising
 
@@ -114,7 +114,7 @@ All files are in `references/`. Load the files the inventory needs, plus the fil
 
 ## Proportionality
 
-- **Small change** to existing UI (a label, a colour, one prop): follow the rules quietly and match what the project already does. No lectures, no unrequested refactors.
+- **Small change** to existing UI (a label, a colour, one prop): follow the rules quietly and match what the project already does. Load no reference file for it: the numbers table above and the project's own patterns are enough. No lectures, no unrequested refactors.
 - **New screen or component**: apply the rules fully and mention the main decisions, with their rule IDs, in one or two lines.
 - **Audit, review or refactor**: use the commands below.
 

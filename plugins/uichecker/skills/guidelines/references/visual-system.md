@@ -6,11 +6,7 @@ Severity: **P0** unreadable or inaccessible, **P1** inconsistent or confusing, *
 
 ---
 
-### VIS-1 · Nothing is typed raw (P1)
-**Applies to.** all styling (always check).
-**Rule.** Every colour, size, space, radius, shadow, weight, duration, easing and z-index comes from a named token on a fixed scale. Layer tokens: **primitives** (raw values; value names such as a numbered 100 to 900 shade ramp per hue are fine here) → **semantic** (`--color-bg`, `--color-surface`, `--color-text-muted`, `--color-accent`, `--color-danger`) → **component** (`--button-bg`, `--card-padding`). Components read only semantic or component tokens, never primitives, so one changed primitive or repointed alias cascades everywhere. Name by role, not value (`--color-accent`, `--space-md`, not `--blue-500`, `--spacing-16`); a rebrand repoints semantic tokens to new primitives rather than mutating a primitive into a value its name no longer describes. Themes, including dark mode, swap the semantic layer and are re-checked for contrast (VIS-7); components never change. A shared component ships with its variants, sizes and every state (STA-1, INT-10), not just the default, and new screens reuse those variants: a third button style or a one-off card beside the shared one is drift, not a new decision.
-**Detect.** Hex/rgb literals or px values inside components; components referencing primitive ramps (`var(--gray-200)`) directly; near-duplicate values on one scale (a 13 px gap next to 12, a 15 or 17 px font size next to 16); value names (hue, px) on tokens used for meaning; one-off variants (another primary button style) next to the shared component.
-**Fix.** Snap stray values to the nearest step of the project's scale for that property (spacing 13 → 12, 17 → 16, 22 → 24 on a 4 px grid; type sizes snap to the type scale, VIS-4) and replace literals with tokens; pick the nearest colour token by perceived difference (OKLCH), not hex distance, and report every substitution. Before inventing tokens, extract the ones the project already encodes, in this order: theme config, CSS custom properties, token files, then the most reused component (its padding and radius are the de facto scale); derive a missing value from the values already in use. Write the result in one file every screen reads from; a value outside it is either snapped to a token or added as a documented extension with its reason, never typed in silently. If the project has no tokens at all, propose a minimal set before refactoring (see the "Missing design system" note in SKILL.md).
+> **VIS-1 · Nothing is typed raw** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### VIS-2 · One spacing scale (P1)
 **Applies to.** all spacing: padding, margin, gap, grid gutters.
@@ -46,17 +42,9 @@ Define each step as one token bundling size, weight, line height and tracking; t
 **Rule.** The danger colour appears only on destructive actions and real errors. A red logout button or red decorative badges make the real delete look routine.
 **Detect.** Danger tokens on non-destructive controls.
 
-### VIS-7 · Contrast is a ratio (P0)
-**Applies to.** every text and essential UI element (always check).
-**Rule.** Contrast belongs to a text/background pair, never to a colour token alone: the same text colour can pass on one surface and vanish on the next. Body text at least 4.5:1 against its actual background; large text (24 px, or about 18.7 px bold) and essential UI parts (input borders, focus rings, icons that carry meaning) at least 3:1; aim for 7:1 (AAA) on critical text such as errors, prices and terms where the palette allows. Muted greys on nav links, card labels, subtitles, stat labels and placeholders are the usual failures, often only 1.5 to 2:1. Text dimmed by opacity is measured as rendered on its surface, gradient text at its weakest point. Check every pair in light and dark themes. Disabled controls are exempt, but their label stays legible.
-**Detect.** Light grey text tokens; `opacity` below about 0.6 on text; text on images or gradients without a scrim; disabled-looking labels used for real content.
-**Fix.** Change the lightness of the failing token, keeping its hue and the layout; a redesign is rarely needed.
+> **VIS-7 · Contrast is a ratio** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
-### VIS-8 · Colour never carries meaning alone (P0)
-**Applies to.** every status, state, series or group shown with colour: error and success messages, trends, chart series, chips, active nav items, selected icons (always check).
-**Rule.** Every colour cue is paired with a second signal: an icon on error and success messages, an arrow plus a signed number on trends ("+14%"), patterns, textures or direct labels on chart series with shapes in the legend, a check or fill change on active chips, an underline or filled shape plus `aria-current` on the active nav item, a heading or position for colour-coded groups. Red against green is exactly the difference red-green colour-blind users (about 1 in 12 men) lose, so error and success, pass and fail, up and down never differ by hue alone. Before release, view key screens through a protanopia, deuteranopia and tritanopia simulator.
-**Detect.** Status shown only by text or dot colour; red borders as the only error signal; charts distinguishable only by hue; groups distinguished only by tint.
-**Fix.** For form errors add the icon, `aria-invalid="true"` and `aria-describedby` pointing at the message, so the meaning is not visual at all.
+> **VIS-8 · Colour never carries meaning alone** is an always-on rule: it lives in [always-on.md](always-on.md), which every task loads.
 
 ### VIS-9 · Dark mode is its own system (P1)
 **Applies to.** products with a dark theme.

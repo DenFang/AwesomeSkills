@@ -13,7 +13,7 @@ Target: `$ARGUMENTS`
 
 ## 1. Load the guidelines
 
-Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md` and `references/report-format.md` from the same folder, then the topic references for the elements you will touch. For a path target, also read `references/detection.md` (path mode uses the audit's fast sweep).
+Read `${CLAUDE_PLUGIN_ROOT}/skills/guidelines/SKILL.md`, `references/report-format.md` and `references/always-on.md` from the same folder, then the topic references for the elements you will touch. For a path target, also read `references/detection.md` (path mode uses the audit's fast sweep).
 
 ## 2. Decide what to fix
 
